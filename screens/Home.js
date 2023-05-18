@@ -8,8 +8,10 @@ import {
     TouchableOpacity
 } from "react-native"
 import { COLORS, SIZES, FONTS, icons, images } from "../constants"
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
+    const Navigation = useNavigation();
 
     const featuresData = [
         {
@@ -17,28 +19,32 @@ const Home = () => {
             icon: icons.sankalp,
             color: COLORS.purple,
             backgroundColor: COLORS.lightpurple,
-            description: "Sankalp"
+            description: "Sankalp",
+            path : "Sankalp"
         },
         {
             id: 2,
             icon: icons.book,
             color: COLORS.yellow,
             backgroundColor: COLORS.lightyellow,
-            description: "Book"
+            description: "Book",
+            path : "Book"
         },
         {
             id: 3,
             icon: icons.documents,
             color: COLORS.primary,
             backgroundColor: COLORS.lightGreen,
-            description: "Documents"
+            description: "Documents",
+            path : "Documents"
         },
         {
             id: 4,
             icon: icons.vibrationpts,
             color: COLORS.red,
             backgroundColor: COLORS.lightRed,
-            description: "Vibrations"
+            description: "Vibrations",
+            path : "Vibrations"
         },
         
     ]
@@ -88,9 +94,9 @@ const Home = () => {
     function renderHeader() {
         return (
             <View style={{ flexDirection: 'row', marginVertical: SIZES.padding * 2 }}>
-                <View style={{ flex: 1 }}>
-                    <Text style={{ ...FONTS.h1 }}>Hello!</Text>
-                    <Text style={{ ...FONTS.body2, color: COLORS.gray }}>Abhijit</Text>
+                <View style={{ flex: 1 , flexDirection:'column'}}>
+                    {/* <Text style={{ ...FONTS.body2 , color:COLORS.black }}>Hi!</Text> */}
+                    <Text style={{ ...FONTS.body2, color: COLORS.black }}> Hi! Abhijit</Text>
                 </View>
 
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -162,7 +168,7 @@ const Home = () => {
         const renderItem = ({ item }) => (
             <TouchableOpacity
                 style={{ marginBottom: SIZES.padding * 2, width: 60, alignItems: 'center' }}
-                onPress={() => console.log(item.description)}
+                onPress={() => Navigation.navigate(item.path)}
             >
                 <View
                     style={{
@@ -185,7 +191,7 @@ const Home = () => {
                         }}
                     />
                 </View>
-                <Text style={{ textAlign: 'center', flexWrap: 'wrap', ...FONTS.body5 }}>{item.description}</Text>
+                <Text style={{ textAlign: 'center', flexWrap: 'wrap', ...FONTS.body5 , color:'black' }}>{item.description}</Text>
             </TouchableOpacity>
         )
 
@@ -270,7 +276,7 @@ const Home = () => {
                         borderBottomRightRadius: 20
                     }}
                 >
-                    <Text style={{ ...FONTS.body4 }}>{item.description}</Text>
+                    <Text style={{ ...FONTS.body4 , color:'black' }}>{item.description}</Text>
                 </View>
             </TouchableOpacity>
         )

@@ -8,7 +8,7 @@
 
 import React from 'react';
 
-import { SignUp , SignIn} from "./screens";
+import { SignUp , SignIn, Sankalp, SankalpDescription, SankalpSubDescription} from "./screens";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
@@ -39,6 +39,12 @@ const App = () => {
 
                 {/* Tabs */}
                 <Stack.Screen name="Home" component={Tabs} />
+                <Stack.Screen name="Sankalp" component={Sankalp} />
+                <Stack.Screen name="SankalpDescription" component={SankalpDescription}
+                 />
+                <Stack.Screen name="SankalpDetails" component={SankalpSubDescription}
+                 />
+
 
                 {/* <Stack.Screen name="Scan" component={Scan} /> */}
             </Stack.Navigator>

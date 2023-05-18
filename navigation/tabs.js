@@ -5,7 +5,8 @@ import {
     TouchableOpacity,
     StyleSheet
 } from "react-native";
-import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
+import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import Svg, {
     Path
 } from 'react-native-svg'
@@ -14,7 +15,7 @@ import { isIphoneX } from 'react-native-iphone-x-helper'
 import { Home , User , Practice , Contribute} from "../screens"
 import { COLORS, icons } from "../constants"
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 
 const TabBarCustomButton = ({ accessibilityLabel, accessibilityState, children, onPress }) => {
 
@@ -242,6 +243,8 @@ const Tabs = () => {
         </Tab.Navigator>
     )
 }
+
+
 
 const styles = StyleSheet.create({
     shadow: {

@@ -5,13 +5,18 @@ import Contribute from "./Contribute";
 // import Scan from "./Scan"
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
+import Sankalp from "./Sankalp";
+import SankalpDescription from './SankalpDescription';
+import SankalpSubDescription from "./SankalpSubDescription";
 
 export {
     Home,
     User,
     Practice,
     Contribute,
-    // Scan,
+    Sankalp,
+    SankalpDescription,
     SignUp,
-    SignIn
+    SignIn,
+    SankalpSubDescription
 };
