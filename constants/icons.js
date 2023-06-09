@@ -24,7 +24,9 @@ const Home = require("../assets/icons/Home.png");
 const Contribute = require("../assets/icons/contribute.png");
 const Learn = require("../assets/icons/Practice.png");
 const Head = require("../assets/icons/head.png");
-
+const Tulsi = require("../assets/icons/tulsi.webp");
+const Lemon = require("../assets/icons/lemon.jpg");
+const Tamarind = require("../assets/icons/Tamarind.jpg");
 
 
 
@@ -54,5 +56,8 @@ export default {
     Home , 
     Contribute , 
     Learn,
-    Head
+    Head, 
+    Tulsi, 
+    Lemon,
+    Tamarind
 }

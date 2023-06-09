@@ -18,5 +18,5 @@ export {
     SankalpDescription,
     SignUp,
     SignIn,
-    SankalpSubDescription
+    SankalpSubDescription,
 };

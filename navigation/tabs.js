@@ -175,6 +175,7 @@ const Tabs = () => {
                 name="Practice"
                 component={Practice}
                 options={{
+                    headerShown: false,
                     tabBarIcon: ({ focused }) => (
                         <Image
                             source={icons.Learn}

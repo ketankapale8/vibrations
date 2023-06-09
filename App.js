@@ -8,11 +8,18 @@
 
 import React from 'react';
 
-import { SignUp , SignIn, Sankalp, SankalpDescription, SankalpSubDescription} from "./screens";
+import { SignUp , SignIn, Sankalp, SankalpDescription, SankalpSubDescription } from "./screens";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 
 import Tabs from "./navigation/tabs";
+import PracticeTest from './screens/PracticeTest';
+import PracticeTest1 from './screens/PracticeTest1';
+import PracticeQuestions from './screens/PracticeQuestions';
+import PracticeQuestions1 from './screens/PracticeQuestions1';
+import QuizScreen from './screens/QuizScreen';
+import ResultsScreen from './screens/ResultScreen';
 
 const theme = {
     ...DefaultTheme,
@@ -45,9 +52,26 @@ const App = () => {
                 <Stack.Screen name="SankalpDetails" component={SankalpSubDescription}
                  />
 
+                 <Stack.Screen name="Selftest" component={PracticeTest}
+                 />
+                 <Stack.Screen name="SelfQuestions" component={PracticeQuestions}
+                 />
+                 {/* // modify naming conventions here... according to selftest and practice tests // */}
+
+                 <Stack.Screen name="Practicetest" component={PracticeTest1}
+                 />
+                   <Stack.Screen name="PracticeQuestions" component={PracticeQuestions1}
+                 />
+
+                 <Stack.Screen name="QuizScreen" component={QuizScreen} />
+                 <Stack.Screen name="Results" component={ResultsScreen} />
+
+
+
 
                 {/* <Stack.Screen name="Scan" component={Scan} /> */}
             </Stack.Navigator>
+            <Toast/>
         </NavigationContainer>
     )
 }
