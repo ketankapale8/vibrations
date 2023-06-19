@@ -97,7 +97,7 @@ const SignUp = ({ navigation }) => {
                     fontSize : SIZES.h1 * 2,
                     fontWeight : 'bold',
                     color : COLORS.white
-                }}>Vibrations</Text>
+                }}>Spandans</Text>
             </View>
         )
     }

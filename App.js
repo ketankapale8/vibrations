@@ -20,6 +20,11 @@ import PracticeQuestions from './screens/PracticeQuestions';
 import PracticeQuestions1 from './screens/PracticeQuestions1';
 import QuizScreen from './screens/QuizScreen';
 import ResultsScreen from './screens/ResultScreen';
+import FilterScreen from './screens/FilterScreen';
+import QuizScreen1 from './screens/QuizScreen1';
+import LearnScreen from './screens/LearnScreen';
+import QuizScreen2 from './screens/QuizScreen2';
+import DummyQuizScreen from './screens/DummyQuizScreen';
 
 const theme = {
     ...DefaultTheme,
@@ -64,7 +69,17 @@ const App = () => {
                  />
 
                  <Stack.Screen name="QuizScreen" component={QuizScreen} />
+                 <Stack.Screen name="QuizScreen1" component={QuizScreen1} />
+                 <Stack.Screen name="QuizScreen2" component={QuizScreen2} />
+                 
                  <Stack.Screen name="Results" component={ResultsScreen} />
+                 <Stack.Screen name="FilterScreen" component={FilterScreen} />
+                 <Stack.Screen name="LearnScreen" component={LearnScreen} />
+                 <Stack.Screen name="DummyQuiz" component={DummyQuizScreen} />
+
+
+
+
 
 
 

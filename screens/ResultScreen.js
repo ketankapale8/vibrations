@@ -9,6 +9,9 @@ import {
   import React from "react";
   import { useNavigation, useRoute } from "@react-navigation/native";
   import AntDesign from "react-native-vector-icons/AntDesign.js"
+
+  import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import {faCircleCheck ,faShareNodes } from '@fortawesome/free-solid-svg-icons'
 import { COLORS } from "../constants";
 
 
@@ -34,13 +37,8 @@ import { COLORS } from "../constants";
               marginRight: 14,
             }}
           >
-            <Text style={{color:COLORS.darkgray}}>Share</Text>
-            <AntDesign
-              style={{ marginLeft: 4 }}
-              name="sharealt"
-              size={18}
-              color="black"
-            />
+            <FontAwesomeIcon icon={faShareNodes} style={{width:'45px', height:'30px', color : COLORS.primary }} size={20}  />
+           
           </View>
         </View>
   
@@ -53,7 +51,7 @@ import { COLORS } from "../constants";
           }}
         >
           <Text style={{color:COLORS.black}}>Questions Answered</Text>
-          <Text style={{color:COLORS.black}}>(5/5)</Text>
+          <Text style={{color:COLORS.black}}>{route.params.answers.length}/{route.params.points}</Text>
         </View>
   
         <Pressable
@@ -92,9 +90,11 @@ import { COLORS } from "../constants";
               >
                 <Text style={{color:COLORS.black}}>{item.question}</Text>
                 {item.answer === true ? (
-                  <AntDesign style={{marginLeft:5 ,color:COLORS.black}} name="checkcircle" size={20} color="green" />
+                  <FontAwesomeIcon icon={faCircleCheck} style={{width:'45px', height:'30px', color : COLORS.primary }} size={20}  />
+                  // <AntDesign style={{marginLeft:5 ,color:COLORS.black}} name="checkcircle" size={20} color="green" />
                 ) : (
-                  <AntDesign style={{marginLeft:5}} name="closecircle" size={20} color="red" />
+                  <FontAwesomeIcon icon={faCircleCheck} style={{width:'45px', height:'30px', color : COLORS.red , marginLeft : 5}} size={20}  />
+                  // <AntDesign style={{marginLeft:5}} name="closecircle" size={20} color />
                 )}
               </View>
             )}

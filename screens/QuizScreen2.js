@@ -1,18 +1,21 @@
-import { StyleSheet, Text, View , Pressable , Image} from 'react-native';
+import { StyleSheet, Text, View , Pressable , Image , SafeAreaView} from 'react-native';
 
 import React, { useState, useEffect } from "react";
 import questions from "../constants/DummyQuestions.js";
-import { useNavigation } from "@react-navigation/native";
+import {useRoute, useNavigation } from "@react-navigation/native";
 import AntDesign from "react-native-vector-icons/AntDesign.js"
 import { COLORS, SIZES , FONTS , icons} from '../constants';
-import { SafeAreaView } from 'react-native-safe-area-context';
 // import { AntDesign } from "react-native-vector-icons";
-const QuizScreen1 = () => {
+const QuizScreen2 = () => {
+  const route = useRoute();
   const navigation = useNavigation();
+//   const tag = route?.params.questions
   const data = questions
   const totalQuestions = data.length;
   // points
   const [points, setPoints] = useState(0);
+
+  const [background , setBackground] = useState(COLORS.darkgray)
 
   // index of the question
   const [index, setIndex] = useState(0);
@@ -25,7 +28,12 @@ const QuizScreen1 = () => {
 
   // selected answer
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
-  console.log(selectedAnswerIndex)
+  
+  
+  // console.log(selectedAnswerIndex)
+  
+  const [correctAns , setCorrectAns] = useState(null)
+  const [ansText , setAnsText] = useState("")
 
   // Counter
   const [counter, setCounter] = useState(5);
@@ -40,10 +48,10 @@ const QuizScreen1 = () => {
     if (selectedAnswerIndex !== null) {
       if (selectedAnswerIndex === currentQuestion?.correctAnswerIndex) {
         setPoints((points) => points + 10);
-        setAnswerStatus(true);
+        // setAnswerStatus(true);
         answers.push({ question: index + 1, answer: true });
       } else {
-        setAnswerStatus(false);
+        // setAnswerStatus(false); 
         answers.push({ question: index + 1, answer: false });
       }
     }
@@ -54,28 +62,29 @@ const QuizScreen1 = () => {
     setAnswerStatus(null);
   }, [index]);
 
-  useEffect(() => {
-    const myInterval = () => {
-      if (counter >= 1) {
-        setCounter((state) => state - 1);
-      }
-      if (counter === 0) {
-        setIndex(index + 1);
-        setCounter(5);
-      }
-    };
+  // useEffect(() => {
+  //   const myInterval = () => {
+  //     if (counter >= 1) {
+  //       setCounter((state) => state - 1);
+  //     }
+  //     if (counter === 0) {
+  //       setIndex(index + 1);
+  //       setCounter(5);
+  //     }
+  //   };
 
-    interval = setTimeout(myInterval, 1000);
+  //   interval = setTimeout(myInterval, 1000);
 
-    // clean up
-    return () => {
-      clearTimeout(interval);
-    };
-  }, [counter]);
+  //   // clean up
+  //   return () => {
+  //     clearTimeout(interval);
+  //   };
+  // }, [counter]);
 
   useEffect(() => {
     if (index + 1 > data.length) {
       clearTimeout(interval)
+      navigation.goBack()
       navigation.navigate("Results", {
         answers: answers,
         points: points,
@@ -127,7 +136,7 @@ const QuizScreen1 = () => {
           marginHorizontal: 10,
         }}
       >
-        <Text style={{color : COLORS.black}}>Your Progress</Text>
+        <Text style={{color:COLORS.black}}>Your Progress</Text>
         <Text style={{color:COLORS.black}}>
           ({index}/{totalQuestions}) questions answered
         </Text>
@@ -190,7 +199,11 @@ const QuizScreen1 = () => {
             <Pressable
               onPress={() =>
                 // console.warn('pressed')
-                selectedAnswerIndex === null && setSelectedAnswerIndex(index)}
+              
+                {selectedAnswerIndex === null && setSelectedAnswerIndex(index) 
+                correctAns === null & setCorrectAns(currentQuestion?.correctAnswerIndex)
+              }
+              }
               
               style={
                 selectedAnswerIndex === index &&
@@ -201,7 +214,7 @@ const QuizScreen1 = () => {
                       borderWidth: 0.5,
                       borderColor: "#00FFFF",
                       marginVertical: 10,
-                      backgroundColor: "green",
+                      backgroundColor: background,
                       borderRadius: 20,
                       color: COLORS.black
                     }
@@ -213,7 +226,7 @@ const QuizScreen1 = () => {
                       color:COLORS.black,
                       borderColor: "#00FFFF",
                       marginVertical: 10,
-                      backgroundColor: "red",
+                      backgroundColor: background,
                       borderRadius: 20,
                     }
                   : {
@@ -310,13 +323,14 @@ const QuizScreen1 = () => {
                 : { fontSize: 17, textAlign: "center", fontWeight: "bold" , color:COLORS.black }
             }
           >
-            {!!answerStatus ? "Correct Answer" : "Wrong Answer"}
+            {/* {(!!answerStatus && background == 'green') ? "Correct Answer" : "Wrong Answer"} */}
           </Text>
         )}
 
         {index + 1 >= questions.length ? (
           <Pressable
             onPress={() =>
+            //   navigation.goBack()
               navigation.navigate("Results", {
                 points: points,
                 answers: answers,
@@ -345,26 +359,92 @@ const QuizScreen1 = () => {
               borderRadius: 6,
             }}
           >
-            <Text style={{ color: "white" }}>Next Question</Text>
+            <Text style={{ color: "white" }}>{index + 1 >= questions.length ? "Done": "Next Question"}</Text>
           </Pressable>
-        )}
+        )} 
       </View>
     )
   }
   
+
+  const renderSubmitBtn = () =>{
+    return (
+      <Pressable style={{
+        backgroundColor: "green",
+        padding: 10,
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: 20,
+        borderRadius: 6,
+      }} 
+       onPress={()=> 
+        {selectedAnswerIndex !== correctAns ? (setBackground('yellow') && setAnsText("")) : selectedAnswerIndex == correctAns ? (setBackground('yellow') && setAnsText("") ): null
+        index + 1 >= questions.length ? setAnswerStatus(false) : 
+        setAnswerStatus(true)
+       }
+       
+      
+      // setAnswerStatus(true);
+      //  setAnswerStatus(true);
+      }
+      
+      >
+        <Text style={{ color: "white" }}>Submit</Text>
+      </Pressable>
+    )
+  }
+
+  const renderResetBtn = () =>{
+    return (
+      <Pressable style={{
+        backgroundColor: "green",
+        padding: 10,
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: 20,
+        borderRadius: 6,
+      }} 
+
+      onPress={()=>{
+        setAnswerStatus(!answerStatus);
+        setSelectedAnswerIndex(null)
+      }}
+      //  onPress={()=> 
+      //   {selectedAnswerIndex !== correctAns ? (setBackground('red') && setAnsText("Incorrect")) : selectedAnswerIndex == correctAns ? (setBackground('green') && setAnsText("Correct") ): null
+      //   index + 1 >= questions.length ? setAnswerStatus(false) : 
+      //   setAnswerStatus(true)
+      //  }
+       
+      
+      // // setAnswerStatus(true);
+      // //  setAnswerStatus(true);
+      // }
+      
+      >
+        <Text style={{ color: "white" }}>Reset</Text>
+      </Pressable>
+    )
+
+  }
+   
   return (
-    <SafeAreaView style={{paddingBottom:20 , paddingTop:20}}>
+    <SafeAreaView>
         {renderTitle()}
         {renderDesc()}
         {renderProgressBar()}
         {renderMiddleScreen()}
+        <View style={{display:'flex', flexDirection:'row', padding:SIZES.padding}}>
+         {renderSubmitBtn()}
+         {renderResetBtn()}
+        </View>
         {renderBttomScreen()}
+
     </SafeAreaView>
 
      
   );
 };
 
-export default QuizScreen1;
+export default QuizScreen2;
 
 // const styles = StyleSheet.create({});

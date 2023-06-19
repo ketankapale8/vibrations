@@ -1,15 +1,19 @@
-import { StyleSheet, Text, View , Pressable , Image} from 'react-native';
-
+import { StyleSheet, Text, View , Pressable , Image , SafeAreaView} from 'react-native';
 import React, { useState, useEffect } from "react";
 import questions from "../constants/DummyQuestions.js";
-import { useNavigation } from "@react-navigation/native";
+import {useRoute, useNavigation } from "@react-navigation/native";
 import AntDesign from "react-native-vector-icons/AntDesign.js"
 import { COLORS, SIZES , FONTS , icons} from '../constants';
 // import { AntDesign } from "react-native-vector-icons";
 const QuizScreen = () => {
+  const route = useRoute();
   const navigation = useNavigation();
-  const data = questions.filter(item=>item.questionTag == "Tulsi");
+  const tag = route?.params.questions;
+  const data = questions.filter(item=>item.questionTag == tag);
   const totalQuestions = data.length;
+
+
+
   // points
   const [points, setPoints] = useState(0);
 
@@ -60,25 +64,6 @@ const QuizScreen = () => {
     setAnswerStatus(null);
   }, [index]);
 
-  // useEffect(() => {
-  //   const myInterval = () => {
-  //     if (counter >= 1) {
-  //       setCounter((state) => state - 1);
-  //     }
-  //     if (counter === 0) {
-  //       setIndex(index + 1);
-  //       setCounter(5);
-  //     }
-  //   };
-
-  //   interval = setTimeout(myInterval, 1000);
-
-  //   // clean up
-  //   return () => {
-  //     clearTimeout(interval);
-  //   };
-  // }, [counter]);
-
   useEffect(() => {
     if (index + 1 > data.length) {
       clearTimeout(interval)
@@ -109,12 +94,12 @@ const QuizScreen = () => {
           padding: 10,
         }}
       >
-        <Text>Quiz Challenge</Text>
+        <Text style={{color : COLORS.black}}>Quiz Challenge</Text>
         <Pressable
           style={{ padding: 10, backgroundColor: "magenta", borderRadius: 20 }}
         >
           <Text
-            style={{ color: "white", textAlign: "center", fontWeight: "bold" }}
+            style={{ color: COLORS.black, textAlign: "center", fontWeight: "bold" }}
           >
             {counter}
           </Text>
@@ -134,7 +119,7 @@ const QuizScreen = () => {
           marginHorizontal: 10,
         }}
       >
-        <Text>Your Progress</Text>
+        <Text style={{color:COLORS.black}}>Your Progress</Text>
         <Text style={{color:COLORS.black}}>
           ({index}/{totalQuestions}) questions answered
         </Text>
@@ -359,7 +344,7 @@ const QuizScreen = () => {
           >
             <Text style={{ color: "white" }}>{index + 1 >= questions.length ? "Done": "Next Question"}</Text>
           </Pressable>
-        )}
+        )} 
       </View>
     )
   }
@@ -376,7 +361,7 @@ const QuizScreen = () => {
         borderRadius: 6,
       }} 
        onPress={()=> 
-        {selectedAnswerIndex !== correctAns ? (setBackground('red') && setAnsText("Incorrect")) : selectedAnswerIndex == correctAns ? (setBackground('green') && setAnsText("Correct") ): null
+        {selectedAnswerIndex !== correctAns ? (setBackground(COLORS.lightGray) && setAnsText("Incorrect")) : selectedAnswerIndex == correctAns ? (setBackground('green') && setAnsText("Correct") ): null
         index + 1 >= questions.length ? setAnswerStatus(false) : 
         setAnswerStatus(true)
        }
@@ -391,17 +376,53 @@ const QuizScreen = () => {
       </Pressable>
     )
   }
-  
-  return (
-    <View>
+
+  const renderResetBtn = () =>{
+    return (
+      <Pressable style={{
+        backgroundColor: "green",
+        padding: 10,
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: 20,
+        borderRadius: 6,
+      }} 
+
+      onPress={()=>{
+        setAnswerStatus(null);
+        setSelectedAnswerIndex(null)
+        setAnsText("")
+      }}
+      //  onPress={()=> 
+      //   {selectedAnswerIndex !== correctAns ? (setBackground('red') && setAnsText("Incorrect")) : selectedAnswerIndex == correctAns ? (setBackground('green') && setAnsText("Correct") ): null
+      //   index + 1 >= questions.length ? setAnswerStatus(false) : 
+      //   setAnswerStatus(true)
+      //  }
+       
+      
+      // // setAnswerStatus(true);
+      // //  setAnswerStatus(true);
+      // }
+      
+      >
+        <Text style={{ color: "white" }}>Reset</Text>
+      </Pressable>
+    )
+
+  }
+    return (
+    <SafeAreaView>
         {renderTitle()}
         {renderDesc()}
         {renderProgressBar()}
         {renderMiddleScreen()}
-        {renderSubmitBtn()}
+        <View style={{display:'flex', flexDirection:'row', padding:SIZES.padding}}>
+         {renderSubmitBtn()}
+         {renderResetBtn()}
+        </View>
         {renderBttomScreen()}
 
-    </View>
+    </SafeAreaView>
 
      
   );

@@ -53,38 +53,46 @@ const Home = () => {
         {
             id: 1,
             img: images.promoBanner,
-            title: "Know Your Vibrations",
-            description: "Understand your Oscillations!"
+            title: "Know Your Spandans",
+            description: "Understand your Oscillations!",
+            path : ""
         },
         {
             id: 2,
             img: images.promoBanner,
-            title: "Practice Mode",
-            description: "Check your capabilities under practice mode"
+            title: "Learn Spandan",
+            description: "Check your capabilities under practice mode",
+            path : ""
+            // path : "LearnScreen"
         },
         {
             id: 3,
             img: images.promoBanner,
             title: "Reference Documents",
-            description: "Check for references."
-        },
+            description: "Check for references.",
+            path : ""
+            
+            },
         {
             id: 4,
             img: images.promoBanner,
             title: "Case Summary",
-            description: "Add your infomation and check for your overall profile"
+            description: "Add your infomation and check for your overall profile",
+            path : ""
         },
         {
             id: 5,
             img: images.promoBanner,
             title: "Discussion Forums",
-            description: "Look what others have to offer"
+            description: "Look what others have to offer",
+            path : ""
         },
         {
             id: 5,
             img: images.promoBanner,
             title: "Support",
-            description: "Please look for any queries"
+            description: "Please look for any queries",
+            path : ""
         },
     ]
 
@@ -244,7 +252,7 @@ const Home = () => {
                     marginVertical: SIZES.base,
                     width: SIZES.width / 2.5
                 }}
-                onPress={() => console.log(item.title)}
+                onPress={() => Navigation.navigate(item.path)}
             >
                 <View
                     style={{
@@ -254,7 +262,7 @@ const Home = () => {
                         backgroundColor: COLORS.primary
                     }}
                 >
-                    <Text style={{ ...FONTS.h4 , color : COLORS.white , padding:SIZES.padding *2  }}>{item.title}</Text>
+                    <Text style={{ ...FONTS.h5 , color : COLORS.white , padding:SIZES.padding *2  }}>{item.title}</Text>
                     {/* <Image
                         source={images.promoBanner}
                         resizeMode="cover"
