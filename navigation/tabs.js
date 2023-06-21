@@ -3,7 +3,8 @@ import {
     View,
     Image,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+    Text
 } from "react-native";
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -12,8 +13,9 @@ import Svg, {
 } from 'react-native-svg'
 import { isIphoneX } from 'react-native-iphone-x-helper'
 
-import { Home , User , Practice , Contribute} from "../screens"
-import { COLORS, icons } from "../constants"
+import { Home , User , Practice , Contribute, HomeScreen, Sankalp , More , Cases} from "../screens"
+import { COLORS, SIZES, icons } from "../constants"
+import { red200 } from "react-native-paper/lib/typescript/src/styles/themes/v2/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -109,44 +111,80 @@ const CustomTabBar = (props) => {
 const Tabs = () => {
     return (
         <Tab.Navigator
-            tabBarOptions={{
-                showLabel: false,
-                style: {
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    backgroundColor: "transparent",
-                    elevation: 0
-                }
-            }}
-            tabBar={(props) => (
-                <CustomTabBar
-                    props={props}
-                />
-            )}
+                tabBarOptions={{
+                    showLabel : false,
+                    style:{
+                        position: 'absolute',
+                        bottom : 25,
+                        left : 20, 
+                        right : 20,
+                        backgroundColor : "#fffff",
+                        elevation : 0,
+                        borderRadius: 15,
+                        height: 90,
+                        ...styles.shadow
+                    }
+                }}
+            // tabBarOptions={{
+            //     showLabel: true,
+            //     style: {
+            //         position: 'absolute',
+            //         bottom: 0,
+            //         left: 0,
+            //         right: 0,
+            //         backgroundColor: "transparent",
+            //         elevation: 0
+            //     }
+            // }}
+            // tabBar={(props) => (
+            //     <CustomTabBar
+            //         props={props}
+            //     />
+            // )}
         >
             <Tab.Screen
                 name="Home"
                 component={Home}
                 options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Image
+                    headerTitle : "Dashboard",
+                    headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
+                    headerStyle: {
+                        backgroundColor: COLORS.primary2,
+                      },
+                    tabBarIcon : ({focused}) => (
+                        <View style={{alignItems : 'center', justifyContent:'center', top: 0}}>
+                            <Image
                             source={icons.Home}
                             resizeMode="contain"
                             style={{
                                 width: 25,
-                                height: 25,
-                                tintColor: focused ? COLORS.white : COLORS.secondary
-                            }}
-                        />
-                    ),
-                    tabBarButton: (props) => (
-                        <TabBarCustomButton
-                            {...props}
-                        />
+                                    height: 25,
+                                    tintColor: focused ? COLORS.pink : COLORS.primary1,
+                                }}
+                            />
+                            <Text style={{color: focused ? COLORS.pink : COLORS.primary1, fontSize : 12}}>Home</Text>
+
+                        </View>
                     )
                 }}
+                // options={{
+                //     tabBarIcon: ({ focused }) => (
+                //         <Image
+                //             source={icons.Home}
+                //             resizeMode="contain"
+                //             style={{
+                //                 width: 25,
+                //                 height: 25,
+                //                 tintColor: focused ? COLORS.white : COLORS.secondary
+                //             }}
+                //         />
+                //     ),
+                //     tabBarButton: (props) => (
+                //         <TabBarCustomButton
+                //             {...props}
+                //         />
+                //     )
+                // }}
             />
             {/* <Tab.Screen
                 name="Scan"
@@ -172,72 +210,129 @@ const Tabs = () => {
             /> */}
 
 <Tab.Screen
-                name="Practice"
-                component={Practice}
+                name="Learn"
+                component={Sankalp}
                 options={{
-                    headerShown: false,
-                    tabBarIcon: ({ focused }) => (
-                        <Image
-                            source={icons.Learn}
-                            resizeMode="contain"
+                    headerTitle : "Sankalp",
+                    headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
+                    headerStyle: {
+                        backgroundColor: COLORS.primary2,
+                      },
+                    tabBarIcon : ({focused}) => (
+                        <View style={{alignItems : 'center', justifyContent:'center', top: 0}}>
+                            <Image
+                            source={icons.Contribute}
+                            resizeMode="cover"
                             style={{
                                 width: 25,
-                                height: 25,
-                                tintColor: focused ? COLORS.white : COLORS.secondary
-                            }}
-                        />
-                    ),
-                    tabBarButton: (props) => (
-                        <TabBarCustomButton
-                            {...props}
-                        />
+                                    height: 25,
+                                    tintColor: focused ? COLORS.pink : COLORS.primary1,
+                                }}
+                            />
+                            <Text style={{color: focused ? COLORS.pink : COLORS.primary1, fontSize : 12}}>Learn</Text>
+
+                        </View>
                     )
                 }}
+                // options={{
+                //     headerShown: false,
+                //     tabBarIcon: ({ focused }) => (
+                //         <Image
+                //             source={icons.Learn}
+                //             resizeMode="contain"
+                //             style={{
+                //                 width: 25,
+                //                 height: 25,
+                //                 tintColor: focused ? COLORS.white : COLORS.secondary
+                //             }}
+                //         />
+                //     ),
+                //     tabBarButton: (props) => (
+                //         <TabBarCustomButton
+                //             {...props}
+                //         />
+                //     )
+                // }}
             />
 
 <Tab.Screen
-                name="Contribute"
-                component={Contribute}
+                name="Practice"
+                component={Practice}
                 options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Image
-                            source={icons.Contribute}
-                            resizeMode="contain"
+                    headerTitle : "Practice",
+                    headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
+                    headerStyle: {
+                        backgroundColor: COLORS.primary2,
+                      },
+                    tabBarIcon : ({focused}) => (
+                        <View style={{alignItems : 'center', justifyContent:'center', top: 0}}>
+                            <Image
+                            source={icons.target}
+                            resizeMode="cover"
                             style={{
                                 width: 25,
-                                height: 25,
-                                tintColor: focused ? COLORS.white : COLORS.secondary
-                            }}
-                        />
-                    ),
-                    tabBarButton: (props) => (
-                        <TabBarCustomButton
-                            {...props}
-                        />
+                                    height: 25,
+                                    tintColor: focused ? COLORS.pink : COLORS.primary1,
+                                }}
+                            />
+                            <Text style={{color: focused ? COLORS.pink : COLORS.primary1, fontSize : 12}}>Practice</Text>
+
+                        </View>
                     )
                 }}
             />
 
             
             <Tab.Screen
-                name="User"
-                component={User}
+                name="Cases"
+                component={Cases}
                 options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Image
-                            source={icons.Head}
-                            resizeMode="contain"
+                    headerTitle : "Sankalp",
+                    headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
+                    headerStyle: {
+                        backgroundColor: COLORS.primary2,
+                      },
+                    tabBarIcon : ({focused}) => (
+                        <View style={{alignItems : 'center', justifyContent:'center', top: 0}}>
+                            <Image
+                            source={icons.writing}
+                            resizeMode="cover"
                             style={{
                                 width: 25,
-                                height: 25,
-                                tintColor: focused ? COLORS.white : COLORS.secondary
-                            }}
-                        />
-                    ),
-                    tabBarButton: (props) => (
-                        <TabBarCustomButton
-                            {...props}
-                        />
+                                    height: 25,
+                                    tintColor: focused ? COLORS.pink : COLORS.primary1,
+                                }}
+                            />
+                            <Text style={{color: focused ? COLORS.pink : COLORS.primary1, fontSize : 12}}>Cases</Text>
+
+                        </View>
+                    )
+                }}
+            />
+
+<Tab.Screen
+                name="More"
+                component={More}
+                options={{
+                    headerTitle : "Sankalp",
+                    headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
+                    headerStyle: {
+                        backgroundColor: COLORS.primary2,
+                      },
+                    tabBarIcon : ({focused}) => (
+                        <View style={{alignItems : 'center', justifyContent:'center', top: 0}}>
+                            <Image
+                            source={icons.discover}
+                            resizeMode="cover"
+                            style={{
+                                width: 25,
+                                    height: 25,
+                                    tintColor: focused ? COLORS.pink : COLORS.primary1,
+                                }}
+                            />
+                            <Text style={{color: focused ? COLORS.pink : COLORS.primary1 , fontSize : 12}}>More</Text>
+
+                        </View>
                     )
                 }}
             />
@@ -249,14 +344,13 @@ const Tabs = () => {
 
 const styles = StyleSheet.create({
     shadow: {
-        shadowColor: COLORS.primary,
+        shadowColor: COLORS.primary1,
         shadowOffset: {
             width: 0,
             height: 10,
         },
         shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
+        shadowRadius: 3.5,
         elevation: 5
     }
 })

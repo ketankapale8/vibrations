@@ -31,11 +31,11 @@ const Sankalp = () => {
 
                 {/* <Text style={{ marginLeft: SIZES.padding * 1.5, color: COLORS.white, ...FONTS.h4 }}>Sign Up</Text> */}
             </TouchableOpacity>
-                <View style={{ width : SIZES.width -20, margin: SIZES.padding , padding: SIZES.padding , backgroundColor : COLORS.lightpurple , borderRadius: 20 , justifyContent:"center" , display:"flex" , height : SIZES.height * 0.07 }}>
+                {/* <View style={{ width : SIZES.width -20, margin: SIZES.padding , padding: SIZES.padding , backgroundColor : COLORS.lightpurple , borderRadius: 20 , justifyContent:"center" , display:"flex" , height : SIZES.height * 0.07 }}>
                     <Text style={{color : COLORS.black , fontSize : SIZES.body2, paddingLeft: SIZES.padding *12 }}>
                      Our Sankalp
                     </Text>
-                </View>
+                </View> */}
             </>
         )
     }

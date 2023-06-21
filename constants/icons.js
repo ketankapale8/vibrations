@@ -9,25 +9,29 @@ const game = require("../assets/icons/games.png");
 const barcode = require("../assets/icons/barcode.png");
 const info = require("../assets/icons/info.png");
 const internet = require("../assets/icons/internet.png");
-const more = require("../assets/icons/more.png");
+const more = require("../assets/icons/More.png");
 const phone = require("../assets/icons/phone.png");
 const reload = require("../assets/icons/reload.png");
 const scan = require("../assets/icons/scan.png");
 const send = require("../assets/icons/send.png");
 const user = require("../assets/icons/user.png");
-const book = require("../assets/icons/Book.png");
+const book = require("../assets/icons/book.png");
 const documents = require("../assets/icons/documents.png");
 const vibrationpts = require("../assets/icons/vibrationpoints.png");
 const sankalp = require("../assets/icons/sankalp.png")
 const wallet = require("../assets/icons/wallet.png");
-const Home = require("../assets/icons/Home.png");
+const Home = require("../assets/icons/HomeNew.png");
 const Contribute = require("../assets/icons/contribute.png");
-const Learn = require("../assets/icons/Practice.png");
+const Learn = require("../assets/icons/practice.png");
 const Head = require("../assets/icons/head.png");
 const Tulsi = require("../assets/icons/tulsi.webp");
 const Lemon = require("../assets/icons/lemon.jpg");
 const Tamarind = require("../assets/icons/Tamarind.jpg");
-
+const practice = require("../assets/icons/practice.png");
+const target = require("../assets/icons/target.png")
+const learn = require("../assets/icons/learn.png");
+const writing = require("../assets/icons/writing.png");
+const discover = require("../assets/icons/discover.png")
 
 
 export default {
@@ -59,5 +63,11 @@ export default {
     Head, 
     Tulsi, 
     Lemon,
-    Tamarind
+    Tamarind,
+    more,
+    learn,
+    practice,
+    target,
+    writing,
+    discover
 }

@@ -5,6 +5,9 @@ export const COLORS = {
     // base colors
     primary: "#24C16B", // green
     secondary: "#0C381F",   // dark green
+    // #420075
+    primary1: "#420075", // voilet
+    primary2 : "#8F00FF" , // light-voilet
 
     green: "#66D59A",
     lightGreen: "#E6FEF0",
@@ -27,6 +30,8 @@ export const COLORS = {
     lightGray: "#FCFBFC",
     gray: "#C1C3C5",
     darkgray: "#C3C6C7",
+
+    pink : "#FF00FF",
 
     transparent: "transparent",
 };

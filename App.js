@@ -11,6 +11,8 @@ import React from 'react';
 import { SignUp , SignIn, Sankalp, SankalpDescription, SankalpSubDescription } from "./screens";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { useWindowDimensions } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import Toast from 'react-native-toast-message';
 
 import Tabs from "./navigation/tabs";
@@ -56,7 +58,6 @@ const App = () => {
                  />
                 <Stack.Screen name="SankalpDetails" component={SankalpSubDescription}
                  />
-
                  <Stack.Screen name="Selftest" component={PracticeTest}
                  />
                  <Stack.Screen name="SelfQuestions" component={PracticeQuestions}

@@ -8,6 +8,9 @@ import SignIn from "./SignIn";
 import Sankalp from "./Sankalp";
 import SankalpDescription from './SankalpDescription';
 import SankalpSubDescription from "./SankalpSubDescription";
+import More from "./More";
+import Cases from "./Cases";
+
 
 export {
     Home,
@@ -19,4 +22,6 @@ export {
     SignUp,
     SignIn,
     SankalpSubDescription,
+    More,
+    Cases
 };
