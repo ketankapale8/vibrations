@@ -221,7 +221,7 @@ const Tabs = () => {
                     tabBarIcon : ({focused}) => (
                         <View style={{alignItems : 'center', justifyContent:'center', top: 0}}>
                             <Image
-                            source={icons.Contribute}
+                            source={icons.book}
                             resizeMode="cover"
                             style={{
                                 width: 25,

@@ -315,7 +315,7 @@ const Home = () => {
                         }}
                         
                     />
-                        <Text style={{ ...FONTS.body4 , color : COLORS.pink , marginLeft: 20, marginRight: 20}}>{item.title}</Text>
+                        <Text style={{ ...FONTS.body3 , color : COLORS.primary1 , marginLeft: 20, marginRight: 20}}>{item.title}</Text>
                 </View>
 
                 <View
