@@ -22,6 +22,9 @@ import Pic7 from '../assets/PracticeScreen/Pic7.jpg';
 import { ScrollView } from 'react-native-gesture-handler';
 import VastuQuestions from '../constants/VastuQuestions.js';
 import NadiQuestions from '../constants/NadiQuestions.js';
+import BodyPartsQuestions from '../constants/BodyPartsQuestions.js';
+import DiseaseQuestions from '../constants/DiseaseQuestions';
+import ChakraQuestions from '../constants/ChakraQuestions';
 
 
 const Practice = () => {
@@ -42,7 +45,8 @@ const Practice = () => {
     },{
       title : "Chakra",
       desc: "All 5 fingers, center & base part of the palm consists of a subtle energy center of seven chakras. Identify the three major chakras active in a person, object or place.       ",
-      img: Pic3
+      img: Pic3, 
+      questions : ChakraQuestions
     },{
       title : "Vastu",
       desc: "Check if the vastu is positive or negative. Check the spandan of a vastu and identify the direction where issues exists. This can used for house, office, shop or plots.      ",
@@ -51,11 +55,13 @@ const Practice = () => {
     },{
       title : "Spandan Points of Body Organs ",
       desc: "Sadhak can check health of the body parts using spandan on the palm. There are specific areas on the palm denoting body parts. Learn the position for each body part      ",
-      img: Pic5
+      img: Pic5,
+      questions : BodyPartsQuestions
     },{
       title : "Spandan points of Diseases      ",
       desc: "Learn specific positions on the fingers denoting various diseases. Each finger will have diseases related to its corresponding chakra.        ",
-      img: Pic6
+      img: Pic6, 
+      questions : DiseaseQuestions
     },
     // {
     //   title : "Mix Bag",

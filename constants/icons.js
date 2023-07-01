@@ -52,6 +52,24 @@ const shop = require("../assets/icons/shop.webp")
 const officeConf = require("../assets/icons/officeConf.jpg")
 const plot = require("../assets/icons/plot.jpg");
 
+const lung = require("../assets/icons/lung.jpg")
+const heartissue = require("../assets/icons/heartissue.jpg");
+const stomach = require("../assets/icons/stomach.jpg")
+const intestine = require("../assets/icons/intestine.jpg")
+const liver = require("../assets/icons/liver.jpg");
+
+const lowbp = require("../assets/icons/lowbp.jpeg")
+const highbp = require("../assets/icons/highbp.png");
+
+
+
+const H = require("../assets/icons/H.jpg")
+const L = require("../assets/icons/L.jpg");
+const O1 = require("../assets/icons/O1.jpg")
+const O2 = require("../assets/icons/O2.jpg")
+const R = require("../assets/icons/R.jpg");
+const V = require("../assets/icons/V.jpg")
+const Y = require("../assets/icons/Y.jpg");
 
 export default {
     back,
@@ -107,5 +125,18 @@ export default {
     goddess, 
     shop, 
     officeConf, 
-    plot
+    plot, 
+    lung, 
+    stomach,
+    liver,
+    heartissue, 
+    intestine, 
+    lowbp,
+    highbp,
+    H,
+    L,
+    Y,
+    O1,
+    O2, 
+    R,V
 }

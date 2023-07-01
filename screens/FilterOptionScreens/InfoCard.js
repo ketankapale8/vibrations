@@ -11,7 +11,10 @@ const InfoCard = ({result, filterQuestions}) => {
   React.useEffect(()=>{
     filterQuestions?.map((item,idx)=> 
    { item.category == "Positive Negative"  && setPath('QuizScreen')
+   item.category == "Body Parts"  && setPath('QuizScreen')
+   item.category == "Disease"  && setPath('QuizScreen')
     item.category == "Nadi" && setPath("DummyQuiz1")
+    item.category == "Chakra" && setPath("DummyQuiz1")
     item.category == "Vastu" && setPath('QuizScreen1')
   }
     )

@@ -12,6 +12,7 @@ import {
   import AntDesign from 'react-native-vector-icons/AntDesign.js';
   import {COLORS, SIZES, FONTS, icons} from '../constants';
   import Options from './Options.js';
+import { ScrollView } from 'react-native-gesture-handler';
   // import { AntDesign } from "react-native-vector-icons";
   const DummyQuizScreen1 = () => {
     const route = useRoute();
@@ -267,6 +268,7 @@ import {
           </View>
         );
       };
+      
   
       const renderMiddleScreen = () => {
         return (
@@ -294,56 +296,64 @@ import {
                 source={currentQuestion?.QuestionImg}
               />
             </View>
-            <View style={{marginTop: 12 , display: 'flex', flexDirection: 'row' , gap: 10 }}>
+            <View style={{marginTop: 12 , flexDirection: 'row' , gap: 10 }}>
+              <ScrollView horizontal={true}
+              >
               {currentQuestion?.options?.map((item, index) => (
-                <Pressable
+
+                  <Pressable
                   onPress={() =>
-                    // console.warn('pressed')
-                    {
-                      setTempAnsArr([...tempAnsArr, index]);
-                      setCorrectSeqAns(currentQuestion?.correntMultiSelectOption);
-                      handlePress(index , resettingVal);
-                      setCurrentIdx(index);
-                      setReset(false)
-                    }
-                  }>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      borderWidth: 0.5,
-                      borderColor: '#00FFFF',
-                      marginVertical: 10,
-                      backgroundColor: reset == false && item.isSelected == true ? 'green' : 'white',
-                      borderRadius: 20,
-                      color: COLORS.black,
-                    }}>
-                    <Text
-                      style={{
-                        borderColor: '#00FFFF',
-                        textAlign: 'center',
-                        color: COLORS.black,
-                        borderWidth: 0.5,
-                        width: 40,
-                        height: 40,
-                        borderRadius: 20,
-                        padding: 10,
-                      }}>
-                      {item.options}
-                    </Text>
-                    <View style={{paddingLeft: 10 , display: 'flex' , flexDirection:'column' , alignItems:'center', width: 'auto', height:'auto', padding:4 , margin:3 }}>
-                    {item?.imgOption && (<>
-                      <Image source={item?.imgOption} style={{width: 55, height: 65 , objectFit:'contain' , borderRadius : 20 , paddingLeft: 20, flexDirection:'column'}}/>
+                      // console.warn('pressed')
+                      {
+                        setTempAnsArr([...tempAnsArr, index]);
+                        setCorrectSeqAns(currentQuestion?.correntMultiSelectOption);
+                        handlePress(index , resettingVal);
+                        setCurrentIdx(index);
+                        setReset(false)
+                      }
+                    }>
                     
-                    </>)}
-                    <Text style={{marginLeft: 0, color:COLORS.primary , ...FONTS.body5}}>
-                      {item?.answer}
-                    </Text>
-                    </View>
-                  </View>
-                  {/* <Options item={item} currentIdx={currentIdx} color={color} correctSeqAns={correctSeqAns} selectedOption={selectedOption} setCorrectSeqAns={setCorrectSeqAns} setCurrentIdx={setCurrentIdx} index={index}/> */}
-                </Pressable>
-              ))}
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          borderWidth: 0.5,
+                          borderColor: '#00FFFF',
+                          marginVertical: 10,
+                          marginHorizontal : 10,
+                          backgroundColor: reset == false && item.isSelected == true ? 'green' : 'white',
+                          borderRadius: 20,
+                          color: COLORS.black,
+                        }}>
+                        <Text
+                          style={{
+                            borderColor: '#00FFFF',
+                            textAlign: 'center',
+                            color: COLORS.black,
+                            borderWidth: 0.5,
+                            width: 40,
+                            height: 40,
+                            borderRadius: 20,
+                            padding: 10,
+                          }}>
+                          {item.options}
+                        </Text>
+                        <View style={{paddingLeft: 10 , display: 'flex' , flexDirection:'column' , alignItems:'center', width: 'auto', height:'auto', padding:4 , margin:3 }}>
+                        {item?.imgOption && (<>
+                          <Image source={item?.imgOption} style={{width: 55, height: 65 , objectFit:'contain' , borderRadius : 20 , paddingLeft: 20, flexDirection:'column'}}/>
+                        
+                        </>)}
+                        <Text style={{marginLeft: 0, color:COLORS.primary , ...FONTS.body5}}>
+                          {item?.answer}
+                        </Text>
+                        </View>
+                      </View>
+
+                    {/* <Options item={item} currentIdx={currentIdx} color={color} correctSeqAns={correctSeqAns} selectedOption={selectedOption} setCorrectSeqAns={setCorrectSeqAns} setCurrentIdx={setCurrentIdx} index={index}/> */}
+                  </Pressable>
+
+))}
+</ScrollView>
             </View>
           </View>
         );

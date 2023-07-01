@@ -27,16 +27,23 @@ import {
     const route = useRoute();
     const questions = route.params?.questions
     const [path , setPath] = React.useState('')
+    const [path1 , setPath1] = React.useState(false)
+
 
     useEffect(()=>{
       questions.map((item,idx)=> 
-     { item.category == "Positive Negative"  && setPath('QuizScreen1')
-      item.category == "Nadi" && setPath("DummyQuiz")
+     { item.category == "Positive Negative"  && setPath('QuizScreen1') 
+      item.category == "Nadi"  && (setPath("DummyQuiz"), setPath1(true))
+      item.category == "Chakra" && (setPath("DummyQuiz") , setPath1(true))
       item.category == "Vastu" && setPath('QuizScreen1')
+      item.category == "Body Parts" && setPath('QuizScreen1')
+      item.category == "Disease"  && setPath('QuizScreen1')
     }
       )
 
-    },[path])
+    },[path, path1])
+
+    console.warn(path1)
     
   
     const LearnArr = [
@@ -59,13 +66,14 @@ import {
         title : "Evaluation",
         desc: "Multiple exams will be conducted to evaluate Sadhak’s ability. This will be formally recorded and reported. Enhance your level with each exam        ",
         img: Pic3, 
-        path : "QuizScreen2",
+        path : path1 == true ? 'DummyQuiz' : "QuizScreen2"
+        // path : "QuizScreen2",
       },{
         id : 4,
         title : "Contribute",
         desc: "If you have more examples that can help others to practice, then submit you entry here. After review team will add your entry in the practice section        ",
         img: Pic4, 
-        path: ""
+        path: "Home"
       }
     ]
   

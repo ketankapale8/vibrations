@@ -5,6 +5,7 @@ import {
   Pressable,
   Image,
   SafeAreaView,
+  ScrollView
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 // import questions from '../constants/DummyQuestions.js';
@@ -291,6 +292,8 @@ const DummyQuizScreen = () => {
             />
           </View>
           <View style={{marginTop: 12 , display: 'flex', flexDirection: 'row' , gap: 10 }}>
+          <ScrollView horizontal={true}
+              >
             {currentQuestion?.options.map((item, index) => (
               <Pressable
                 onPress={() =>
@@ -310,6 +313,7 @@ const DummyQuizScreen = () => {
                     borderWidth: 0.5,
                     borderColor: '#00FFFF',
                     marginVertical: 10,
+                    marginHorizontal : 10,
                     backgroundColor: reset == false && item.isSelected == true ? 'green' : 'white',
                     borderRadius: 20,
                     color: COLORS.black,
@@ -340,6 +344,9 @@ const DummyQuizScreen = () => {
                 {/* <Options item={item} currentIdx={currentIdx} color={color} correctSeqAns={correctSeqAns} selectedOption={selectedOption} setCorrectSeqAns={setCorrectSeqAns} setCurrentIdx={setCurrentIdx} index={index}/> */}
               </Pressable>
             ))}
+
+
+              </ScrollView>
           </View>
         </View>
       );
