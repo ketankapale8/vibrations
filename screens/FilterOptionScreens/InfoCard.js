@@ -6,7 +6,7 @@ import { COLORS, SIZES } from '../../constants';
 const InfoCard = ({result, filterQuestions}) => {
   const navigation = useNavigation();
   const [path , setPath] = React.useState('')
-  console.log(result)
+
 
   React.useEffect(()=>{
     filterQuestions?.map((item,idx)=> 

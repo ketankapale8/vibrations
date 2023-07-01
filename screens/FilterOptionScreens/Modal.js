@@ -25,7 +25,8 @@ const CustomModal = ({ modalVisible, setModalVisible, allQuestions, intermediate
             <TouchableOpacity
                 style={{
                     height: 60,
-                    backgroundColor: COLORS.black,
+                    width: 76,
+                    backgroundColor: COLORS.primary1,
                     borderRadius: SIZES.radius / 1.5,
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -49,7 +50,8 @@ function renderClearButton() {
           <TouchableOpacity
               style={{
                   height: 60,
-                  backgroundColor: COLORS.black,
+                  width: 96,
+                  backgroundColor: COLORS.primary2,
                   borderRadius: SIZES.radius / 1.5,
                   alignItems: 'center',
                   justifyContent: 'center'
@@ -73,14 +75,13 @@ function renderClearButton() {
       animationType="slide"
       transparent={false}
       visible={modalVisible}
-      style={{ flex: 1 }}
+      style={{ flex: 1 , }}
       onRequestClose={() => {
-        Alert.alert('Modal has been closed.');
+        // Alert.alert('Modal has been closed.');
         setModalVisible(!modalVisible);
       }}>
       <SafeAreaView style={{ flex: 1, padding: 20 }}>
         <View style={{ marginBottom: 20, paddingHorizontal: 30 }}>
-          <Text style={{ fontSize: 26 }}>Filtering Fruits</Text>
         </View>
 
         <RadioButton handleChange={(questionTag) => setIntermediateFilter({...intermediateFilter, questionTag: questionTag})} selected={intermediateFilter.questionTag} quefilterResult={quefilterResult}/>
@@ -99,8 +100,11 @@ function renderClearButton() {
 
 
         }} /> */}
-        {renderButton()}
-        {renderClearButton()}
+        <View style={{display: 'flex', flexDirection: 'row'}}>
+          {renderButton()}
+          {renderClearButton()}
+
+        </View>
         {/* <Button title="Clear" onPress={() => {
           setModalVisible(!modalVisible)
           setFilter(initialFilter)

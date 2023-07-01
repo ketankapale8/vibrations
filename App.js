@@ -14,7 +14,6 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { useWindowDimensions } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Toast from 'react-native-toast-message';
-
 import Tabs from "./navigation/tabs";
 import PracticeTest from './screens/PracticeTest';
 import PracticeTest1 from './screens/PracticeTest1';
@@ -83,16 +82,6 @@ const App = () => {
                  <Stack.Screen name="PracticeScreen1" component={PracticeScreen1} />
                  <Stack.Screen name="DummyQuiz" component={DummyQuizScreen} />
                  <Stack.Screen name="DummyQuiz1" component={DummyQuizScreen1} />
-
-
-
-
-
-
-
-
-
-
                 {/* <Stack.Screen name="Scan" component={Scan} /> */}
             </Stack.Navigator>
             <Toast/>

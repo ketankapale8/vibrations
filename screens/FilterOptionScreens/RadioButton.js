@@ -4,14 +4,16 @@ import {
 } from 'react-native';
 
 import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { COLORS, FONTS } from "../../constants";
 
 const RadioButton = (props) => {
   return (
     <View>
+      <Text style={{color: COLORS.pink , ...FONTS.h2}}>Select Conditions to Apply Filter</Text>
       <View
         style={{
           flexWrap: "wrap",
-          height: 300,
+          height: 190,
           paddingHorizontal: 10,
           width: '100%',
           alignContent: "space-between",
@@ -20,8 +22,9 @@ const RadioButton = (props) => {
         {props.quefilterResult?.map((res) => {
           return (
             <View key={res} style={styles.container}>
+
               <TouchableOpacity
-                style={{ flexDirection: "row" }}
+                style={{ flexDirection: "row", display: 'flex' , paddingVertical: 7 , marginLeft: 0, paddingRight: 20  }}
                 onPress={() => props.handleChange(res)}
                 activeOpacity={0.8}
               >
@@ -44,11 +47,11 @@ export default RadioButton;
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 5,
+    marginBottom: 15,
     marginHorizontal: 5,
     paddingVertical: 5,
     alignItems: "center",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "flex-start",
     flexWrap: "wrap",
   },
