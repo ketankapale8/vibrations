@@ -18,28 +18,28 @@ export default [
                 answer:"+ve",
                 answerDesc : "",
                 isSelected : false,
-                imgOption : icons.positive
+                // imgOption : icons.positive
             },
             {
                 id:"1",
                 options:"B",
                 answer:"-ve",
                 isSelected : false,
-                imgOption : icons.negative
+                // imgOption : icons.negative
             },
             {
                 id:"2",
                 options:"C",
                 answer:"Affirmative",
                 isSelected : false,
-                imgOption : icons.positive
+                // imgOption : icons.positive
             },
             {
                 id:"0",
                 options:"D",
                 answer:"Not an option",
                 isSelected : false,
-                imgOption : icons.positive
+                // imgOption : icons.positive
             },
         ],
         correctAnswerIndex: 0,

@@ -5,10 +5,21 @@ import { COLORS, SIZES } from '../../constants';
 
 const InfoCard = ({result, filterQuestions}) => {
   const navigation = useNavigation();
+  const [path , setPath] = React.useState('')
   console.log(result)
+
+  React.useEffect(()=>{
+    filterQuestions?.map((item,idx)=> 
+   { item.category == "Positive Negative"  && setPath('QuizScreen')
+    item.category == "Nadi" && setPath("DummyQuiz1")
+    item.category == "Vastu" && setPath('QuizScreen1')
+  }
+    )
+
+  },[path])
   return (
     <Pressable 
-    onPress={() => navigation.navigate("QuizScreen" , {questions : result.questionTag , filterQuestions: filterQuestions})}
+    onPress={() => navigation.navigate( path , {questions : result.questionTag , filterQuestions: filterQuestions})}
     >
     <View style={{backgroundColor: COLORS.white, padding: 2, margin: 5, borderRadius: 10 , height:105 , borderColor : COLORS.primary1 , borderWidth: 2 , display: 'flex', flexDirection:'column', gap: 30}}>
       <View style={{ paddingHorizontal: 15 , paddingVertical : 13 , borderRadius: 3, borderColor:'black'  , display: 'flex', gap: 20 , width: '100%'}}>

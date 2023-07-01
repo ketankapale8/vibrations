@@ -191,7 +191,7 @@ const QuizScreen1 = () => {
         <View>
           <Image style={{width : SIZES.width -30 , height : 250 , objectFit:'cover' , borderRadius: 20 , padding:SIZES.padding , marginLeft: 10 , marginRight: 10}} source={currentQuestion?.QuestionImg}/>
         </View>
-        <View style={{ marginTop: 12 }}>
+        <View style={{ marginTop: 12 , display: 'flex', flexDirection: 'row' , gap: 10}}>
           {currentQuestion?.options.map((item, index) => (
             <Pressable
               onPress={() =>
@@ -284,7 +284,21 @@ const QuizScreen1 = () => {
                 </Text>
               )}
 
-              <Text style={{ marginLeft: 10 , color:COLORS.black}}>{item.answer}</Text>
+<View style={{display:'flex', flexDirection: 'row' , marginHorizontal: 5,}}>
+
+<View style={{paddingLeft: 10 , display: 'flex' , flexDirection:'column' , alignItems:'center', width: 'auto', height:'auto', padding:4 , margin:3 }}>
+                  {item?.imgOption && (<>
+                    <Image source={item?.imgOption} style={{width: 55, height: 65 , objectFit:'contain' , borderRadius : 20 , paddingLeft: 20, flexDirection:'column'}}/>
+                  
+                  </>)}
+                  <Text style={{ marginLeft: 0 , color:COLORS.primary , ...FONTS.body5}}>
+                    {item?.answer}
+                    
+                    </Text>
+            
+</View>
+
+</View>
             </Pressable>
           ))}
         </View>

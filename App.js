@@ -27,6 +27,7 @@ import QuizScreen1 from './screens/QuizScreen1';
 import LearnScreen from './screens/PracticeScreen';
 import QuizScreen2 from './screens/QuizScreen2';
 import DummyQuizScreen from './screens/DummyQuizScreen';
+import DummyQuizScreen1 from './screens/DummyQuizScreen1';
 import LearnScreen1 from './screens/PracticeScreen1';
 import PracticeScreen from './screens/PracticeScreen';
 import PracticeScreen1 from './screens/PracticeScreen1';
@@ -81,6 +82,8 @@ const App = () => {
                  <Stack.Screen name="PracticeScreen" component={PracticeScreen} />
                  <Stack.Screen name="PracticeScreen1" component={PracticeScreen1} />
                  <Stack.Screen name="DummyQuiz" component={DummyQuizScreen} />
+                 <Stack.Screen name="DummyQuiz1" component={DummyQuizScreen1} />
+
 
 
 
