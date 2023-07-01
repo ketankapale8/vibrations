@@ -34,11 +34,11 @@ const SankalpDescription = () => {
 
                 {/* <Text style={{ marginLeft: SIZES.padding * 1.5, color: COLORS.white, ...FONTS.h4 }}>Sign Up</Text> */}
             </TouchableOpacity>
-                <View style={{ width : SIZES.width -20, margin: SIZES.padding , padding: SIZES.padding , backgroundColor : COLORS.lightpurple , borderRadius: 20 , justifyContent:"center" , display:"flex" , height : SIZES.height * 0.07 }}>
+                {/* <View style={{ width : SIZES.width -20, margin: SIZES.padding , padding: SIZES.padding , backgroundColor : COLORS.lightpurple , borderRadius: 20 , justifyContent:"center" , display:"flex" , height : SIZES.height * 0.07 }}>
                     <Text style={{color : COLORS.black , fontSize : SIZES.body2, paddingLeft: SIZES.padding *12 }}>
                      Sankalp List
                     </Text>
-                </View>
+                </View> */}
             </>
         )
     }
@@ -46,10 +46,10 @@ const SankalpDescription = () => {
     function renderMiddleComponent(){
       return (
         <>
-          <View style={{width : SIZES.width -20 , height : SIZES.height * 0.09, margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20 , backgroundColor : COLORS.lightpurple , paddingTop : SIZES.padding2 *2}}>
+          <View style={{width : SIZES.width -20 , height : SIZES.height * 0.09, margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20  , paddingTop : SIZES.padding2 *2}}>
             {/* <View style={{width : SIZES.width  , height : SIZES.height * 0.05   , borderRadius : 200 , backgroundColor : COLORS.lightpurple , display:'flex', flexDirection:'column' , position:'absolute', top:0}}> */}
-              <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body3}}>Sankalp Number : {group}</Text>
-              <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body3}}>Sankalp Purpose : {groupTitle}</Text>
+              <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body2 , color : COLORS.pink}}>Common Sankalp  {group}</Text>
+              <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body3}}> This group has all the basic spandan </Text>
             {/* </View> */}
 
           </View>
@@ -60,7 +60,7 @@ const SankalpDescription = () => {
     function BottomFlatListComponent(){
       return (
         <>
-        <View style={{width : SIZES.width -20 , height : SIZES.height *0.65 , margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20 , backgroundColor : COLORS.lightpurple , paddingTop : SIZES.padding2 *2}}>
+        <View style={{width : SIZES.width -20 , height : SIZES.height *0.65 , margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20  , paddingTop : SIZES.padding2 *2}}>
           <FlatList
             data={items}
             // style={{ zIndex: 9, marginHorizontal: SIZES.margin - 110 }}
@@ -73,8 +73,8 @@ const SankalpDescription = () => {
                 <>
                 <Pressable onPress={()=>navigation.navigate("SankalpDetails", {items: item})}>
                   <View style={{ flexDirection: "row" , padding:SIZES.padding , display:"flex", justifyContent:"center"}} >
-                    <View style={{ backgroundColor :item.groupId % 2 == 1 ? COLORS.lightGray : COLORS.lightGreen , width : SIZES.width-40, borderRadius: 20 , height: SIZES.height * 0.07 , padding : SIZES.padding-2 , alignSelf:'center' }}>
-                      <Text style={{color:COLORS.black , paddingLeft: SIZES.padding *2 , fontSize : SIZES.body2}}>{item.title}</Text>
+                    <View style={{ backgroundColor :item.groupId % 2 == 1 ? '#CBCBCB' : "#EAEAEA", width : SIZES.width-40, borderRadius: 5 , height: SIZES.height * 0.07 , padding : SIZES.padding-2 , alignSelf:'center' , display: 'flex' , flexDirection: 'row'}}>
+                      <Text style={{color:COLORS.black , paddingLeft: SIZES.padding *2 , fontSize : SIZES.body2}}>{item.groupId}</Text>
                       <Text style={{color:COLORS.black , paddingLeft: SIZES.padding *2 , fontSize : SIZES.body2}}>{item.purpose}</Text>
                     </View>
                   </View>

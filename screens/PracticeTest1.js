@@ -3,6 +3,7 @@ import React , {useState , useEffect} from 'react';
 import { useRoute , useNavigation } from '@react-navigation/native';
 import { COLORS, SIZES , FONTS} from '../constants';
 import { Dropdown } from 'react-native-element-dropdown';
+import {PracticeCategories} from '../constants/PracticeCategories'
 
 import Lottie from 'lottie-react-native';
 // import DropdownComponent from '../component/DropdownComponent';
@@ -11,7 +12,7 @@ import Lottie from 'lottie-react-native';
 const PracticeTest1 = () => {
     const route = useRoute();
     const navigation = useNavigation();
-    const questions = route.params?.questions;
+    const questions = PracticeCategories;
     const title = route.params?.title;
     const [showall , setshowAll] = useState(true);
     let categories = [...new Set(questions.map(item=>({'label':item.QuestionTag , 'value': item.QuestionTag})))]

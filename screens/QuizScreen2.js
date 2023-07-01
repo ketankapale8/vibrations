@@ -7,12 +7,11 @@ import AntDesign from "react-native-vector-icons/AntDesign.js"
 import { COLORS, SIZES , FONTS , icons} from '../constants';
 // import { AntDesign } from "react-native-vector-icons";
 const QuizScreen2 = () => {
-  const route = useRoute();
   const navigation = useNavigation();
-//   const tag = route?.params.questions
-  const data = questions
+  const route = useRoute();
+  const data = route?.params?.questions;
   const totalQuestions = data.length;
-  // points
+  // points  
   const [points, setPoints] = useState(0);
 
   const [background , setBackground] = useState(COLORS.darkgray)
@@ -62,29 +61,29 @@ const QuizScreen2 = () => {
     setAnswerStatus(null);
   }, [index]);
 
-  // useEffect(() => {
-  //   const myInterval = () => {
-  //     if (counter >= 1) {
-  //       setCounter((state) => state - 1);
-  //     }
-  //     if (counter === 0) {
-  //       setIndex(index + 1);
-  //       setCounter(5);
-  //     }
-  //   };
+  useEffect(() => {
+    const myInterval = () => {
+      if (counter >= 1) {
+        setCounter((state) => state - 1);
+      }
+      if (counter === 0) {
+        setIndex(index + 1);
+        setCounter(5);
+      }
+    };
 
-  //   interval = setTimeout(myInterval, 1000);
+    interval = setTimeout(myInterval, 1000);
 
-  //   // clean up
-  //   return () => {
-  //     clearTimeout(interval);
-  //   };
-  // }, [counter]);
+    // clean up
+    return () => {
+      clearTimeout(interval);
+    };
+  }, [counter]);
 
   useEffect(() => {
     if (index + 1 > data.length) {
       clearTimeout(interval)
-      navigation.goBack()
+      // navigation.goBack()
       navigation.navigate("Results", {
         answers: answers,
         points: points,
@@ -194,7 +193,7 @@ const QuizScreen2 = () => {
         <View>
           <Image style={{width : SIZES.width -30 , height : 250 , objectFit:'cover' , borderRadius: 20 , padding:SIZES.padding , marginLeft: 10 , marginRight: 10}} source={currentQuestion?.QuestionImg}/>
         </View>
-        <View style={{ marginTop: 12 }}>
+        <View style={{ marginTop: 12, display: 'flex', flexDirection: 'row' , gap: 10 }}>
           {currentQuestion?.options.map((item, index) => (
             <Pressable
               onPress={() =>
@@ -291,9 +290,23 @@ const QuizScreen2 = () => {
                 </Text>
               )}
 
-              <Text style={{ marginLeft: 10 , color:COLORS.black}}>{item.answer}</Text>
+<View style={{display:'flex', flexDirection: 'row' , marginHorizontal: 5,}}>
+
+<View style={{paddingLeft: 10 , display: 'flex' , flexDirection:'column' , alignItems:'center', width: 'auto', height:'auto', padding:4 , margin:3 }}>
+                  {item?.imgOption && (<>
+                    <Image source={item?.imgOption} style={{width: 55, height: 65 , objectFit:'contain' , borderRadius : 20 , paddingLeft: 20, flexDirection:'column'}}/>
+                  
+                  </>)}
+                  <Text style={{ marginLeft: 0 , color:COLORS.primary , ...FONTS.body5}}>
+                    {item?.answer}
+                    
+                    </Text>
+            
+</View>
+
+</View>
             </Pressable>
-          ))}
+                ))}
         </View>
       </View>
 

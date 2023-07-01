@@ -97,7 +97,7 @@ const SignUp = ({ navigation }) => {
                     fontSize : SIZES.h1 * 2,
                     fontWeight : 'bold',
                     color : COLORS.white
-                }}>Spandans</Text>
+                }}>Spandan</Text>
             </View>
         )
     }
@@ -264,7 +264,7 @@ const SignUp = ({ navigation }) => {
                 colors={[COLORS.lime, COLORS.emerald]}
                 style={{ flex: 1 }}
             >
-                <ScrollView>
+                <ScrollView style={{backgroundColor : COLORS.primary2}}>
                     {renderHeader()}
                     {renderLogo()}
                     {renderForm()}

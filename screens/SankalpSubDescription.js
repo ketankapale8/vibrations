@@ -35,7 +35,7 @@ const SankalpSubDescription = () => {
 
             {/* <Text style={{ marginLeft: SIZES.padding * 1.5, color: COLORS.white, ...FONTS.h4 }}>Sign Up</Text> */}
         </TouchableOpacity>
-            <View style={{ width : SIZES.width -20, margin: SIZES.padding , padding: SIZES.padding , backgroundColor : COLORS.lightpurple , borderRadius: 20 , justifyContent:"center" , display:"flex" , height : SIZES.height * 0.07 }}>
+            <View style={{ width : SIZES.width -20, margin: SIZES.padding , padding: 2 , borderRadius: 20 , justifyContent:"center" , display:"flex" , height : SIZES.height * 0.07 }}>
                 <Text style={{color : COLORS.black , fontSize : SIZES.body1, paddingLeft: SIZES.padding *14 }}>
                  Sankalp 
                 </Text>
@@ -46,13 +46,13 @@ const SankalpSubDescription = () => {
 function renderMiddleComponent(){
   return (
     <>
-      <View style={{width : SIZES.width -20 , height : SIZES.height * 0.09, margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20 , backgroundColor : COLORS.lightpurple , paddingTop : SIZES.padding2 *2}}>
-        {/* <View style={{width : SIZES.width  , height : SIZES.height * 0.05   , borderRadius : 200 , backgroundColor : COLORS.lightpurple , display:'flex', flexDirection:'column' , position:'absolute', top:0}}> */}
-          <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body3}}>Sankalp Number : {items.groupId}</Text>
-          <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body3}}>Sankalp Purpose : {items.purpose}</Text>
-        {/* </View> */}
-
+      <View style={{width : SIZES.width -20 , height : SIZES.height * 0.07, margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20  , paddingTop : 5 , display: 'flex' , flexDirection: 'row'}}>
+          <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body2, color: COLORS.pink}}> {items.groupId}.</Text>
+          <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body2,  color: COLORS.pink}}>{items.purpose}</Text>
       </View>
+      <Text style={{color : COLORS.black ,paddingLeft: SIZES.padding *5}}>This Sankalp is used for balancing the body. It is advised to balance the body at least once in the day. 
+</Text>
+     
     </>
   )
 }
@@ -129,8 +129,8 @@ function BottomContainer(){
         </View>
         </View>
 
-        <View style={{width : SIZES.width -20 , height : SIZES.height *0.4, margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20 , backgroundColor : COLORS.lightpurple , paddingTop : SIZES.padding2 *2}}>
-            <View style={{width : SIZES.width -40 , height : SIZES.height *0.35  , borderRadius : 20 , backgroundColor : COLORS.white , paddingTop : SIZES.padding2 *2}}>
+        <View style={{width : SIZES.width -20 , height : SIZES.height *0.4, margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20 , paddingTop : SIZES.padding2 *2}}>
+            <View style={{width : SIZES.width -40 , height : SIZES.height *0.35  , borderRadius : 20 , backgroundColor : COLORS.white , paddingTop : SIZES.padding2 *2 , borderWidth : 2 , borderColor: COLORS.primary1}}>
               <Text style={{color: COLORS.black , padding : SIZES.padding , fontSize: SIZES.body3}}>
                 {language}
               </Text>
@@ -138,8 +138,8 @@ function BottomContainer(){
             </View>
         </View>
 
-        <View  style={{width : SIZES.width -20 , height : SIZES.height *0.4, margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20 , backgroundColor : COLORS.lightpurple , paddingTop : SIZES.padding2 *2 , display:'flex', flexDirection:'column'}}>
-        <View style={{width : SIZES.width -40 , height : SIZES.height *0.25  , borderRadius : 20 , backgroundColor : COLORS.white , paddingTop : SIZES.padding2 *1}}>
+        <View  style={{width : SIZES.width -20 , height : SIZES.height *0.4, margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20 , paddingTop : SIZES.padding2 *2 , display:'flex', flexDirection:'column'}}>
+        <View style={{width : SIZES.width -40 , height : SIZES.height *0.25  , borderRadius : 20 , backgroundColor : COLORS.white , paddingTop : SIZES.padding2 *1 , borderWidth : 2 , borderColor: COLORS.primary1}}>
               <Text style={{color: COLORS.black , padding : SIZES.padding , fontSize: SIZES.body3}}>Notes</Text>
               <Text style={{color: COLORS.black , padding : SIZES.padding , fontSize: SIZES.body3}}>{items.Notes}</Text>
 

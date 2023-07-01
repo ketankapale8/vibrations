@@ -7,7 +7,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import questions from '../constants/DummyQuestions.js';
+// import questions from '../constants/DummyQuestions.js';
 import {useRoute, useNavigation} from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign.js';
 import {COLORS, SIZES, FONTS, icons} from '../constants';
@@ -16,6 +16,7 @@ import Options from './Options.js';
 const DummyQuizScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
+  const questions = route?.params?.questions
 
   const renderMultiSelectQuiz = () => {
     const [data , setData] = useState(questions);
@@ -289,7 +290,7 @@ const DummyQuizScreen = () => {
               source={currentQuestion?.QuestionImg}
             />
           </View>
-          <View style={{marginTop: 12}}>
+          <View style={{marginTop: 12 , display: 'flex', flexDirection: 'row' , gap: 10 }}>
             {currentQuestion?.options.map((item, index) => (
               <Pressable
                 onPress={() =>
@@ -326,9 +327,15 @@ const DummyQuizScreen = () => {
                     }}>
                     {item.options}
                   </Text>
-                  <Text style={{marginLeft: 10, color: COLORS.black}}>
-                    {item.answer}
+                  <View style={{paddingLeft: 10 , display: 'flex' , flexDirection:'column' , alignItems:'center', width: 'auto', height:'auto', padding:4 , margin:3 }}>
+                  {item?.imgOption && (<>
+                    <Image source={item?.imgOption} style={{width: 55, height: 65 , objectFit:'contain' , borderRadius : 20 , paddingLeft: 20, flexDirection:'column'}}/>
+                  
+                  </>)}
+                  <Text style={{marginLeft: 0, color:COLORS.primary , ...FONTS.body5}}>
+                    {item?.answer}
                   </Text>
+                  </View>
                 </View>
                 {/* <Options item={item} currentIdx={currentIdx} color={color} correctSeqAns={correctSeqAns} selectedOption={selectedOption} setCorrectSeqAns={setCorrectSeqAns} setCurrentIdx={setCurrentIdx} index={index}/> */}
               </Pressable>

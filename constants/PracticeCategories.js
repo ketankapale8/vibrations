@@ -8,6 +8,7 @@ export const PracticeCategories = [
       testQuestions :[
         {
           QuestionNo : 1,
+          title : "Positive Negative",
           Question : "Is tulsi plant positive or negative ? ",
           QuestionDesc : "Check if the spandan of tulsi plant is positive or negative",
           QuestionTag : "Tulsi Plant",

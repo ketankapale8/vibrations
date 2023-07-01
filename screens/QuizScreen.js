@@ -4,20 +4,24 @@ import questions from "../constants/DummyQuestions.js";
 import {useRoute, useNavigation } from "@react-navigation/native";
 import AntDesign from "react-native-vector-icons/AntDesign.js"
 import { COLORS, SIZES , FONTS , icons} from '../constants';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import { color } from '@rneui/base';
 // import { AntDesign } from "react-native-vector-icons";
 const QuizScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const tag = route?.params.questions;
-  const data = questions.filter(item=>item.questionTag == tag);
-  const totalQuestions = data.length;
+  const filterQuestions = route?.params?.filterQuestions;
+  const data = filterQuestions?.filter(item=>item?.questionTag == tag);
+  const totalQuestions = data?.length;
 
 
 
   // points
   const [points, setPoints] = useState(0);
 
-  const [background , setBackground] = useState(COLORS.darkgray)
+  const [background , setBackground] = useState(COLORS.primary1);
+  const [colors , setColors ] = useState('black')
 
   // index of the question
   const [index, setIndex] = useState(0);
@@ -82,7 +86,7 @@ const QuizScreen = () => {
   }, [index]);
 
   const currentQuestion = data[index];
-  console.log(answerStatus)
+  console.log(currentQuestion)
 
   const renderTitle = () =>{
     return (
@@ -94,7 +98,7 @@ const QuizScreen = () => {
           padding: 10,
         }}
       >
-        <Text style={{color : COLORS.black}}>Quiz Challenge</Text>
+        <Text style={{color : COLORS.black, ...FONTS.h2}}>Quiz Challenge</Text>
         <Pressable
           style={{ padding: 10, backgroundColor: "magenta", borderRadius: 20 }}
         >
@@ -161,6 +165,170 @@ const QuizScreen = () => {
     )
   }
 
+  const renderExtraDesc = () =>{
+    return (
+      <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginHorizontal: 10,
+
+      }}
+      >
+        <Text style={{...FONTS.h5, color: COLORS.primary1}}>Example No : 99</Text>
+        <Text style={{...FONTS.h5 , color: COLORS.primary1, paddingRight: 180}}>{currentQuestion?.questionTag}</Text>
+
+
+      </View>
+    )
+  }
+
+  const formatData = (data, numColumns) => {
+  const numberOfFullRows = Math.floor(data.length / numColumns);
+
+  let numberOfElementsLastRow = data.length - (numberOfFullRows * numColumns);
+  while (numberOfElementsLastRow !== numColumns && numberOfElementsLastRow !== 0) {
+    data.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
+    numberOfElementsLastRow++;
+  }
+
+  return data;
+};
+
+const AnswerOption = ({items, index}) =>{
+  return (
+    <>
+  <View style={{ marginTop: 16 
+           }}>
+            <View style={{display:'flex', flexDirection: 'row' , marginHorizontal: 5,}}>
+                <Pressable
+                  onPress={() =>
+                    // console.warn('pressed')
+                    {selectedAnswerIndex === null && setSelectedAnswerIndex(index) 
+                    correctAns === null & setCorrectAns(currentQuestion?.correctAnswerIndex)
+                  }
+                  }
+                  
+                  style={
+                    
+                    selectedAnswerIndex === index &&
+                      index === currentQuestion?.correctAnswerIndex
+                      ? {
+                          flexDirection: "row",
+                          alignItems: "center",
+                          borderWidth: 0.5,
+                          borderColor: "black",
+                          marginVertical: 10,
+                          backgroundColor: background,
+                          // color : colors,
+                          borderRadius: 20,
+                          color: COLORS.white
+                        }
+                      : selectedAnswerIndex != null && selectedAnswerIndex === index
+                      ? {
+                          flexDirection: "row",
+                          alignItems: "center",
+                          marginHorizontal: 15,
+                          borderWidth: 0.5,
+                          // color:colors,
+                          borderColor: "black",
+                          marginVertical: 10,
+                          backgroundColor: background,
+                          borderRadius: 20,
+                        }
+                      : {
+                          flexDirection: "row",
+                          alignItems: "center",
+                          borderWidth: 0.5,
+                          borderColor: "#00FFFF",
+                          marginVertical: 10,
+                          borderRadius: 20,
+                        }
+                  }
+                >
+                  {selectedAnswerIndex === index &&
+                index === currentQuestion?.correctAnswerIndex ? (
+                  <AntDesign
+                  style={{
+                    color : COLORS.primary,
+                    borderColor: "#00FFFF",
+                    textAlign: "center",
+                    borderWidth: 0.5,
+                    width: 10,
+                    height: 20,
+                    borderRadius: 20,
+                    padding: 10,
+                    
+                  }}
+                  name="check"
+                  size={0}
+                  color="black"
+                />
+                  ) : selectedAnswerIndex != null &&
+                    selectedAnswerIndex === index ? (
+                    <AntDesign
+                      style={{
+                        borderColor: "black",
+                        color : COLORS.primary,
+                        textAlign: "center",
+                        borderWidth: 0.5,
+                        width: 10,
+                        height: 10,
+                        padding: 10,
+                        borderRadius: 20,
+                      }}
+                      name="closecircle"
+                      size={0}
+                      color="black"
+                    />
+                  ) : (
+                    <Text
+                      style={{
+                        borderColor: "#00FFFF",
+                        textAlign: "center",
+                        color : COLORS.primary,
+                        borderWidth: 0.5,
+                        width: 25,
+                        height: 25,
+                        borderRadius: 10,
+                        paddingTop: 4,
+                        ...FONTS.body4
+                        
+                      }}
+                    >
+                      {items.options}
+                    </Text>
+                  )}
+                <View style={{paddingLeft: 10 , display: 'flex' , flexDirection:'column' , alignItems:'center', width: 'auto', height:'auto', padding:4 , margin:3 }}>
+                  {items?.imgOption && (<>
+                    <Image source={items?.imgOption} style={{width: 55, height: 65 , objectFit:'contain' , borderRadius : 20 , paddingLeft: 20, flexDirection:'column'}}/>
+                  
+                  </>)}
+                  <Text style={{ marginLeft: 0 , color:COLORS.primary , ...FONTS.body5}}>
+                    {items?.answer}
+                    
+                    </Text>
+            
+                </View>
+                </Pressable>
+
+            </View>
+  
+  
+  </View>
+    </>
+  )
+}
+
+  // const renderItem = ({item}) =>{
+  //   return (
+  //     <>
+
+  //     </>
+  //   )
+  // }
+
   const renderMiddleScreen = () =>{
     return (
       <View
@@ -169,116 +337,60 @@ const QuizScreen = () => {
           backgroundColor: "#F0F8FF",
           padding: 10,
           borderRadius: 6,
+          marginVertical: 15
+          
+
         }}
       >
         <Text style={{ fontSize: 18, fontWeight: "bold" , color:COLORS.black}}>
           {currentQuestion?.question}
         </Text>
-        <View>
-          <Image style={{width : SIZES.width -30 , height : 250 , objectFit:'cover' , borderRadius: 20 , padding:SIZES.padding , marginLeft: 10 , marginRight: 10}} source={currentQuestion?.QuestionImg}/>
-        </View>
-        <View style={{ marginTop: 12 }}>
-          {currentQuestion?.options.map((item, index) => (
-            <Pressable
-              onPress={() =>
-                // console.warn('pressed')
-              
-                {selectedAnswerIndex === null && setSelectedAnswerIndex(index) 
-                correctAns === null & setCorrectAns(currentQuestion?.correctAnswerIndex)
-              }
-              }
-              
-              style={
-                selectedAnswerIndex === index &&
-                  index === currentQuestion.correctAnswerIndex
-                  ? {
-                      flexDirection: "row",
-                      alignItems: "center",
-                      borderWidth: 0.5,
-                      borderColor: "#00FFFF",
-                      marginVertical: 10,
-                      backgroundColor: background,
-                      borderRadius: 20,
-                      color: COLORS.black
-                    }
-                  : selectedAnswerIndex != null && selectedAnswerIndex === index
-                  ? {
-                      flexDirection: "row",
-                      alignItems: "center",
-                      borderWidth: 0.5,
-                      color:COLORS.black,
-                      borderColor: "#00FFFF",
-                      marginVertical: 10,
-                      backgroundColor: background,
-                      borderRadius: 20,
-                    }
-                  : {
-                      flexDirection: "row",
-                      alignItems: "center",
-                      borderWidth: 0.5,
-                      borderColor: "#00FFFF",
-                      marginVertical: 10,
-                      borderRadius: 20,
-                    }
-              }
-            >
-              {selectedAnswerIndex === index &&
-            index === currentQuestion.correctAnswerIndex ? (
-              <AntDesign
-              style={{
-                borderColor: "#00FFFF",
-                textAlign: "center",
-                borderWidth: 0.5,
-                width: 40,
-                height: 40,
-                borderRadius: 20,
-                padding: 10,
-                
-              }}
-              name="check"
-              size={20}
-              color="white"
-            />
-              ) : selectedAnswerIndex != null &&
-                selectedAnswerIndex === index ? (
-                <AntDesign
-                  style={{
-                    borderColor: "#00FFFF",
-                    textAlign: "center",
-                    borderWidth: 0.5,
-                    width: 40,
-                    height: 40,
-                    
+        <View style={{display : 'flex', flexDirection: 'row', marginVertical: 15}}>
+          <Image style={{width : SIZES.width -120 , height : 250 , objectFit:'cover' , borderRadius: 20 , padding:SIZES.padding , marginLeft: 10 , marginRight: 10}} source={currentQuestion?.QuestionImg}/>
+          <View style={{display: 'flex', flexDirection:'column', marginVertical: 5 , marginHorizontal: 15 , gap: 15}}>
+                <Image source={icons.camera} style={{width : 30 , height: 30, objectFit:'contain'}}/>
+                <Image source={icons.video} style={{width : 30 , height: 30, objectFit:'contain'}}/>
+                <Image source={icons.volume} style={{width : 30 , height: 30, objectFit:'contain'}}/>
+                <Image source={icons.SankalpPractice} style={{width : 30 , height: 40, objectFit:'contain'}}/>
+                <Image source={icons.information} style={{width : 30 , height: 30, objectFit:'contain'}}/>
 
-                    padding: 10,
-                    borderRadius: 20,
-                  }}
-                  name="closecircle"
-                  size={20}
-                  color="white"
-                />
-              ) : (
-                <Text
-                  style={{
-                    borderColor: "#00FFFF",
-                    textAlign: "center",
-                    color:COLORS.black,
-                    borderWidth: 0.5,
-                    width: 40,
-                    height: 40,
-                    borderRadius: 20,
-                    padding: 10,
-                  }}
-                >
-                  {item.options}
-                </Text>
+          </View>
+        </View>
+        {/* <View style={{flex: 1,flexDirection: 'row',flexWrap: 'wrap',  alignItems: 'center' }}> */}
+      <View style={{flex: 1, marginHorizontal: 10,}}>
+
+            <FlatList
+            style={{margin: 5 , rowgap: 15}}
+              data={data}
+              horizontal
+              showsHorizontalScrollIndicator={true}
+              key={'_'}
+            //   ItemSeparatorComponent={
+            //     () => <View style={{ width: 16, backgroundColor: 'pink' }}/>
+            // }
+              keyExtractor={item => "_" + item.id}
+              renderItem={({item})=>(
+                item?.options.map((items, index)=>{
+                  return (
+                    <AnswerOption items={items} index={index}/>
+
+                  )
+                })
               )}
+              // numColumns={2}  
+            
+              
+            />
 
-              <Text style={{ marginLeft: 10 , color:COLORS.black}}>{item.answer}</Text>
-            </Pressable>
-          ))}
-        </View>
       </View>
+
+
+            
+          
+          {/* </View> */}
+
+        </View>
+      // </View>
 
     )
   }
@@ -313,7 +425,8 @@ const QuizScreen = () => {
         {index + 1 >= questions.length ? (
           <Pressable
             onPress={() =>
-              navigation.goBack()
+              // navigation.goBack()
+              navigation.navigate("Home")
               // navigation.navigate("Results", {
               //   points: points,
               //   answers: answers,
@@ -411,16 +524,20 @@ const QuizScreen = () => {
 
   }
     return (
-    <SafeAreaView>
+    <SafeAreaView style={{paddingBottom : 20}} >
+      <ScrollView>
         {renderTitle()}
         {renderDesc()}
         {renderProgressBar()}
+        {renderExtraDesc()}
         {renderMiddleScreen()}
         <View style={{display:'flex', flexDirection:'row', padding:SIZES.padding}}>
          {renderSubmitBtn()}
          {renderResetBtn()}
         </View>
         {renderBttomScreen()}
+
+      </ScrollView>
 
     </SafeAreaView>
 

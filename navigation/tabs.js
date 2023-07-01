@@ -16,6 +16,7 @@ import { isIphoneX } from 'react-native-iphone-x-helper'
 import { Home , User , Practice , Contribute, HomeScreen, Sankalp , More , Cases} from "../screens"
 import { COLORS, SIZES, icons } from "../constants"
 import { red200 } from "react-native-paper/lib/typescript/src/styles/themes/v2/colors";
+import LearnScreen from "../screens/LearnScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -211,9 +212,9 @@ const Tabs = () => {
 
 <Tab.Screen
                 name="Learn"
-                component={Sankalp}
+                component={LearnScreen}
                 options={{
-                    headerTitle : "Sankalp",
+                    headerTitle : "Learn Spandan",
                     headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
                     headerStyle: {
                         backgroundColor: COLORS.primary2,
@@ -287,7 +288,7 @@ const Tabs = () => {
                 name="Cases"
                 component={Cases}
                 options={{
-                    headerTitle : "Sankalp",
+                    headerTitle : "Cases",
                     headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
                     headerStyle: {
                         backgroundColor: COLORS.primary2,
@@ -314,7 +315,7 @@ const Tabs = () => {
                 name="More"
                 component={More}
                 options={{
-                    headerTitle : "Sankalp",
+                    headerTitle : "More..",
                     headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
                     headerStyle: {
                         backgroundColor: COLORS.primary2,
@@ -339,7 +340,6 @@ const Tabs = () => {
         </Tab.Navigator>
     )
 }
-
 
 
 const styles = StyleSheet.create({

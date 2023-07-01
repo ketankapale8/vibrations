@@ -19,7 +19,7 @@ import { COLORS, SIZES, FONTS, icons, images } from "../constants"
 const SignUp = ({ navigation }) => {
 
     const [showPassword, setShowPassword] = React.useState(false)
-
+    const [name , setName] = React.useState("")
     const [areas, setAreas] = React.useState([])
     const [selectedArea, setSelectedArea] = React.useState(null)
     const [modalVisible, setModalVisible] = React.useState(false)
@@ -97,7 +97,7 @@ const SignUp = ({ navigation }) => {
                     fontSize : SIZES.h1 * 2,
                     fontWeight : 'bold',
                     color : COLORS.white
-                }}>Vibrations</Text>
+                }}>Spandan</Text>
             </View>
         )
     }
@@ -338,7 +338,7 @@ const SignUp = ({ navigation }) => {
                 colors={[COLORS.lime, COLORS.emerald]}
                 style={{ flex: 1 }}
             >
-                <ScrollView>
+                <ScrollView style={{backgroundColor : COLORS.primary2}}>
                     {renderHeader()}
                     {renderLogo()}
                     {renderForm()}

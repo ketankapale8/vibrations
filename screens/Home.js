@@ -8,7 +8,7 @@ import {
     TouchableOpacity
 } from "react-native"
 import { COLORS, SIZES, FONTS, icons, images } from "../constants"
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { SliderBox } from "react-native-image-slider-box"
 import one from '../assets/guruImage/01.jpg';
 import two from '../assets/guruImage/02.jpg';
@@ -21,15 +21,13 @@ import Picture4 from '../assets/HomeScreenIcons/Picturee4.jpg'
 import Picture5 from '../assets/HomeScreenIcons/Pic5.png'
 import Picture6 from '../assets/HomeScreenIcons/Pic6.png'
 import Picture8 from '../assets/HomeScreenIcons/Pic8New.jpg'
-import Picture9 from '../assets/HomeScreenIcons/Pic9.png'
-
-
-
-
+import Picture9 from '../assets/HomeScreenIcons/picnine.png'
+import Picture10 from '../assets/HomeScreenIcons/Pic10.png'
 
 
 const Home = () => {
     const Navigation = useNavigation();
+    const route = useRoute();
     const [images , setImages] = useState([one, two , three , four])
 
     const SliderComponent = () =>{
@@ -94,20 +92,20 @@ const Home = () => {
             img: Picture5,
             title: "Learn Spandan",
             // description: "Understand your Oscillations!",
-            path : ""
+            path : "Learn"
         },
         {
             id: 2,
             img: Picture6,
             title: "Practice Spandan",
             // description: "Check your capabilities under practice mode",
-            path : ""
+            path : "Practice"
             // path : "LearnScreen"
         },
         {
             id: 3,
             img: Picture1,
-            title: "Reference Material ",
+            title: "Case Management ",
             // description: "Check for references.",
             path : ""
             
@@ -115,7 +113,7 @@ const Home = () => {
         {
             id: 4,
             img: Picture8,
-            title: "Discussion Forum",
+            title: "Reference Material",
             // description: "Add your infomation and check for your overall profile",
             path : ""
         },
@@ -123,7 +121,15 @@ const Home = () => {
         {
             id: 6,
             img:Picture9,
-            title: "My Diary",
+            title: "Discussion Forum",
+            // description: "Please look for any queries",
+            path : ""
+        },
+
+        {
+            id: 7,
+            img:Picture10,
+            title: "My Dairy",
             // description: "Please look for any queries",
             path : ""
         },
@@ -137,7 +143,7 @@ const Home = () => {
             <View style={{ flexDirection: 'row', marginVertical: SIZES.padding * 2 }}>
                 <View style={{ flex: 1 , flexDirection:'column'}}>
                     {/* <Text style={{ ...FONTS.body2 , color:COLORS.black }}>Hi!</Text> */}
-                    <Text style={{ ...FONTS.body2, color: COLORS.pink }}> Hari Om! Abhijit</Text>
+                    <Text style={{ ...FONTS.body2, color: COLORS.pink }}> Hari Om! Abhijit </Text>
                 </View>
                 {/* {SliderComponent()} */}
 
@@ -225,7 +231,7 @@ const Home = () => {
                 >
                     <Image
                         source={item.icon}
-                        resizeMode="cover"
+                        resizeMode="contain"
                         style={{
                             height: 70,
                             width: 70,
@@ -288,14 +294,14 @@ const Home = () => {
                     marginVertical: SIZES.base,
                     width: SIZES.width / 2.8
                 }}
-                // onPress={() => Navigation.navigate(item.path)}
+                onPress={() => Navigation.navigate(item.path)}
             >
                 <View
                     style={{
                         // marginTop: 30,
                         width: 120,
-                        height: 150,
-                        marginRight: 20,
+                        height: 130,
+                        marginRight: 10,
                         marginLeft: 0,
                         borderTopLeftRadius: 20,
                         borderTopRightRadius: 20,
@@ -304,18 +310,20 @@ const Home = () => {
                 >
                     <Image
                         source={item.img}
+                        resizeMode="contain"
                         
                         style={{
-                            width: 110,
-                            height: 120,
-                            objectFit: 'contain',
-                            borderTopLeftRadius: 10,
-                            borderTopRightRadius: 10,
-                            borderRadius : 10
+                            width: 80,
+                            height: 80,
+                            marginBottom: 15,
+                        borderRadius: 19,
+                            
+                            // borderTopLeftRadius: 10,
+                            // borderTopRightRadius: 10,
                         }}
                         
                     />
-                        <Text style={{ ...FONTS.body3 , color : COLORS.primary1 , marginLeft: 20, marginRight: 20}}>{item.title}</Text>
+                        <Text style={{ ...FONTS.body4 , color : COLORS.primary1 , marginLeft: 10, marginRight: 10}}>{item.title}</Text>
                 </View>
 
                 <View

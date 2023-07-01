@@ -35,7 +35,7 @@ if (filterQuestions != undefined && typeof filterQuestions === 'object'){
   return(
     <ScrollView>
           {filterQuestions?.map((result) => (
-<InfoCard result={result}/>
+<InfoCard result={result} filterQuestions={filterQuestions}/>
       ))}
       {empty && <Text>No questions wore fetched</Text>}
     </ScrollView>

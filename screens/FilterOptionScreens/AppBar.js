@@ -24,7 +24,7 @@ export default AppBar
 const styles = StyleSheet.create({
   top: {
     display: 'flex',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     alignContent:'center',
     paddingLeft:'45%',
     // backgroundColor: COLORS.white,

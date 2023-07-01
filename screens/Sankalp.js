@@ -43,10 +43,10 @@ const Sankalp = () => {
     function renderMiddleComponent(){
       return (
         <>
-          <View style={{width : SIZES.width -20 , height : SIZES.height * 0.1, margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20 , backgroundColor : COLORS.lightpurple , paddingTop : SIZES.padding2 *2}}>
+          <View style={{width : SIZES.width -20 , height : SIZES.height * 0.1, margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20 , paddingTop : SIZES.padding2 *2}}>
             {/* <View style={{width : SIZES.width  , height : SIZES.height * 0.05   , borderRadius : 200 , backgroundColor : COLORS.lightpurple , display:'flex', flexDirection:'column' , position:'absolute', top:0}}> */}
-              <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body3}}>Sankalp Number : A</Text>
-              <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body3}}>Sankalp Purpose : Adding Sankalp's</Text>
+              <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body2, color: COLORS.pink}}>Spandan Sankalp</Text>
+              <Text style={{color : COLORS.black, paddingLeft: SIZES.padding *2 , fontSize : SIZES.body3}}>Below is the logical grouping of the spandan</Text>
             {/* </View> */}
 
           </View>
@@ -57,7 +57,7 @@ const Sankalp = () => {
     function BottomFlatListComponent(){
       return (
         <>
-        <View style={{width : SIZES.width -20 , height : SIZES.height *0.66 , margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20 , backgroundColor : COLORS.lightpurple , paddingTop : SIZES.padding2 *2}}>
+        <View style={{width : SIZES.width -20 , height : SIZES.height *0.66 , margin :SIZES.padding , padding : SIZES.padding , borderRadius : 20  , paddingTop : SIZES.padding2 *2}}>
           <FlatList
             data={SankalpData}
             // style={{ zIndex: 9, marginHorizontal: SIZES.margin - 110 }}
@@ -70,7 +70,7 @@ const Sankalp = () => {
                 <>
                 <TouchableOpacity onPress={()=>navigation.navigate('SankalpDescription' , {items : item.SankalpGroup , groupTitle : item.groupTitle , group : item.group})}>
                   <View style={{ flexDirection: "row" , padding:SIZES.padding , display:"flex", justifyContent:"center"}} >
-                    <View style={{ backgroundColor : item.id % 2 == 1 ? COLORS.lightGray : COLORS.lightGreen , width : SIZES.width-40, borderRadius: 20 , height: SIZES.height * 0.07 , padding : SIZES.padding-2 , alignSelf:'center' }}>
+                    <View style={{ backgroundColor : item.id % 2 == 1 ? '#CBCBCB' : "#EAEAEA" , width : SIZES.width-40, borderRadius: 5 , height: SIZES.height * 0.07 , padding : SIZES.padding-2 , alignSelf:'center' }}>
                       <Text style={{color:COLORS.black , paddingLeft: SIZES.padding *2 , fontSize : SIZES.body2}}>{item.Title}</Text>
                     </View>
                   </View>

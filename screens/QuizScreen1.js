@@ -2,14 +2,15 @@ import { StyleSheet, Text, View , Pressable , Image} from 'react-native';
 
 import React, { useState, useEffect } from "react";
 import questions from "../constants/DummyQuestions.js";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation , useRoute } from "@react-navigation/native";
 import AntDesign from "react-native-vector-icons/AntDesign.js"
 import { COLORS, SIZES , FONTS , icons} from '../constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // import { AntDesign } from "react-native-vector-icons";
 const QuizScreen1 = () => {
   const navigation = useNavigation();
-  const data = questions
+  const route = useRoute()
+  const data = route?.params?.questions;
   const totalQuestions = data.length;
   // points
   const [points, setPoints] = useState(0);
@@ -19,6 +20,8 @@ const QuizScreen1 = () => {
 
   // answer Status (true or false)
   const [answerStatus, setAnswerStatus] = useState(null);
+
+  const [correctAnsCount , setcorrectAnsCount] = useState(0)
 
   // answers
   const [answers, setAnswers] = useState([]);
@@ -40,6 +43,7 @@ const QuizScreen1 = () => {
     if (selectedAnswerIndex !== null) {
       if (selectedAnswerIndex === currentQuestion?.correctAnswerIndex) {
         setPoints((points) => points + 10);
+        setcorrectAnsCount(correctAnsCount + 1)
         setAnswerStatus(true);
         answers.push({ question: index + 1, answer: true });
       } else {
@@ -49,48 +53,50 @@ const QuizScreen1 = () => {
     }
   }, [selectedAnswerIndex]);
 
+
   useEffect(() => {
     setSelectedAnswerIndex(null);
     setAnswerStatus(null);
   }, [index]);
 
-  useEffect(() => {
-    const myInterval = () => {
-      if (counter >= 1) {
-        setCounter((state) => state - 1);
-      }
-      if (counter === 0) {
-        setIndex(index + 1);
-        setCounter(5);
-      }
-    };
+  // useEffect(() => {
+  //   const myInterval = () => {
+  //     if (counter >= 1) {
+  //       setCounter((state) => state - 1);
+  //     }
+  //     if (counter === 0) {
+  //       setIndex(index + 1);
+  //       setCounter(5);
+  //     }
+  //   };
 
-    interval = setTimeout(myInterval, 1000);
+  //   interval = setTimeout(myInterval, 1000);
 
-    // clean up
-    return () => {
-      clearTimeout(interval);
-    };
-  }, [counter]);
+  //   // clean up
+  //   return () => {
+  //     clearTimeout(interval);
+  //   };
+  // }, [counter]);
 
   useEffect(() => {
     if (index + 1 > data.length) {
       clearTimeout(interval)
-      navigation.navigate("Results", {
-        answers: answers,
-        points: points,
-      });
+      navigation.goBack()
+      // navigation.navigate("Results", {
+      //   answers: answers,
+      //   points: points,
+      //   correctAnsCount : correctAnsCount
+      // });
     }
   }, [index]);
 
   useEffect(() => {
     if (!interval) {
-      setCounter(15);
+      setCounter(10);
     }
   }, [index]);
 
   const currentQuestion = data[index];
-  console.log(answerStatus)
 
   const renderTitle = () =>{
     return (
@@ -317,10 +323,11 @@ const QuizScreen1 = () => {
         {index + 1 >= questions.length ? (
           <Pressable
             onPress={() =>
-              navigation.navigate("Results", {
-                points: points,
-                answers: answers,
-              })
+              navigation.goBack()
+              // navigation.navigate("Results", {
+              //   points: points,
+              //   answers: answers,
+              // })
             }
             style={{
               backgroundColor: "green",

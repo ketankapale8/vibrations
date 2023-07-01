@@ -31,7 +31,26 @@ const practice = require("../assets/icons/practice.png");
 const target = require("../assets/icons/target.png")
 const learn = require("../assets/icons/learn.png");
 const writing = require("../assets/icons/writing.png");
-const discover = require("../assets/icons/discover.png")
+const discover = require("../assets/icons/discover.png");
+const positive = require("../assets/icons/Positive.png");
+const negative = require("../assets/icons/Negative.png");
+const information = require("../assets/icons/information.png")
+const video = require("../assets/icons/play.png")
+const SankalpPractice = require("../assets/icons/SankalpPng.png")
+const volume = require("../assets/icons/volume.png")
+const camera = require("../assets/icons/camera.png")
+const ida = require("../assets/icons/ida.jpg")
+const pingala = require("../assets/icons/pingala.jpg")
+const shushumna = require("../assets/icons/shushumna.jpg")
+const person2 = require("../assets/icons/person2.jpg")
+const woolencap = require("../assets/icons/woolencap.jpg")
+const goddess = require("../assets/icons/goddess.jpg")
+const house = require("../assets/icons/house.jpg")
+const car = require("../assets/icons/car.jpg")
+const apartment = require("../assets/icons/apartment.jpeg");
+const shop = require("../assets/icons/shop.webp")
+const officeConf = require("../assets/icons/officeConf.jpg")
+const plot = require("../assets/icons/plot.jpg");
 
 
 export default {
@@ -69,5 +88,24 @@ export default {
     practice,
     target,
     writing,
-    discover
+    discover, 
+    positive, 
+    negative,
+    information, 
+    video, 
+    SankalpPractice,
+    volume,
+    camera, 
+    ida, 
+    pingala, 
+    shushumna,
+    person2,
+    woolencap,
+    car,
+    house , 
+    apartment, 
+    goddess, 
+    shop, 
+    officeConf, 
+    plot
 }

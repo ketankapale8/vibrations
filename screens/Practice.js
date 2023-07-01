@@ -9,6 +9,7 @@ import {
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {SIZES, COLORS, FONTS, icons, images} from '../constants';
+import DummyQuestions from '../constants/DummyQuestions';
 import {PracticeCategories} from '../constants/PracticeCategories.js';
 import Pic1 from '../assets/PracticeScreen/Pic1.png';
 import Pic2 from '../assets/PracticeScreen/Pic2.jpg';
@@ -19,6 +20,8 @@ import Pic6 from '../assets/PracticeScreen/Pic6.png';
 import Pic7 from '../assets/PracticeScreen/Pic7.jpg';
 
 import { ScrollView } from 'react-native-gesture-handler';
+import VastuQuestions from '../constants/VastuQuestions.js';
+import NadiQuestions from '../constants/NadiQuestions.js';
 
 
 const Practice = () => {
@@ -29,11 +32,13 @@ const Practice = () => {
       title : "Positive Negative",
       desc : "This is the first step for Spandan. Check the spandan of a given picture and mark it as positive or negative. Different types such as plants, objects and places are provided.",
       img: Pic1,
+      questions : DummyQuestions
     }
     ,{
       title : "Nadi",
       desc: "Use this section to identify which Nadi of a person is active, determine if an object belongs to male or female. This can be used for checking positive or  negative spandan.      ",
-      img: Pic2
+      img: Pic2,
+      questions : NadiQuestions
     },{
       title : "Chakra",
       desc: "All 5 fingers, center & base part of the palm consists of a subtle energy center of seven chakras. Identify the three major chakras active in a person, object or place.       ",
@@ -41,7 +46,8 @@ const Practice = () => {
     },{
       title : "Vastu",
       desc: "Check if the vastu is positive or negative. Check the spandan of a vastu and identify the direction where issues exists. This can used for house, office, shop or plots.      ",
-      img: Pic4
+      img: Pic4, 
+      questions : VastuQuestions
     },{
       title : "Spandan Points of Body Organs ",
       desc: "Sadhak can check health of the body parts using spandan on the palm. There are specific areas on the palm denoting body parts. Learn the position for each body part      ",
@@ -50,13 +56,13 @@ const Practice = () => {
       title : "Spandan points of Diseases      ",
       desc: "Learn specific positions on the fingers denoting various diseases. Each finger will have diseases related to its corresponding chakra.        ",
       img: Pic6
-    },{
-      title : "Mix Bag",
-      desc: "This section will give the real life spandan checking feel. Here questions will be asked on the random basis. Answer then and check how much prepared you are for next step.       ",
-      img: Pic7
-    }
+    },
+    // {
+    //   title : "Mix Bag",
+    //   desc: "This section will give the real life spandan checking feel. Here questions will be asked on the random basis. Answer then and check how much prepared you are for next step.       ",
+    //   img: Pic7
+    // }
   ]
-
 
   const renderTitle = () => {
     return (
@@ -136,7 +142,7 @@ const Practice = () => {
         paddingLeft : SIZES.padding + 30,
         paddingRight : SIZES.padding + 10
       }}
-        onPress={()=> navigation.navigate('LearnScreen' , {questions : item.testQuestions , title : item.title})}
+        onPress={()=> navigation.navigate('PracticeScreen1' , {questions : item.questions , title : item.title})}
         >
       
       <View
@@ -148,6 +154,7 @@ const Practice = () => {
           borderTopRightRadius: 20,
           borderBottomLeftRadius : 20,
           borderBottomRightRadius : 20,
+          gap : 30,
           // backgroundColor: COLORS.white,
           // borderColor : COLORS.primary1,
           margin : SIZES.padding ,
@@ -177,6 +184,7 @@ const Practice = () => {
                 borderTopLeftRadius : 20,
                 borderBottomLeftRadius : 20,
                 borderBottomRightRadius : 20,
+                textAlign: 'justify',
                 // borderRadius : 20,
                 marginTop: 10,
                 marginBottom: 10,
@@ -188,7 +196,9 @@ const Practice = () => {
                     paddingBottom : 13 , 
                     paddingTop : 13,
                     color : COLORS.primary1,
-                    ...FONTS.body5
+                    ...FONTS.body5,
+                    lineHeight: 17,
+
                     }}>
                       {item.desc}
                   </Text>
