@@ -55,7 +55,7 @@ const SignUp = ({ navigation }) => {
                 style={{
                     flexDirection: 'row',
                     alignItems: "center",
-                    marginTop: SIZES.padding * 6,
+                    marginTop: SIZES.padding * 2,
                     paddingHorizontal: SIZES.padding * 2
                 }}
                 onPress={() => navigation.navigate("SignUp")}

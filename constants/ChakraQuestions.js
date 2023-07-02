@@ -5,7 +5,7 @@ export default [
         question: "Identify the firdt three spandans of the tree ",
         QuestionDesc : "Check if the tree is positive or negtive and then find out which three chakra are dominant",
         questionTag : "Tree",
-        QuestionImg : icons.person2,
+        QuestionImg : icons.tree,
         level : 1, 
         example : 1,
         category : "Chakra",
@@ -80,8 +80,8 @@ export default [
         correntMultiSelectOption : [0,1]
     },
     {
-        question: "Identify if this cap belongs to boy or girl",
-        QuestionImg : icons.woolencap,
+        question: "Identify the first three spandans of the bird",
+        QuestionImg : icons.Owl,
         QuestionDesc : "Check if the bird is positive or negtive and then find out which three chakra are dominant",
         questionTag : "Owl",
         level : 1, 
@@ -160,7 +160,7 @@ export default [
 
     {
         question: "Identify the first three spandans of the car",
-        QuestionImg : icons.woolencap,
+        QuestionImg : icons.blackcar,
         QuestionDesc : "Check if the car is positive or negtive and then find out which three chakra are dominant",
         questionTag : "Car",
         level : 1, 

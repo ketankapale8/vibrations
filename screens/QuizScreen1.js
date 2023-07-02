@@ -192,7 +192,7 @@ const QuizScreen1 = () => {
           <Image style={{width : SIZES.width -30 , height : 250 , objectFit:'cover' , borderRadius: 20 , padding:SIZES.padding , marginLeft: 10 , marginRight: 10}} source={currentQuestion?.QuestionImg}/>
         </View>
         <View style={{ marginTop: 12 , display: 'flex', flexDirection: 'row' , gap: 10}}>
-          {currentQuestion?.options.map((item, index) => (
+          {currentQuestion?.options?.map((item, index) => (
             <Pressable
               onPress={() =>
                 // console.warn('pressed')
@@ -314,7 +314,7 @@ const QuizScreen1 = () => {
           answerStatus === null
             ? null
             : {
-                marginTop: 45,
+                marginTop: 25,
                 backgroundColor: COLORS.white,
                 padding: 10,
                 borderRadius: 7,
@@ -348,7 +348,7 @@ const QuizScreen1 = () => {
               padding: 10,
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: 20,
+              marginTop: 10,
               borderRadius: 6,
             }}
           >
@@ -362,7 +362,7 @@ const QuizScreen1 = () => {
               padding: 10,
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: 20,
+              marginTop: 10,
               borderRadius: 6,
             }}
           >

@@ -320,7 +320,7 @@ const QuizScreen2 = () => {
           answerStatus === null
             ? null
             : {
-                marginTop: 45,
+                marginTop: 5,
                 backgroundColor: COLORS.white,
                 padding: 10,
                 borderRadius: 7,
@@ -368,7 +368,7 @@ const QuizScreen2 = () => {
               padding: 10,
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: 20,
+              marginTop: 10,
               borderRadius: 6,
             }}
           >
@@ -387,7 +387,7 @@ const QuizScreen2 = () => {
         padding: 10,
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: 20,
+        marginTop: 10,
         borderRadius: 6,
       }} 
        onPress={()=> 
@@ -414,7 +414,7 @@ const QuizScreen2 = () => {
         padding: 10,
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: 20,
+        marginTop: 10,
         borderRadius: 6,
       }} 
 

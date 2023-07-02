@@ -18,32 +18,32 @@ export default [
                 answer:"+ve",
                 answerDesc : "",
                 isSelected : false,
-                // imgOption : icons.positive
+                imgOption : icons.positive
             },
             {
                 id:"1",
                 options:"B",
                 answer:"-ve",
                 isSelected : false,
-                // imgOption : icons.negative
+                imgOption : icons.negative
             },
-            {
-                id:"2",
-                options:"C",
-                answer:"Affirmative",
-                isSelected : false,
-                // imgOption : icons.positive
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Not an option",
-                isSelected : false,
-                // imgOption : icons.positive
-            },
+            // {
+            //     id:"2",
+            //     options:"C",
+            //     answer:"Affirmative",
+            //     isSelected : false,
+            //     // imgOption : icons.positive
+            // },
+            // {
+            //     id:"0",
+            //     options:"D",
+            //     answer:"Not an option",
+            //     isSelected : false,
+            //     // imgOption : icons.positive
+            // },
         ],
         correctAnswerIndex: 0,
-        correntMultiSelectOption : [0,1,2]
+        // correntMultiSelectOption : [0,1,2]
     },
     {
         question: "Should you purchase this idol?",
@@ -60,6 +60,8 @@ export default [
                 options:"A",
                 answer:"+ve",
                 isSelected : false,
+                imgOption : icons.positive
+
 
             },
             {
@@ -67,25 +69,13 @@ export default [
                 options:"B",
                 answer:"-ve",
                 isSelected : false,
+                imgOption : icons.negative
+
 
             },
-            {
-                id:"2",
-                options:"C",
-                answer:"Affirmative",
-                isSelected : false,
-
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Not an option",
-                isSelected : false,
-
-            },
+         
         ],
         correctAnswerIndex: 1,
-        correntMultiSelectOption : [0,2,1]
 
     },
     {
@@ -103,6 +93,9 @@ export default [
                 options:"A",
                 answer:"+ve",
                 isSelected : false,
+                imgOption : icons.positive
+
+                
 
             },
             {
@@ -110,25 +103,14 @@ export default [
                 options:"B",
                 answer:"-ve",
                 isSelected : false,
+                imgOption : icons.negative
+
 
             },
-            {
-                id:"2",
-                options:"C",
-                answer:"Affirmative",
-                isSelected : false,
-
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Not an option",
-                isSelected : false,
-
-            },
+          
         ],
         correctAnswerIndex: 1,
-        correntMultiSelectOption : [0,1,2]
+        // correntMultiSelectOption : [0,1,2]
     },
     {
         question: "Should Mr X invite this friend  to the party ? ",
@@ -145,6 +127,8 @@ export default [
                 options:"A",
                 answer:"+ve",
                 isSelected : false,
+                imgOption : icons.positive
+                
 
             },
             {
@@ -152,25 +136,12 @@ export default [
                 options:"B",
                 answer:"-ve",
                 isSelected : false,
+                imgOption : icons.negative
 
             },
-            {
-                id:"2",
-                options:"C",
-                answer:"Affirmative",
-                isSelected : false,
-
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Not an option",
-                isSelected : false,
-
-            },
+          
         ],
         correctAnswerIndex: 0,
-        correntMultiSelectOption : [1,0,3]
     },
     {
         question: "Should your brother buy this car? ",
@@ -187,6 +158,7 @@ export default [
                 options:"A",
                 answer:"+ve",
                 isSelected : false,
+                imgOption : icons.positive
 
             },
             {
@@ -194,24 +166,11 @@ export default [
                 options:"B",
                 answer:"-ve",
                 isSelected : false,
+                imgOption : icons.negative
 
             },
-            {
-                id:"2",
-                options:"C",
-                answer:"Affirmative",
-                isSelected : false,
-
-            },
-            {
-                id:"0",
-                options:"D",
-                answer:"Not an option",
-                isSelected : false,
-
-            },
+          
         ],
         correctAnswerIndex: 0,
-        correntMultiSelectOption : [0,2,1]
     }
 ]

@@ -27,7 +27,7 @@ import {
         title : "Spandan Book",
         desc : "With Guruvar’s blessings there are multiple books that Sadhak can refer to. This section provides a snapshot of these books        ",
         img: Pic1,
-        path: ""
+        path: "SpandanBook"
       }
       ,{
         title : "Spandan Sankalp",

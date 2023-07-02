@@ -71,6 +71,16 @@ const R = require("../assets/icons/R.jpg");
 const V = require("../assets/icons/V.jpg")
 const Y = require("../assets/icons/Y.jpg");
 
+const VibrationBook1= require("../assets/icons/vibrationbook1.jpeg")
+const VibrationBook2= require("../assets/icons/vibrationbook2.jpeg")
+const VibrationBook3= require("../assets/icons/vibrationbook3.jpeg");
+const VibrationBook4 = require("../assets/icons/vibrationbook4.jpeg")
+const VibrationBook5= require("../assets/icons/vibrationbook5.jpeg");
+
+const Owl= require("../assets/icons/owl.jpeg");
+const tree = require("../assets/icons/tree.jpg")
+const blackcar = require("../assets/icons/blackcar.jpg");
+
 export default {
     back,
     bell,
@@ -138,5 +148,12 @@ export default {
     Y,
     O1,
     O2, 
-    R,V
+    R,
+    V,
+    VibrationBook1,
+    VibrationBook2,VibrationBook3,VibrationBook4,VibrationBook5,
+    Owl,
+    blackcar,
+    tree
+    
 }

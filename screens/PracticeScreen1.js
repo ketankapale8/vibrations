@@ -43,7 +43,6 @@ import {
 
     },[path, path1])
 
-    console.warn(path1)
     
   
     const LearnArr = [

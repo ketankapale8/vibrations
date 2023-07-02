@@ -365,7 +365,7 @@ import { ScrollView } from 'react-native-gesture-handler';
               answerStatus === null
                 ? null
                 : {
-                    marginTop: 45,
+                    marginTop: 5,
                     backgroundColor: '#F0F8FF',
                     padding: 10,
                     borderRadius: 7,
@@ -475,7 +475,7 @@ import { ScrollView } from 'react-native-gesture-handler';
               padding: 10,
               marginLeft: 'auto',
               marginRight: 'auto',
-              marginTop: 20,
+              marginTop: 10,
               borderRadius: 6,
             }}
             onPress={() => {

@@ -55,7 +55,7 @@ const SignUp = ({ navigation }) => {
                 style={{
                     flexDirection: 'row',
                     alignItems: "center",
-                    marginTop: SIZES.padding * 6,
+                    marginTop: SIZES.padding * 2,
                     paddingHorizontal: SIZES.padding * 2
                 }}
                 onPress={() => navigation.navigate("SignIn")}
@@ -253,7 +253,7 @@ const SignUp = ({ navigation }) => {
 
     function renderButton() {
         return (
-            <View style={{ margin: SIZES.padding * 3 }}>
+            <View style={{ margin: SIZES.padding  }}>
                 <TouchableOpacity
                     style={{
                         height: 60,

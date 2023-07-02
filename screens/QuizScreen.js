@@ -176,7 +176,7 @@ const QuizScreen = () => {
 
       }}
       >
-        <Text style={{...FONTS.h5, color: COLORS.primary1}}>Example No : 99</Text>
+        {/* <Text style={{...FONTS.h5, color: COLORS.primary1}}>Example No : 99</Text> */}
         <Text style={{...FONTS.h5 , color: COLORS.primary1, paddingRight: 180}}>{currentQuestion?.questionTag}</Text>
 
 
@@ -402,7 +402,7 @@ const AnswerOption = ({items, index}) =>{
           answerStatus === null
             ? null
             : {
-                marginTop: 45,
+                marginTop: 0,
                 backgroundColor: "#F0F8FF",
                 padding: 10,
                 borderRadius: 7,
@@ -437,7 +437,7 @@ const AnswerOption = ({items, index}) =>{
               padding: 10,
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: 20,
+              marginTop: 5,
               borderRadius: 6,
             }}
           >
@@ -451,7 +451,7 @@ const AnswerOption = ({items, index}) =>{
               padding: 10,
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: 20,
+              marginTop: 5,
               borderRadius: 6,
             }}
           >
@@ -470,7 +470,7 @@ const AnswerOption = ({items, index}) =>{
         padding: 10,
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: 20,
+        marginTop: 10,
         borderRadius: 6,
       }} 
        onPress={()=> 

@@ -30,6 +30,8 @@ import DummyQuizScreen1 from './screens/DummyQuizScreen1';
 import LearnScreen1 from './screens/PracticeScreen1';
 import PracticeScreen from './screens/PracticeScreen';
 import PracticeScreen1 from './screens/PracticeScreen1';
+import SpandanBook from './screens/SpandanBook';
+import SpandanBookDescription from './screens/SpandanBookDescription';
 
 const theme = {
     ...DefaultTheme,
@@ -82,6 +84,11 @@ const App = () => {
                  <Stack.Screen name="PracticeScreen1" component={PracticeScreen1} />
                  <Stack.Screen name="DummyQuiz" component={DummyQuizScreen} />
                  <Stack.Screen name="DummyQuiz1" component={DummyQuizScreen1} />
+                 <Stack.Screen name="SpandanBook" component={SpandanBook} />
+                 <Stack.Screen name="SpandanBookDescription" component={SpandanBookDescription} />
+                 
+                 
+
                 {/* <Stack.Screen name="Scan" component={Scan} /> */}
             </Stack.Navigator>
             <Toast/>

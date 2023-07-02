@@ -358,7 +358,7 @@ const DummyQuizScreen = () => {
             answerStatus === null
               ? null
               : {
-                  marginTop: 45,
+                  marginTop: 5,
                   backgroundColor: '#F0F8FF',
                   padding: 10,
                   borderRadius: 7,
@@ -397,7 +397,7 @@ const DummyQuizScreen = () => {
                 padding: 10,
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                marginTop: 20,
+                marginTop: 10,
                 borderRadius: 6,
               }}>
               <Text style={{color: 'white'}}>Done</Text>
@@ -413,7 +413,7 @@ const DummyQuizScreen = () => {
                 padding: 10,
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                marginTop: 20,
+                marginTop: 10,
                 borderRadius: 6,
               }}>
               <Text style={{color: 'white'}}>
