@@ -43,8 +43,6 @@ import {
 
     },[path, path1])
 
-    
-  
     const LearnArr = [
       {
         id : 1,
@@ -103,7 +101,8 @@ import {
                 color: COLORS.primary1,
                 fontSize: SIZES.body4,
                 paddingLeft: SIZES.padding ,
-                paddingTop: 5
+                paddingTop: 5,
+                textAlign: 'justify'
               }}>
               Practice makes man perfect !!! Sadhak has learned about the spandan in the previous section. Now is the time to practice it and gain mastery over it. First start with practicing on your own and when you are confident, check your ability using self test. After you are ready for evaluation take the exam.   
 
@@ -129,13 +128,13 @@ import {
         <FlatList
           nestedScrollEnabled={true}
           style={{display :'flex' }}
-          contentContainerStyle={{ alignItems:'center', width: SIZES.width-30}}
+          contentContainerStyle={{ alignItems:'center', width: SIZES.width-25 }}
           data={LearnArr}
           key={'_'}
           keyExtractor={item => "_" + item.id}
           renderItem={renderItem}
           showsVerticalScrollIndicator={false}
-          ListFooterComponent={<View style={{marginBottom: 80}}></View>}
+          ListFooterComponent={<View style={{marginBottom: 40}}></View>}
         />
       );
     };
@@ -145,7 +144,7 @@ import {
         <>
           <Text
             style={{
-              ...FONTS.h3,
+              ...FONTS.h4,
               display : 'flex',
               alignContent:'center',
               justifyContent :'center',
@@ -163,7 +162,7 @@ import {
           marginVertical: SIZES.base -16,
           width: SIZES.width,
           paddingLeft : SIZES.padding + 30,
-          paddingRight : SIZES.padding + 10,
+          paddingRight : SIZES.padding + 24,
         }}
         // {questions : item.testQuestions , title : item.title}
           onPress={()=> navigation.navigate(item.path , {title : item.title , questions: questions})}
@@ -189,40 +188,46 @@ import {
             <View style={{flex : 0.3 }} >
               <Image
                 style={{
-                  width : 105,
-                  height : 113,
+                  width : 120,
+                  height : 100,
                   objectFit: 'cover',
                   borderTopLeftRadius: 10,
                   borderTopRightRadius: 10,
+                  borderBottomLeftRadius: 10,
+                  borderBottomRightRadius: 10,
                   borderRadius : 20,
-                  marginTop: 10,
-                  marginLeft :10,
+                  marginTop: 2,
+                  marginLeft :0,
                   borderWidth: 2,
-                  borderColor: COLORS.black
+                  borderColor: COLORS.primary1
                 }}
                 source={item.img}
                 />
             </View>
             <View style={{flex : 0.7 , borderTopLeftRadius: 10,
                   flexDirection:'column',
-                  borderTopRightRadius: 20,
-                  borderTopLeftRadius : 20,
-                  borderBottomLeftRadius : 20,
-                  borderBottomRightRadius : 20,
-                  textAlign: 'justify',
+                  borderTopRightRadius: 10,
+                  height: 100,
+                  width: 250,
+                  borderColor: COLORS.primary1,
+                  borderTopLeftRadius : 10,
+                  borderBottomLeftRadius : 10,
+                  borderBottomRightRadius : 10,
+                  // textAlign: 'justify',
                   // borderRadius : 20,
-                  marginTop: 10,
+                  marginTop: 2,
                   marginBottom: 10,
-                  marginLeft :25,
+                  marginLeft :5,
                   borderWidth: 2}}>
                   <ScrollView>
                     <Text style={{paddingLeft : 13 , 
                       paddingRight :10 ,
                       paddingBottom : 13 , 
-                      paddingTop : 13,
+                      paddingTop : 7,
                       color : COLORS.primary1,
-                      ...FONTS.body5,
-                      lineHeight: 17,                      
+                      ...FONTS.body4,
+                      lineHeight: 17,  
+                      textAlign: 'justify'                    
                       }}>
                         {item.desc}
                     </Text>
