@@ -9,25 +9,25 @@ const game = require("../assets/icons/games.png");
 const barcode = require("../assets/icons/barcode.png");
 const info = require("../assets/icons/info.png");
 const internet = require("../assets/icons/internet.png");
-const more = require("../assets/icons/More.png");
+const more = require("../assets/icons/more.png");
 const phone = require("../assets/icons/phone.png");
 const reload = require("../assets/icons/reload.png");
 const scan = require("../assets/icons/scan.png");
 const send = require("../assets/icons/send.png");
 const user = require("../assets/icons/user.png");
-const book = require("../assets/icons/book.png");
+const book = require("../assets/icons/Book.png");
 const documents = require("../assets/icons/documents.png");
 const vibrationpts = require("../assets/icons/vibrationpoints.png");
 const sankalp = require("../assets/icons/sankalp.png")
 const wallet = require("../assets/icons/wallet.png");
 const Home = require("../assets/icons/HomeNew.png");
 const Contribute = require("../assets/icons/contribute.png");
-const Learn = require("../assets/icons/practice.png");
+const Learn = require("../assets/icons/Practice.png");
 const Head = require("../assets/icons/head.png");
 const Tulsi = require("../assets/icons/tulsi.webp");
 const Lemon = require("../assets/icons/lemon.jpg");
 const Tamarind = require("../assets/icons/Tamarind.jpg");
-const practice = require("../assets/icons/practice.png");
+const practice = require("../assets/icons/Practice.png");
 const target = require("../assets/icons/target.png")
 const learn = require("../assets/icons/learn.png");
 const writing = require("../assets/icons/writing.png");
@@ -76,6 +76,8 @@ const VibrationBook2= require("../assets/icons/vibrationbook2.jpeg")
 const VibrationBook3= require("../assets/icons/vibrationbook3.jpeg");
 const VibrationBook4 = require("../assets/icons/vibrationbook4.jpeg")
 const VibrationBook5= require("../assets/icons/vibrationbook5.jpeg");
+
+
 
 const Owl= require("../assets/icons/owl.jpeg");
 const tree = require("../assets/icons/tree.jpg")
@@ -154,6 +156,7 @@ export default {
     VibrationBook2,VibrationBook3,VibrationBook4,VibrationBook5,
     Owl,
     blackcar,
-    tree
+    tree, 
+
     
 }

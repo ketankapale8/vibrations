@@ -17,97 +17,149 @@ import { Home , User , Practice , Contribute, HomeScreen, Sankalp , More , Cases
 import { COLORS, SIZES, icons } from "../constants"
 import { red200 } from "react-native-paper/lib/typescript/src/styles/themes/v2/colors";
 import LearnScreen from "../screens/LearnScreen";
+import PracticeScreen1 from "../screens/PracticeScreen1";
 
 const Tab = createBottomTabNavigator();
 
-const TabBarCustomButton = ({ accessibilityLabel, accessibilityState, children, onPress }) => {
+// const TabBarCustomButton = ({ accessibilityLabel, accessibilityState, children, onPress }) => {
 
-    var isSelected = accessibilityState.selected
+//     var isSelected = accessibilityState.selected
 
-    if (isSelected) {
-        return (
-            <View style={{ flex: 1, alignItems: 'center' }}>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        position: 'absolute',
-                        top: 0
-                    }}
-                >
-                    <View style={{ flex: 1, backgroundColor: COLORS.white }}></View>
-                    <Svg
-                        width={75}
-                        height={61}
-                        viewBox="0 0 75 61"
-                    >
-                        <Path
-                            d="M75.2 0v61H0V0c4.1 0 7.4 3.1 7.9 7.1C10 21.7 22.5 33 37.7 33c15.2 0 27.7-11.3 29.7-25.9.5-4 3.9-7.1 7.9-7.1h-.1z"
-                            fill={COLORS.white}
-                        />
-                    </Svg>
-                    <View style={{ flex: 1, backgroundColor: COLORS.white }}></View>
-                </View>
+//     if (isSelected) {
+//         return (
+//             <View style={{ flex: 1, alignItems: 'center' }}>
+//                 <View
+//                     style={{
+//                         flexDirection: 'row',
+//                         position: 'absolute',
+//                         top: 0
+//                     }}
+//                 >
+//                     <View style={{ flex: 1, backgroundColor: COLORS.white }}></View>
+//                     <Svg
+//                         width={75}
+//                         height={61}
+//                         viewBox="0 0 75 61"
+//                     >
+//                         <Path
+//                             d="M75.2 0v61H0V0c4.1 0 7.4 3.1 7.9 7.1C10 21.7 22.5 33 37.7 33c15.2 0 27.7-11.3 29.7-25.9.5-4 3.9-7.1 7.9-7.1h-.1z"
+//                             fill={COLORS.white}
+//                         />
+//                     </Svg>
+//                     <View style={{ flex: 1, backgroundColor: COLORS.white }}></View>
+//                 </View>
 
-                <TouchableOpacity
-                    style={{
-                        top: -22.5,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        width: 50,
-                        height: 50,
-                        borderRadius: 25,
-                        backgroundColor: COLORS.primary,
-                        ...styles.shadow
-                    }}
-                    onPress={onPress}
-                >
-                    {children}
-                </TouchableOpacity>
-            </View>
-        )
-    } else {
-        return (
-            <TouchableOpacity
-                style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: 50,
-                    height: 50,
-                    backgroundColor: COLORS.white
-                }}
-                activeOpacity={1}
-                onPress={onPress}
-            >
-                {children}
-            </TouchableOpacity>
-        )
-    }
+//                 <TouchableOpacity
+//                     style={{
+//                         top: -22.5,
+//                         justifyContent: 'center',
+//                         alignItems: 'center',
+//                         width: 50,
+//                         height: 50,
+//                         borderRadius: 25,
+//                         backgroundColor: COLORS.primary,
+//                         ...styles.shadow
+//                     }}
+//                     onPress={onPress}
+//                 >
+//                     {children}
+//                 </TouchableOpacity>
+//             </View>
+//         )
+//     } else {
+//         return (
+//             <TouchableOpacity
+//                 style={{
+//                     flex: 1,
+//                     justifyContent: 'center',
+//                     alignItems: 'center',
+//                     width: 50,
+//                     height: 50,
+//                     backgroundColor: COLORS.white
+//                 }}
+//                 activeOpacity={1}
+//                 onPress={onPress}
+//             >
+//                 {children}
+//             </TouchableOpacity>
+//         )
+//     }
+// }
+
+// const CustomTabBar = (props) => {
+//     if (isIphoneX()) {
+//         return (
+//             <View>
+//                 <View
+//                     style={{
+//                         position: 'absolute',
+//                         bottom: 0,
+//                         left: 0,
+//                         right: 0,
+//                         height: 30,
+//                         backgroundColor: COLORS.white
+//                     }}
+//                 ></View>
+//                 <BottomTabBar {...props.props} />
+//             </View>
+//         )
+//     } else {
+//         return (
+//             <BottomTabBar {...props.props} />
+//         )
+//     }
+// }
+const PracticeScreen = createStackNavigator()
+function PracticeStackScreen(){
+    return (
+        <PracticeScreen.Navigator>
+            <PracticeScreen.Screen name="Practice" component={Practice} 
+            options={{ headerShown :false}}
+            //  options={{
+            //         headerShown:'false',
+            //         headerTitle : "Practice",
+            //         headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
+            //         headerStyle: {
+            //             backgroundColor: COLORS.primary2,
+            //           },
+            //         tabBarIcon : ({focused}) => (
+            //             <View style={{alignItems : 'center', justifyContent:'center', top: 0}}>
+            //                 <Image
+            //                 source={icons.target}
+            //                 resizeMode="cover"
+            //                 style={{
+            //                     width: 25,
+            //                         height: 25,
+            //                         tintColor: focused ? COLORS.pink : COLORS.primary1,
+            //                     }}
+            //                 />
+            //                 <Text style={{color: focused ? COLORS.pink : COLORS.primary1, fontSize : 12}}>Practice</Text>
+
+            //             </View>
+            //         )
+            //     }}
+                
+                
+                />
+
+
+            <PracticeScreen.Screen name="PracticeScreen1" component={PracticeScreen1}  
+                options={{ headerShown: false}}
+            />
+
+
+        </PracticeScreen.Navigator>
+    )
 }
 
-const CustomTabBar = (props) => {
-    if (isIphoneX()) {
-        return (
-            <View>
-                <View
-                    style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        height: 30,
-                        backgroundColor: COLORS.white
-                    }}
-                ></View>
-                <BottomTabBar {...props.props} />
-            </View>
-        )
-    } else {
-        return (
-            <BottomTabBar {...props.props} />
-        )
-    }
-}
+// const LearnScreen = createStackNavigator();
+// function LearnStackScreen(){
+//     return (
+//         <LearnScreen.Navigator>
+//             <LearnScreen.Screen />
+//         </LearnScreen.Navigator>
+//     )
+// }
 
 const Tabs = () => {
     return (
@@ -257,9 +309,10 @@ const Tabs = () => {
             />
 
 <Tab.Screen
-                name="Practice"
-                component={Practice}
+                name="PracticeStack"
+                component={PracticeStackScreen}
                 options={{
+                    headerShown: false,
                     headerTitle : "Practice",
                     headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
                     headerStyle: {

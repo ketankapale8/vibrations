@@ -10,6 +10,7 @@ import SankalpDescription from './SankalpDescription';
 import SankalpSubDescription from "./SankalpSubDescription";
 import More from "./More";
 import Cases from "./Cases";
+import Welcome from './Walkthrough/Welcome';
 
 
 export {
@@ -23,5 +24,6 @@ export {
     SignIn,
     SankalpSubDescription,
     More,
-    Cases
+    Cases, 
+    Welcome
 };

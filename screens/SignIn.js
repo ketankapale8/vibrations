@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState , useEffect} from "react";
 import {
     View,
     Text,
@@ -12,11 +12,13 @@ import {
     ScrollView,
     Platform
 } from "react-native"
-import LinearGradient from 'react-native-linear-gradient'
+import LinearGradient from 'react-native-linear-gradient';
+import { useDispatch , useSelector } from "react-redux";
+import { login } from "../redux/action.js";
 
 import { COLORS, SIZES, FONTS, icons, images } from "../constants"
 
-const SignUp = ({ navigation }) => {
+const SignIn = ({ navigation }) => {
 
     const [showPassword, setShowPassword] = React.useState(false)
 
@@ -24,30 +26,56 @@ const SignUp = ({ navigation }) => {
     const [selectedArea, setSelectedArea] = React.useState(null)
     const [modalVisible, setModalVisible] = React.useState(false)
 
-    React.useEffect(() => {
-        fetch("https://restcountries.eu/rest/v2/all")
-            .then(response => response.json())
-            .then(data => {
-                let areaData = data.map(item => {
-                    return {
-                        code: item.alpha2Code,
-                        name: item.name,
-                        callingCode: `+${item.callingCodes[0]}`,
-                        flag: `https://www.countryflags.io/${item.alpha2Code}/flat/64.png`
-                    }
-                })
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-                setAreas(areaData)
+    console.log(email , password)
 
-                if (areaData.length > 0) {
-                    let defaultData = areaData.filter(a => a.code == "US")
+    // React.useEffect(() => {
+    //     fetch("https://restcountries.eu/rest/v2/all")
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             let areaData = data.map(item => {
+    //                 return {
+    //                     code: item.alpha2Code,
+    //                     name: item.name,
+    //                     callingCode: `+${item.callingCodes[0]}`,
+    //                     flag: `https://www.countryflags.io/${item.alpha2Code}/flat/64.png`
+    //                 }
+    //             })
 
-                    if (defaultData.length > 0) {
-                        setSelectedArea(defaultData[0])
-                    }
-                }
-            })
-    }, [])
+    //             setAreas(areaData)
+
+    //             if (areaData.length > 0) {
+    //                 let defaultData = areaData.filter(a => a.code == "US")
+
+    //                 if (defaultData.length > 0) {
+    //                     setSelectedArea(defaultData[0])
+    //                 }
+    //             }
+    //         })
+    // }, [])
+
+    const { error } = useSelector(state => state.auth)
+
+    const dispatch = useDispatch();
+
+
+    const loginHandler = () => {
+        dispatch(login(email, password))
+    }
+
+    useEffect(() => {
+        if (error) {
+            alert(error)
+            dispatch({ type: "clearError" })
+        }
+
+    }, [error, dispatch, alert,])
+
+
+
+
 
     function renderHeader() {
         return (
@@ -131,6 +159,8 @@ const SignUp = ({ navigation }) => {
                         placeholder="Enter your Email"
                         placeholderTextColor={COLORS.white}
                         selectionColor={COLORS.white}
+                        value={email}
+                        onChangeText={setEmail}
                     />
                 </View>
 
@@ -152,6 +182,8 @@ const SignUp = ({ navigation }) => {
                         placeholderTextColor={COLORS.white}
                         selectionColor={COLORS.white}
                         secureTextEntry={!showPassword}
+                        value={password}
+                        onChangeText={setPassword}
                     />
                     <TouchableOpacity
                         style={{
@@ -188,7 +220,9 @@ const SignUp = ({ navigation }) => {
                         alignItems: 'center',
                         justifyContent: 'center'
                     }}
-                    onPress={() => navigation.navigate("Home")}
+                    onPress={loginHandler}
+                    disabled={!email || !password}
+                    // onPress={() => navigation.navigate("Home")}
                 >
                     <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Continue</Text>
                 </TouchableOpacity>
@@ -276,4 +310,4 @@ const SignUp = ({ navigation }) => {
     )
 }
 
-export default SignUp;
+export default SignIn;

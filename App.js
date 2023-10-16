@@ -32,6 +32,10 @@ import PracticeScreen from './screens/PracticeScreen';
 import PracticeScreen1 from './screens/PracticeScreen1';
 import SpandanBook from './screens/SpandanBook';
 import SpandanBookDescription from './screens/SpandanBookDescription';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Main from './navigation/Main';
+import { Provider } from 'react-redux';
+import store from './redux/store.js';
 
 const theme = {
     ...DefaultTheme,
@@ -42,57 +46,62 @@ const theme = {
 };
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator()
 
 const App = () => {
     return (
-        <NavigationContainer theme={theme}>
-            <Stack.Navigator
-                screenOptions={{
-                    headerShown: false
-                }}
-                initialRouteName={'SignUp'}
-            >
-                <Stack.Screen name="SignUp" component={SignUp} />
-                <Stack.Screen name="SignIn" component={SignIn} />
+        // <NavigationContainer theme={theme}>
+        //     <Stack.Navigator
+        //         screenOptions={{
+        //             headerShown: false
+        //         }}
+        //         initialRouteName={'SignUp'}
+        //     >
+        //         <Stack.Screen name="SignUp" component={SignUp} />
+        //         <Stack.Screen name="SignIn" component={SignIn} />
 
 
-                {/* Tabs */}
-                <Stack.Screen name="Home" component={Tabs} />
-                <Stack.Screen name="Sankalp" component={Sankalp} />
-                <Stack.Screen name="SankalpDescription" component={SankalpDescription}
-                 />
-                <Stack.Screen name="SankalpDetails" component={SankalpSubDescription}
-                 />
-                 <Stack.Screen name="Selftest" component={PracticeTest}
-                 />
-                 <Stack.Screen name="SelfQuestions" component={PracticeQuestions}
-                 />
-                 {/* // modify naming conventions here... according to selftest and practice tests // */}
+        //         {/* Tabs */}
+        //         <Stack.Screen name="Home" component={Tabs} />
+        //         <Stack.Screen name="Sankalp" component={Sankalp} />
+        //         <Stack.Screen name="SankalpDescription" component={SankalpDescription}
+        //          />
+        //         <Stack.Screen name="SankalpDetails" component={SankalpSubDescription}
+        //          />
+        //          <Stack.Screen name="Selftest" component={PracticeTest}
+        //          />
+        //          <Stack.Screen name="SelfQuestions" component={PracticeQuestions}
+        //          />
+        //          {/* // modify naming conventions here... according to selftest and practice tests // */}
 
-                 <Stack.Screen name="Practicetest" component={PracticeTest1}
-                 />
-                   <Stack.Screen name="PracticeQuestions" component={PracticeQuestions1}
-                 />
+        //          <Stack.Screen name="Practicetest" component={PracticeTest1}
+        //          />
+        //            <Stack.Screen name="PracticeQuestions" component={PracticeQuestions1}
+        //          />
 
-                 <Stack.Screen name="QuizScreen" component={QuizScreen} />
-                 <Stack.Screen name="QuizScreen1" component={QuizScreen1} />
-                 <Stack.Screen name="QuizScreen2" component={QuizScreen2} />
+        //          <Stack.Screen name="QuizScreen" component={QuizScreen} />
+        //          <Stack.Screen name="QuizScreen1" component={QuizScreen1} />
+        //          <Stack.Screen name="QuizScreen2" component={QuizScreen2} />
                  
-                 <Stack.Screen name="Results" component={ResultsScreen} />
-                 <Stack.Screen name="FilterScreen" component={FilterScreen} />
-                 <Stack.Screen name="PracticeScreen" component={PracticeScreen} />
-                 <Stack.Screen name="PracticeScreen1" component={PracticeScreen1} />
-                 <Stack.Screen name="DummyQuiz" component={DummyQuizScreen} />
-                 <Stack.Screen name="DummyQuiz1" component={DummyQuizScreen1} />
-                 <Stack.Screen name="SpandanBook" component={SpandanBook} />
-                 <Stack.Screen name="SpandanBookDescription" component={SpandanBookDescription} />
+        //          <Stack.Screen name="Results" component={ResultsScreen} />
+        //          <Stack.Screen name="FilterScreen" component={FilterScreen} />
+        //          <Stack.Screen name="PracticeScreen" component={PracticeScreen} />
+        //          <Stack.Screen name="PracticeScreen1" component={PracticeScreen1} />
+        //          <Stack.Screen name="DummyQuiz" component={DummyQuizScreen} />
+        //          <Stack.Screen name="DummyQuiz1" component={DummyQuizScreen1} />
+        //          <Stack.Screen name="SpandanBook" component={SpandanBook} />
+        //          <Stack.Screen name="SpandanBookDescription" component={SpandanBookDescription} />
                  
                  
 
-                {/* <Stack.Screen name="Scan" component={Scan} /> */}
-            </Stack.Navigator>
-            <Toast/>
-        </NavigationContainer>
+        //         {/* <Stack.Screen name="Scan" component={Scan} /> */}
+        //     </Stack.Navigator>
+        //     <Toast/>
+        // </NavigationContainer>
+        <Provider store={store}>
+            <Main/>
+
+        </Provider>
     )
 }
 

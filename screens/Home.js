@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React , {useEffect, useState} from "react";
 import {
     SafeAreaView,
     View,
@@ -9,6 +9,7 @@ import {
 } from "react-native"
 import { COLORS, SIZES, FONTS, icons, images } from "../constants"
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { SliderBox } from "react-native-image-slider-box"
 import one from '../assets/guruImage/01.jpg';
 import two from '../assets/guruImage/02.jpg';
@@ -22,11 +23,17 @@ import Picture5 from '../assets/HomeScreenIcons/Pic5.png'
 import Picture6 from '../assets/HomeScreenIcons/Pic6.png'
 import Picture8 from '../assets/HomeScreenIcons/Pic8New.jpg'
 import Picture9 from '../assets/HomeScreenIcons/picnine.png'
-import Picture10 from '../assets/HomeScreenIcons/Pic10.png'
+import Picture10 from '../assets/HomeScreenIcons/Pic10.png';
+import { useSelector } from "react-redux";
 
-
-const Home = () => {
+const Home = ({navigation}) => {
     const Navigation = useNavigation();
+    const [username , setUser] = useState('')
+    const { user, loading } = useSelector(state => state.auth);
+    useEffect(()=>{
+        setUser(user?.name)
+    },[])
+    console.log(username)
     const route = useRoute();
     const [images , setImages] = useState([one, two , three , four])
 
@@ -143,7 +150,7 @@ const Home = () => {
             <View style={{ flexDirection: 'row', marginVertical: SIZES.padding * 2 }}>
                 <View style={{ flex: 1 , flexDirection:'column'}}>
                     {/* <Text style={{ ...FONTS.body2 , color:COLORS.black }}>Hi!</Text> */}
-                    <Text style={{ ...FONTS.body2, color: COLORS.pink }}> Hari Om! Abhijit </Text>
+                    <Text style={{ ...FONTS.body2, color: COLORS.pink }}> Hari Om! {username} </Text>
                 </View>
                 {/* {SliderComponent()} */}
 
