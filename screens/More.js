@@ -32,6 +32,7 @@ const More = ({navigation , route}) => {
   const [name, setName] = useState(user?.name);
   const [email, setEmail] = useState(user?.email);
   const [mob, setmob] = useState(user?.mob);
+  const [dob , setDob] = useState(new Date(user?.date))
 
   const [otp, setOtp] = useState();
   console.log(user)
@@ -145,6 +146,22 @@ function renderForm() {
                       ...FONTS.body3
                   }}
                   value={user?.occupation}
+                  selectionColor={COLORS.white}
+              />
+          </View>
+
+          <View style={{ marginTop: SIZES.padding * 2 }}>
+              <Text style={{ color: COLORS.primary1, ...FONTS.body3 }}>Date Of Birth</Text>
+              <TextInput
+                  style={{
+                      marginVertical: SIZES.padding,
+                      borderBottomColor: COLORS.primary2,
+                      borderBottomWidth: 1,
+                      height: 40,
+                      color: COLORS.primary2,
+                      ...FONTS.body3
+                  }}
+                  value={dob.toString()}
                   selectionColor={COLORS.white}
               />
           </View>
