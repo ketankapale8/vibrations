@@ -18,6 +18,12 @@ import { COLORS, SIZES, icons } from "../constants"
 import { red200 } from "react-native-paper/lib/typescript/src/styles/themes/v2/colors";
 import LearnScreen from "../screens/LearnScreen";
 import PracticeScreen1 from "../screens/PracticeScreen1";
+import QuizScreen1 from "../screens/QuizScreen1";
+import FilterScreen from "../screens/FilterScreen";
+import QuizScreen from "../screens/QuizScreen";
+import DummyQuizScreen1 from "../screens/DummyQuizScreen1";
+import DummyQuizScreen from "../screens/DummyQuizScreen";
+import QuizScreen2 from "../screens/QuizScreen2";
 
 const Tab = createBottomTabNavigator();
 
@@ -114,36 +120,41 @@ function PracticeStackScreen(){
     return (
         <PracticeScreen.Navigator>
             <PracticeScreen.Screen name="Practice" component={Practice} 
-            options={{ headerShown :false}}
-            //  options={{
-            //         headerShown:'false',
-            //         headerTitle : "Practice",
-            //         headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
-            //         headerStyle: {
-            //             backgroundColor: COLORS.primary2,
-            //           },
-            //         tabBarIcon : ({focused}) => (
-            //             <View style={{alignItems : 'center', justifyContent:'center', top: 0}}>
-            //                 <Image
-            //                 source={icons.target}
-            //                 resizeMode="cover"
-            //                 style={{
-            //                     width: 25,
-            //                         height: 25,
-            //                         tintColor: focused ? COLORS.pink : COLORS.primary1,
-            //                     }}
-            //                 />
-            //                 <Text style={{color: focused ? COLORS.pink : COLORS.primary1, fontSize : 12}}>Practice</Text>
-
-            //             </View>
-            //         )
-            //     }}
+            options={{ headerShown :true , headerStyle :{
+                backgroundColor: COLORS.primary2,
+                color : COLORS.white 
+            }}}
+    
                 
                 
                 />
 
 
             <PracticeScreen.Screen name="PracticeScreen1" component={PracticeScreen1}  
+                options={{ headerShown: false}}
+            />
+
+            <PracticeScreen.Screen name="FilterScreen" component={FilterScreen}  
+                options={{ headerShown: false}}
+            />
+
+            <PracticeScreen.Screen name="QuizScreen" component={QuizScreen}  
+                options={{ headerShown: false}}
+            />
+
+<PracticeScreen.Screen name="DummyQuiz1" component={DummyQuizScreen1}  
+                options={{ headerShown: false}}
+            />
+
+<PracticeScreen.Screen name="DummyQuiz" component={DummyQuizScreen  }  
+                options={{ headerShown: false}}
+            />
+
+<PracticeScreen.Screen name="QuizScreen1" component={QuizScreen1}  
+                options={{ headerShown: false}}
+            />
+
+<PracticeScreen.Screen name="QuizScreen2" component={QuizScreen2}  
                 options={{ headerShown: false}}
             />
 
@@ -200,7 +211,7 @@ const Tabs = () => {
                 component={Home}
                 options={{
                     headerTitle : "Dashboard",
-                    headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
+                    headerTitleStyle : {paddingLeft : SIZES.padding * 1 , color :COLORS.white},
                     headerStyle: {
                         backgroundColor: COLORS.primary2,
                       },
@@ -267,7 +278,7 @@ const Tabs = () => {
                 component={LearnScreen}
                 options={{
                     headerTitle : "Learn Spandan",
-                    headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
+                    headerTitleStyle : {paddingLeft : SIZES.padding * 10 , color :COLORS.white},
                     headerStyle: {
                         backgroundColor: COLORS.primary2,
                       },
@@ -365,10 +376,10 @@ const Tabs = () => {
             />
 
 <Tab.Screen
-                name="More"
+                name="Profile"
                 component={More}
                 options={{
-                    headerTitle : "More..",
+                    headerTitle : "Profile",
                     headerTitleStyle : {paddingLeft : SIZES.padding * 14 , color :COLORS.white},
                     headerStyle: {
                         backgroundColor: COLORS.primary2,
@@ -384,7 +395,7 @@ const Tabs = () => {
                                     tintColor: focused ? COLORS.pink : COLORS.primary1,
                                 }}
                             />
-                            <Text style={{color: focused ? COLORS.pink : COLORS.primary1 , fontSize : 12}}>More</Text>
+                            <Text style={{color: focused ? COLORS.pink : COLORS.primary1 , fontSize : 12}}>Profile</Text>
 
                         </View>
                     )

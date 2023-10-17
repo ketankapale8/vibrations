@@ -440,7 +440,7 @@ import { ScrollView } from 'react-native-gesture-handler';
               padding: 10,
               marginLeft: 'auto',
               marginRight: 'auto',
-              marginTop: 20,
+              marginTop: 10,
               borderRadius: 6,
             }}
             onPress={
@@ -505,6 +505,7 @@ import { ScrollView } from 'react-native-gesture-handler';
       };
       return (
         <>
+        <ScrollView>
           <SafeAreaView>
             {renderTitle()}
             {renderDesc()}
@@ -521,6 +522,8 @@ import { ScrollView } from 'react-native-gesture-handler';
             </View>
             {renderBttomScreen()}
           </SafeAreaView>
+
+        </ScrollView>
         </>
       );
     };

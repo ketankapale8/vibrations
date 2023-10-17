@@ -25,6 +25,7 @@ const DummyQuizScreen = () => {
     //   const data = questions.filter(item=>item.questionTag == tag);
     const totalQuestions = data.length;
 
+
     // points
     const [points, setPoints] = useState(0);
     const [reset , setReset] = useState(false)
@@ -498,6 +499,7 @@ const DummyQuizScreen = () => {
     };
     return (
       <>
+      <ScrollView>
         <SafeAreaView>
           {renderTitle()}
           {renderDesc()}
@@ -508,12 +510,15 @@ const DummyQuizScreen = () => {
               display: 'flex',
               flexDirection: 'row',
               padding: SIZES.padding,
+              marginBottom: 50
             }}>
             {renderSubmitBtn()}
             {renderResetBtn()}
           </View>
           {renderBttomScreen()}
         </SafeAreaView>
+
+      </ScrollView>
       </>
     );
   };

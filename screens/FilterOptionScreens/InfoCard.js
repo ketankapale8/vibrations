@@ -32,11 +32,11 @@ const InfoCard = ({result, filterQuestions}) => {
 
           </View>
           <View style={{display: 'flex', flexDirection: 'column'}}>
-      <View style={{ display:'flex', flexDirection: 'row' ,paddingLeft: 40 , gap: 60}}>
+      <View style={{ display:'flex', flexDirection: 'row' ,paddingLeft: 20 , gap: 60}}>
         <Text style={{fontWeight: 700, fontSize: 12 , color: COLORS.primary1 }}>Level No: {result?.level}</Text>
         <Text style={{fontWeight: 700, fontSize: 12 , color: COLORS.primary1 , }}>Example No: {result?.level}</Text>
       </View>
-              <Text style={{fontWeight: 700, fontSize: 15 , color: COLORS.primary1 , marginVertical: 10 , paddingLeft: 90}}>{result?.questionTag}</Text>
+              <Text style={{fontWeight: 700, fontSize: 15 , color: COLORS.primary1 , marginVertical: 10 , paddingLeft: 20}}>{result?.questionTag}</Text>
             
       <View style={{justifyContent: 'space-around', display:'flex', flexDirection: 'row' ,paddingLeft: 20 , gap: 20 , marginVertical: 10}}>
         <Text style={{fontWeight: 700, fontSize: 12 , color: COLORS.primary1}}>category: {result?.category}</Text>

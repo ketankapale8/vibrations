@@ -17,11 +17,9 @@ import { Image } from "react-native-svg";
 
 
   const ResultsScreen = () => {
-
+    let [count , setCount ] = useState(0)
     const navigation = useNavigation();
     const route = useRoute();
-    console.log(route.params.answers?.map(item=>(item.answer)))
-    // console.log(route.params);
 
     const [dataSource, setDataSource] = useState([]);
 
@@ -107,6 +105,7 @@ import { Image } from "react-native-svg";
                 {/* <View style={{ width :55 ,height: 55 , backgroundColor : 'white'}}> */}
                   <Text style={{color:COLORS.black}}>{item.question}</Text>
                   {item.answer === true ? (
+                    
                     <View>
                       <FontAwesomeIcon icon={faCircleCheck} style={{width:'45px', height:'30px', color : COLORS.primary }} size={20}  />
                     </View>

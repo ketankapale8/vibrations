@@ -347,14 +347,14 @@ const AnswerOption = ({items, index}) =>{
         </Text>
         <View style={{display : 'flex', flexDirection: 'row', marginVertical: 15}}>
           <Image style={{width : SIZES.width -120 , height : 250 , objectFit:'cover' , borderRadius: 20 , padding:SIZES.padding , marginLeft: 10 , marginRight: 10}} source={currentQuestion?.QuestionImg}/>
-          <View style={{display: 'flex', flexDirection:'column', marginVertical: 5 , marginHorizontal: 15 , gap: 15}}>
+          {/* <View style={{display: 'flex', flexDirection:'column', marginVertical: 5 , marginHorizontal: 15 , gap: 15}}>
                 <Image source={icons.camera} style={{width : 30 , height: 30, objectFit:'contain'}}/>
                 <Image source={icons.video} style={{width : 30 , height: 30, objectFit:'contain'}}/>
                 <Image source={icons.volume} style={{width : 30 , height: 30, objectFit:'contain'}}/>
                 <Image source={icons.SankalpPractice} style={{width : 30 , height: 40, objectFit:'contain'}}/>
                 <Image source={icons.information} style={{width : 30 , height: 30, objectFit:'contain'}}/>
 
-          </View>
+          </View> */}
         </View>
         {/* <View style={{flex: 1,flexDirection: 'row',flexWrap: 'wrap',  alignItems: 'center' }}> */}
       <View style={{flex: 1, marginHorizontal: 10,}}>
@@ -470,7 +470,7 @@ const AnswerOption = ({items, index}) =>{
         padding: 10,
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: 10,
+        marginTop: 20,
         borderRadius: 6,
       }} 
        onPress={()=> 
@@ -485,7 +485,7 @@ const AnswerOption = ({items, index}) =>{
       }
       
       >
-        <Text style={{ color: "white" }}>Submit</Text>
+        <Text style={{ color: "white" , width: 60 , height: 20 , textAlign:'center'}}>Submit</Text>
       </Pressable>
     )
   }
@@ -518,7 +518,7 @@ const AnswerOption = ({items, index}) =>{
       // }
       
       >
-        <Text style={{ color: "white" }}>Reset</Text>
+        <Text style={{ color: "white",  width: 60 , height: 20 , textAlign:'center' }}>Reset</Text>
       </Pressable>
     )
 
@@ -531,7 +531,7 @@ const AnswerOption = ({items, index}) =>{
         {renderProgressBar()}
         {renderExtraDesc()}
         {renderMiddleScreen()}
-        <View style={{display:'flex', flexDirection:'row', padding:SIZES.padding}}>
+        <View style={{display:'flex', flexDirection:'row', padding:SIZES.padding -2 ,alignContent:'center'}}>
          {renderSubmitBtn()}
          {renderResetBtn()}
         </View>

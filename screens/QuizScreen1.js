@@ -6,6 +6,7 @@ import { useNavigation , useRoute } from "@react-navigation/native";
 import AntDesign from "react-native-vector-icons/AntDesign.js"
 import { COLORS, SIZES , FONTS , icons} from '../constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView } from 'react-native-gesture-handler';
 // import { AntDesign } from "react-native-vector-icons";
 const QuizScreen1 = () => {
   const navigation = useNavigation();
@@ -374,6 +375,8 @@ const QuizScreen1 = () => {
   }
   
   return (
+    <ScrollView>
+
     <SafeAreaView style={{paddingBottom:20 , paddingTop:20}}>
         {renderTitle()}
         {renderDesc()}
@@ -381,6 +384,7 @@ const QuizScreen1 = () => {
         {renderMiddleScreen()}
         {renderBttomScreen()}
     </SafeAreaView>
+    </ScrollView>
 
      
   );

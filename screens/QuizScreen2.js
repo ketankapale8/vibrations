@@ -5,6 +5,7 @@ import questions from "../constants/DummyQuestions.js";
 import {useRoute, useNavigation } from "@react-navigation/native";
 import AntDesign from "react-native-vector-icons/AntDesign.js"
 import { COLORS, SIZES , FONTS , icons} from '../constants';
+import { ScrollView } from 'react-native-gesture-handler';
 // import { AntDesign } from "react-native-vector-icons";
 const QuizScreen2 = () => {
   const navigation = useNavigation();
@@ -354,7 +355,7 @@ const QuizScreen2 = () => {
               padding: 10,
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: 20,
+              marginTop: 10,
               borderRadius: 6,
             }}
           >
@@ -441,6 +442,8 @@ const QuizScreen2 = () => {
   }
    
   return (
+    <ScrollView>
+
     <SafeAreaView>
         {renderTitle()}
         {renderDesc()}
@@ -453,6 +456,8 @@ const QuizScreen2 = () => {
         {renderBttomScreen()}
 
     </SafeAreaView>
+
+    </ScrollView>
 
      
   );

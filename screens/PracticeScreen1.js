@@ -172,7 +172,7 @@ import {
           style={{
             flex: 1,
             flexDirection: 'row',
-            height: 135,
+            height: 145,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
             borderBottomLeftRadius : 20,
@@ -180,12 +180,12 @@ import {
             // backgroundColor: COLORS.white,
             // borderColor : COLORS.primary1,
             margin : SIZES.padding ,
-            gap : 30
+            gap : 40
             // borderWidth: 2
             
           }}>
             
-            <View style={{flex : 0.3 }} >
+            <View style={{flex : 0.4 }} >
               <Image
                 style={{
                   width : 120,
@@ -199,17 +199,17 @@ import {
                   marginTop: 2,
                   marginLeft :0,
                   borderWidth: 2,
-                  borderColor: COLORS.primary1
+                  borderColor: COLORS.black
                 }}
                 source={item.img}
                 />
             </View>
-            <View style={{flex : 0.7 , borderTopLeftRadius: 10,
+            <View style={{flex : 0.6 , borderTopLeftRadius: 10,
                   flexDirection:'column',
                   borderTopRightRadius: 10,
                   height: 100,
-                  width: 250,
-                  borderColor: COLORS.primary1,
+                  width : 180 ,
+                  borderColor: COLORS.black,
                   borderTopLeftRadius : 10,
                   borderBottomLeftRadius : 10,
                   borderBottomRightRadius : 10,
@@ -226,7 +226,7 @@ import {
                       paddingTop : 7,
                       color : COLORS.primary1,
                       ...FONTS.body4,
-                      lineHeight: 17,  
+                      lineHeight: 15,  
                       textAlign: 'justify'                    
                       }}>
                         {item.desc}
