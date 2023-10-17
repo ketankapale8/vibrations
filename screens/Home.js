@@ -150,7 +150,7 @@ const Home = ({navigation}) => {
             <View style={{ flexDirection: 'row', marginVertical: SIZES.padding * 2 }}>
                 <View style={{ flex: 1 , flexDirection:'column'}}>
                     {/* <Text style={{ ...FONTS.body2 , color:COLORS.black }}>Hi!</Text> */}
-                    <Text style={{ ...FONTS.body2, color: COLORS.pink }}> Hari Om! {username} </Text>
+                    <Text style={{ ...FONTS.body2, color: COLORS.pink }}> Hari Om! {user?.name} </Text>
                 </View>
                 {/* {SliderComponent()} */}
 

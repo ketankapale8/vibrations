@@ -32,55 +32,7 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-// export const addTask = (title, description) => async (dispatch) => {
-//   try {
-//     dispatch({ type: "addTaskRequest" });
 
-//     const { data } = await axios.post(
-//       `${serverUrl}/newtask`,
-//       {
-//         title,
-//         description,
-//       },
-//       {
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     );
-//     dispatch({ type: "addTaskSuccess", payload: data.message });
-//   } catch (error) {
-//     dispatch({ type: "addTaskFailure", payload: error.response.data.message });
-//   }
-// };
-
-// export const updateTask = (taskId) => async (dispatch) => {
-//   try {
-//     dispatch({ type: "updateTaskRequest" });
-
-//     const { data } = await axios.get(`${serverUrl}/task/${taskId}`);
-//     dispatch({ type: "updateTaskSuccess", payload: data.message });
-//   } catch (error) {
-//     dispatch({
-//       type: "updateTaskFailure",
-//       payload: error.response.data.message,
-//     });
-//   }
-// };
-
-// export const deleteTask = (taskId) => async (dispatch) => {
-//   try {
-//     dispatch({ type: "deleteTaskRequest" });
-
-//     const { data } = await axios.delete(`${serverUrl}/task/${taskId}`);
-//     dispatch({ type: "deleteTaskSuccess", payload: data.message });
-//   } catch (error) {
-//     dispatch({
-//       type: "deleteTaskFailure",
-//       payload: error.response.data.message,
-//     });
-//   }
-// };
 
 export const updateProfile = (formData) => async (dispatch) => {
   try {
@@ -114,16 +66,16 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const register = (formData) => async (dispatch) => {
+export const register = (name, email , mob , password, occupation ,date) => async (dispatch) => {
   try {
     dispatch({ type: "registerRequest" });
 
-    const { data } = await axios.post(`${serverUrl}/register`, formData, {
+    const { data } = await axios.post(`${serverUrl}/register`,{name, email , mob , password, occupation ,date },{
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
-    dispatch({ type: "registerSuccess", payload: data });
+    dispatch({ type: "registerSuccess", payload: data});
   } catch (error) {
     dispatch({
       type: "registerFailure",

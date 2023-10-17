@@ -114,13 +114,13 @@ const OnboardingScreen = ({navigation}) => {
         </View>
 
         {/* Render buttons */}
-        <View style={{marginBottom: 20}}>
+        <View style={{marginBottom: 70}}>
           {currentSlideIndex == slides.length - 1 ? (
             <View style={{height: 50}}>
               <TouchableOpacity
                 style={styles.btn}
                 onPress={() => navigation.replace('SignIn')}>
-                <Text style={{fontWeight: 'bold', fontSize: 15}}>
+                <Text style={{fontWeight: 'bold', fontSize: 15 , color : COLORS.white}}>
                   GET STARTED
                 </Text>
               </TouchableOpacity>
@@ -142,7 +142,7 @@ const OnboardingScreen = ({navigation}) => {
                   style={{
                     fontWeight: 'bold',
                     fontSize: 15,
-                    color: COLORS.gray,
+                    color: COLORS.white,
                   }}>
                   SKIP
                 </Text>
@@ -156,6 +156,7 @@ const OnboardingScreen = ({navigation}) => {
                   style={{
                     fontWeight: 'bold',
                     fontSize: 15,
+                    color :COLORS.white
                   }}>
                   NEXT
                 </Text>
@@ -220,6 +221,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary1,
     justifyContent: 'center',
     alignItems: 'center',
+    color : COLORS.white
   },
 });
 export default OnboardingScreen;

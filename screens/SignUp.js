@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState , useEffect}from "react";
 import {
     View,
     Text,
@@ -10,44 +10,85 @@ import {
     FlatList,
     KeyboardAvoidingView,
     ScrollView,
-    Platform
+    Platform, 
+    StyleSheet
 } from "react-native"
-import LinearGradient from 'react-native-linear-gradient'
+import LinearGradient from 'react-native-linear-gradient';
+import DatePicker from "react-native-date-picker";
+import { Button } from "react-native-paper";
+import { useDispatch , useSelector} from "react-redux";
+import { register } from "../redux/action";
 
 import { COLORS, SIZES, FONTS, icons, images } from "../constants"
 
 const SignUp = ({ navigation }) => {
 
     const [showPassword, setShowPassword] = React.useState(false)
-    const [name , setName] = React.useState("")
-    const [areas, setAreas] = React.useState([])
-    const [selectedArea, setSelectedArea] = React.useState(null)
-    const [modalVisible, setModalVisible] = React.useState(false)
+    const [name , setName] = React.useState("");
+    const [email , setEmail] = React.useState("");
+    const [password , setPassword] = React.useState("");
+    const [occupation , setOccupation] = React.useState("")
+    const [mob , setMob] = React.useState("")
+    // const [areas, setAreas] = React.useState([])
+    // const [selectedArea, setSelectedArea] = React.useState(null)
+    const [modalVisible, setModalVisible] = React.useState(false);
 
-    React.useEffect(() => {
-        fetch("https://restcountries.eu/rest/v2/all")
-            .then(response => response.json())
-            .then(data => {
-                let areaData = data.map(item => {
-                    return {
-                        code: item.alpha2Code,
-                        name: item.name,
-                        callingCode: `+${item.callingCodes[0]}`,
-                        flag: `https://www.countryflags.io/${item.alpha2Code}/flat/64.png`
-                    }
-                })
+    const [date, setDate] = useState(new Date())
+    console.log(date)
+    const [open, setOpen] = useState(false)
 
-                setAreas(areaData)
+    const { error } = useSelector(state => state.auth)
 
-                if (areaData.length > 0) {
-                    let defaultData = areaData.filter(a => a.code == "US")
+    const dispatch = useDispatch();
 
-                    if (defaultData.length > 0) {
-                        setSelectedArea(defaultData[0])
-                    }
-                }
-            })
-    }, [])
+    
+    useEffect(() => {
+        if (error) {
+            alert(error)
+            dispatch({ type: "clearError" })
+        }
+
+    }, [error, dispatch, alert,])
+
+    const registerHandler = () => {
+        // const myForm = new FormData();
+        // myForm.append("name", name);
+        // myForm.append("email", email);
+        // myForm.append("mob", mob);
+        // myForm.append("password", password);
+        // myForm.append("occupation", occupation);
+        // myForm.append("date", date);
+
+        console.log('pushed for register')
+        dispatch(register(name, email , mob , password, occupation ,date));
+        navigation.navigate("Home")
+    }
+
+
+    // React.useEffect(() => {
+    //     fetch("https://restcountries.eu/rest/v2/all")
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             let areaData = data.map(item => {
+    //                 return {
+    //                     code: item.alpha2Code,
+    //                     name: item.name,
+    //                     callingCode: `+${item.callingCodes[0]}`,
+    //                     flag: `https://www.countryflags.io/${item.alpha2Code}/flat/64.png`
+    //                 }
+    //             })
+
+    //             setAreas(areaData)
+
+    //             if (areaData.length > 0) {
+    //                 let defaultData = areaData.filter(a => a.code == "US")
+
+    //                 if (defaultData.length > 0) {
+    //                     setSelectedArea(defaultData[0])
+    //                 }
+    //             }
+    //         })
+    // }, [])
 
     function renderHeader() {
         return (
@@ -125,6 +166,8 @@ const SignUp = ({ navigation }) => {
                         placeholder="Enter Full Name"
                         placeholderTextColor={COLORS.white}
                         selectionColor={COLORS.white}
+                        value={name}
+                        onChangeText={setName}
                     />
                 </View>
 
@@ -133,44 +176,7 @@ const SignUp = ({ navigation }) => {
                     <Text style={{ color: COLORS.lightGreen, ...FONTS.body3 }}>Phone Number</Text>
 
                     <View style={{ flexDirection: 'row' }}>
-                        {/* Country Code */}
-                        {/* <TouchableOpacity
-                            style={{
-                                width: 100,
-                                height: 50,
-                                marginHorizontal: 5,
-                                borderBottomColor: COLORS.white,
-                                borderBottomWidth: 1,
-                                flexDirection: 'row',
-                                ...FONTS.body2
-                            }}
-                            onPress={() => setModalVisible(true)}
-                        >
-                            <View style={{ justifyContent: 'center' }}>
-                                <Image
-                                    source={icons.down}
-                                    style={{
-                                        width: 10,
-                                        height: 10,
-                                        tintColor: COLORS.white
-                                    }}
-                                />
-                            </View>
-                            <View style={{ justifyContent: 'center', marginLeft: 5 }}>
-                                <Image
-                                    source={{ uri: selectedArea?.flag }}
-                                    resizeMode="contain"
-                                    style={{
-                                        width: 30,
-                                        height: 30
-                                    }}
-                                />
-                            </View>
-
-                            <View style={{ justifyContent: 'center', marginLeft: 5 }}>
-                                <Text style={{ color: COLORS.white, ...FONTS.body3 }}>{selectedArea?.callingCode}</Text>
-                            </View>
-                        </TouchableOpacity> */}
+                   
 
                         {/* Phone Number */}
                         <TextInput
@@ -183,9 +189,12 @@ const SignUp = ({ navigation }) => {
                                 color: COLORS.white,
                                 ...FONTS.body3
                             }}
+                            value={mob}
+                            onChangeText={setMob}
                             placeholder="Enter Phone Number"
                             placeholderTextColor={COLORS.white}
                             selectionColor={COLORS.white}
+                            keyboardType="numeric"
                         />
                     </View>
                 </View>
@@ -205,6 +214,8 @@ const SignUp = ({ navigation }) => {
                         placeholder="Enter your Email"
                         placeholderTextColor={COLORS.white}
                         selectionColor={COLORS.white}
+                        value={email}
+                        onChangeText={setEmail}
                     />
                 </View>
 
@@ -226,6 +237,8 @@ const SignUp = ({ navigation }) => {
                         placeholderTextColor={COLORS.white}
                         selectionColor={COLORS.white}
                         secureTextEntry={!showPassword}
+                        value={password}
+                        onChangeText={setPassword}
                     />
                     <TouchableOpacity
                         style={{
@@ -247,7 +260,65 @@ const SignUp = ({ navigation }) => {
                         />
                     </TouchableOpacity>
                 </View>
+
+                  {/* Occupation*/}
+                  <View style={{ marginTop: SIZES.padding * 3 }}>
+                    <Text style={{ color: COLORS.lightGreen, ...FONTS.body3 }}>Occupation</Text>
+                    <TextInput
+                        style={{
+                            marginVertical: SIZES.padding,
+                            borderBottomColor: COLORS.white,
+                            borderBottomWidth: 1,
+                            height: 40,
+                            color: COLORS.white,
+                            ...FONTS.body3
+                        }}
+                        placeholder="Occupation"
+                        value={occupation}
+                        onChangeText={setOccupation}
+                        placeholderTextColor={COLORS.white}
+                        selectionColor={COLORS.white}
+                    />
+                </View>
+                
+
+                {/* //dateofbirth// */}
+                <View style={{ marginTop: SIZES.padding * 2 }}>
+                {/* <TextInput style={{ color: COLORS.lightGreen, ...FONTS.body3 }} value={date} onChangeText={setDate}/> */}
+             
+                    
+                <DatePicker
+                    modal
+                    mode="date"
+                    open={open}
+                    date={date}
+                    onConfirm={(date) => {
+                    setOpen(false)
+                    setDate(date)
+                    }}
+                    onCancel={() => {
+                    setOpen(false)
+                    }}
+                    
+                    />
+                </View>
+
+
+
+             
+
+
             </View>
+        )
+    }
+
+    function renderDatePicker(){
+        return (
+            <>
+              <>
+                <Button onPress={() => setOpen(true)}>Select your BirthDate</Button>
+            </>
+            </>
         )
     }
 
@@ -262,72 +333,72 @@ const SignUp = ({ navigation }) => {
                         alignItems: 'center',
                         justifyContent: 'center'
                     }}
-                    onPress={() => navigation.navigate("Home")}
+                    onPress={registerHandler}
                 >
-                    <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Continue</Text>
+                    <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Sign Up</Text>
                 </TouchableOpacity>
             </View>
         )
     }
 
-    function renderAreaCodesModal() {
+    // function renderAreaCodesModal() {
 
-        const renderItem = ({ item }) => {
-            return (
-                <TouchableOpacity
-                    style={{ padding: SIZES.padding, flexDirection: 'row' }}
-                    onPress={() => {
-                        setSelectedArea(item)
-                        setModalVisible(false)
-                    }}
-                >
-                    <Image
-                        source={{ uri: item.flag }}
-                        style={{
-                            width: 30,
-                            height: 30,
-                            marginRight: 10
-                        }}
-                    />
-                    <Text style={{ ...FONTS.body4 }}>{item.name}</Text>
-                </TouchableOpacity>
-            )
-        }
+    //     const renderItem = ({ item }) => {
+    //         return (
+    //             <TouchableOpacity
+    //                 style={{ padding: SIZES.padding, flexDirection: 'row' }}
+    //                 onPress={() => {
+    //                     setSelectedArea(item)
+    //                     setModalVisible(false)
+    //                 }}
+    //             >
+    //                 <Image
+    //                     source={{ uri: item.flag }}
+    //                     style={{
+    //                         width: 30,
+    //                         height: 30,
+    //                         marginRight: 10
+    //                     }}
+    //                 />
+    //                 <Text style={{ ...FONTS.body4 }}>{item.name}</Text>
+    //             </TouchableOpacity>
+    //         )
+    //     }
 
-        return (
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-            >
-                <TouchableWithoutFeedback
-                    onPress={() => setModalVisible(false)}
-                >
-                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                        <View
-                            style={{
-                                height: 400,
-                                width: SIZES.width * 0.8,
-                                backgroundColor: COLORS.lightGreen,
-                                borderRadius: SIZES.radius
-                            }}
-                        >
-                            <FlatList
-                                data={areas}
-                                renderItem={renderItem}
-                                keyExtractor={(item) => item.code}
-                                showsVerticalScrollIndicator={false}
-                                style={{
-                                    padding: SIZES.padding * 2,
-                                    marginBottom: SIZES.padding * 2
-                                }}
-                            />
-                        </View>
-                    </View>
-                </TouchableWithoutFeedback>
-            </Modal>
-        )
-    }
+    //     return (
+    //         <Modal
+    //             animationType="slide"
+    //             transparent={true}
+    //             visible={modalVisible}
+    //         >
+    //             <TouchableWithoutFeedback
+    //                 onPress={() => setModalVisible(false)}
+    //             >
+    //                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    //                     <View
+    //                         style={{
+    //                             height: 400,
+    //                             width: SIZES.width * 0.8,
+    //                             backgroundColor: COLORS.lightGreen,
+    //                             borderRadius: SIZES.radius
+    //                         }}
+    //                     >
+    //                         <FlatList
+    //                             data={areas}
+    //                             renderItem={renderItem}
+    //                             keyExtractor={(item) => item.code}
+    //                             showsVerticalScrollIndicator={false}
+    //                             style={{
+    //                                 padding: SIZES.padding * 2,
+    //                                 marginBottom: SIZES.padding * 2
+    //                             }}
+    //                         />
+    //                     </View>
+    //                 </View>
+    //             </TouchableWithoutFeedback>
+    //         </Modal>
+    //     )
+    // }
 
     return (
         <KeyboardAvoidingView
@@ -342,12 +413,32 @@ const SignUp = ({ navigation }) => {
                     {renderHeader()}
                     {renderLogo()}
                     {renderForm()}
+                    {renderDatePicker()}
                     {renderButton()}
                 </ScrollView>
             </LinearGradient>
-            {renderAreaCodesModal()}
+            {/* {renderAreaCodesModal()} */}
         </KeyboardAvoidingView>
     )
 }
 
 export default SignUp;
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      padding: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    title: {
+      textAlign: 'center',
+      fontSize: 20,
+      fontWeight: 'bold',
+      padding: 20,
+    },
+    datePickerStyle: {
+      width: 200,
+      marginTop: 20,
+    },
+  });
