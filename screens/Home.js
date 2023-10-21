@@ -24,6 +24,8 @@ import Picture6 from '../assets/HomeScreenIcons/Pic6.png'
 import Picture8 from '../assets/HomeScreenIcons/Pic8New.jpg'
 import Picture9 from '../assets/HomeScreenIcons/picnine.png'
 import Picture10 from '../assets/HomeScreenIcons/Pic10.png';
+import Picture11 from '../assets/HomeScreenIcons/Pic11.png';
+
 import { useSelector } from "react-redux";
 
 const Home = ({navigation}) => {
@@ -111,7 +113,7 @@ const Home = ({navigation}) => {
         },
         {
             id: 3,
-            img: Picture1,
+            img: Picture11,
             title: "Case Management ",
             // description: "Check for references.",
             path : ""
@@ -322,15 +324,15 @@ const Home = ({navigation}) => {
                         style={{
                             width: 80,
                             height: 80,
-                            marginBottom: 15,
-                        borderRadius: 19,
+                            // marginBottom: 15,
+                        borderRadius: 10,
                             
                             // borderTopLeftRadius: 10,
                             // borderTopRightRadius: 10,
                         }}
                         
                     />
-                        <Text style={{ ...FONTS.body4 , color : COLORS.primary1 , marginLeft: 10, marginRight: 10}}>{item.title}</Text>
+                        <Text style={{ ...FONTS.body4 , color : COLORS.primary1 , marginLeft: 10, marginRight: 10 ,textAlign:'justify'}}>{item.title}</Text>
                 </View>
 
                 <View
