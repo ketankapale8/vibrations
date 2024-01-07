@@ -26,6 +26,26 @@ import Picture9 from '../assets/HomeScreenIcons/picnine.png'
 import Picture10 from '../assets/HomeScreenIcons/Pic10.png';
 import Picture11 from '../assets/HomeScreenIcons/Pic11.png';
 
+import newPicture1 from '../assets/HomeScreenNewIcons/1.png';
+import newPicture2 from '../assets/HomeScreenNewIcons/2.png';
+import newPicture3 from '../assets/HomeScreenNewIcons/3.png';
+import newPicture4 from '../assets/HomeScreenNewIcons/4.png';
+import newPicture5 from '../assets/HomeScreenNewIcons/5.png';
+import newPicture6 from '../assets/HomeScreenNewIcons/6.png';
+import newPicture7 from '../assets/HomeScreenNewIcons/7.png';
+import newPicture9 from '../assets/HomeScreenNewIcons/9.png';
+import newPicture10 from '../assets/HomeScreenNewIcons/10.png';
+import newPicture11 from '../assets/HomeScreenNewIcons/11.png';
+
+import CommonHeader from "../component/common/CommonHeader";
+
+import {menu} from 'react-native-vector-icons/Entypo'
+
+
+
+
+
+
 import { useSelector } from "react-redux";
 
 const Home = ({navigation}) => {
@@ -62,7 +82,8 @@ const Home = ({navigation}) => {
     const featuresData = [
         {
             id: 1,
-            icon: Picture1,
+            // icon: Picture1,
+            icon: newPicture5,
             // color: COLORS.purple,
             // backgroundColor: COLORS.lightpurple,
             description: "Create Case",
@@ -70,7 +91,8 @@ const Home = ({navigation}) => {
         },
         {
             id: 2,
-            icon: Picture2,
+            // icon: Picture2,
+            icon : newPicture10,
             // color: COLORS.yellow,
             // backgroundColor: COLORS.lightyellow,
             description: "Sankalp",
@@ -78,7 +100,8 @@ const Home = ({navigation}) => {
         },
         {
             id: 3,
-            icon: Picture3,
+            // icon: Picture3,
+            icon : newPicture11,
             // color: COLORS.primary,
             // backgroundColor: COLORS.lightGreen,
             description: "Vibration Points",
@@ -86,7 +109,8 @@ const Home = ({navigation}) => {
         },
         {
             id: 4,
-            icon: Picture4,
+            // icon: Picture4,
+            icon : newPicture9,
             // color: COLORS.red,
             // backgroundColor: COLORS.lightRed,
             description: "Practice",
@@ -98,14 +122,18 @@ const Home = ({navigation}) => {
     const specialPromoData = [
         {
             id: 1,
-            img: Picture5,
+            // img: Picture5,
+            img: newPicture1,
+
             title: "Learn Spandan",
             // description: "Understand your Oscillations!",
             path : "Learn"
         },
         {
             id: 2,
-            img: Picture6,
+            // img: Picture6,
+            img: newPicture7,
+
             title: "Practice Spandan",
             // description: "Check your capabilities under practice mode",
             path : "Practice"
@@ -113,7 +141,9 @@ const Home = ({navigation}) => {
         },
         {
             id: 3,
-            img: Picture11,
+            // img: Picture11,
+            img: newPicture5,
+
             title: "Case Management ",
             // description: "Check for references.",
             path : ""
@@ -121,7 +151,9 @@ const Home = ({navigation}) => {
             },
         {
             id: 4,
-            img: Picture8,
+            // img: Picture8,
+            img: newPicture6,
+
             title: "Reference Material",
             // description: "Add your infomation and check for your overall profile",
             path : ""
@@ -129,7 +161,9 @@ const Home = ({navigation}) => {
        
         {
             id: 6,
-            img:Picture9,
+            // img:Picture9,
+            img: newPicture3,
+
             title: "Discussion Forum",
             // description: "Please look for any queries",
             path : ""
@@ -137,7 +171,9 @@ const Home = ({navigation}) => {
 
         {
             id: 7,
-            img:Picture10,
+            // img:Picture10,
+            img: newPicture4,
+
             title: "My Dairy",
             // description: "Please look for any queries",
             path : ""
@@ -146,6 +182,7 @@ const Home = ({navigation}) => {
 
     const [features, setFeatures] = React.useState(featuresData)
     const [specialPromos, setSpecialPromos] = React.useState(specialPromoData)
+
 
     function renderHeader() {
         return (
@@ -229,27 +266,30 @@ const Home = ({navigation}) => {
             >
                 <View
                     style={{
-                        height: 50,
-                        width: 90,
+                        height: 70,
+                        width: 70,
                         marginBottom: 15,
                         borderRadius: 20,
+                        gap: 4,
+                        display:'flex',
+                        flexDirection:'column',
                         // backgroundColor: item.backgroundColor,
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        // justifyContent: 'center'
                     }}
                 >
                     <Image
                         source={item.icon}
                         resizeMode="contain"
                         style={{
-                            height: 70,
-                            width: 70,
+                            height: 50,
+                            width: 50,
                             borderRadius : 10
                             // tintColor: item.color
                         }}
                     />
-                </View>
                 <Text style={{ textAlign: 'center', flexWrap: 'nowrap', ...FONTS.body5 , color: COLORS.primary1 }}>{item.description}</Text>
+                </View>
             </TouchableOpacity>
         )
 
@@ -270,6 +310,8 @@ const Home = ({navigation}) => {
         
         const HeaderComponent = () => (
             <View>
+                {<CommonHeader title={"Home"} icon={menu} style={{width:'100%'}}/>}
+
                 {renderHeader()}
                 {SliderComponent()}
                 {/* {renderBanner()} */}
@@ -301,15 +343,19 @@ const Home = ({navigation}) => {
             <TouchableOpacity
                 style={{
                     marginVertical: SIZES.base,
-                    width: SIZES.width / 2.8
+                    width: SIZES.width / 3
                 }}
                 onPress={() => Navigation.navigate(item.path)}
             >
                 <View
                     style={{
                         // marginTop: 30,
-                        width: 120,
-                        height: 130,
+                        display:'flex',
+                        flexDirection:'column',
+                        alignItems:'center',
+                        justifyContent:'center',
+                        width: 100,
+                        height: 110,
                         marginRight: 10,
                         marginLeft: 0,
                         borderTopLeftRadius: 20,
@@ -322,8 +368,8 @@ const Home = ({navigation}) => {
                         resizeMode="contain"
                         
                         style={{
-                            width: 80,
-                            height: 80,
+                            width: 60,
+                            height: 60,
                             // marginBottom: 15,
                         borderRadius: 10,
                             
@@ -332,10 +378,10 @@ const Home = ({navigation}) => {
                         }}
                         
                     />
-                        <Text style={{ ...FONTS.body4 , color : COLORS.primary1 , marginLeft: 10, marginRight: 10 ,textAlign:'justify'}}>{item.title}</Text>
+                        <Text style={{ fontSize: 11.5 , color : COLORS.primary1 , paddingTop:5, marginLeft: 15, marginRight: 15 ,textAlign:'center'}}>{item.title}</Text>
                 </View>
 
-                <View
+                {/* <View
                     style={{
                         padding: SIZES.padding,
                         // backgroundColor: COLORS.lightGray,
@@ -343,8 +389,8 @@ const Home = ({navigation}) => {
                         borderBottomRightRadius: 20
                     }}
                 >
-                    <Text style={{ ...FONTS.body5 , color:'black' }}>{item.description}</Text>
-                </View>
+                    <Text style={{ ...FONTS.body6 , color:'black' }}>{item.description}</Text>
+                </View> */}
             </TouchableOpacity>
         )
 
@@ -371,6 +417,7 @@ const Home = ({navigation}) => {
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white ,}}
             
         >
+            
             {/* {HeaderComponent()} */}
             {renderPromos()}
         </SafeAreaView>

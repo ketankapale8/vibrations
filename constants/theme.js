@@ -56,6 +56,8 @@ export const SIZES = {
     body4: 14,
     body5: 12,
     body6 : 10,
+    body7 : 8,
+
 
     // app dimensions
     width,
@@ -73,7 +75,9 @@ export const FONTS = {
     body3: { fontFamily: "Roboto-Regular", fontSize: SIZES.body3, lineHeight: 22 },
     body4: { fontFamily: "Roboto-Regular", fontSize: SIZES.body4, lineHeight: 22 },
     body5: { fontFamily: "Roboto-Regular", fontSize: SIZES.body5, lineHeight: 22 },
-    body5: { fontFamily: "Roboto-Regular", fontSize: SIZES.body6, lineHeight: 22 },
+    body5: { fontFamily: "Roboto-Regular", fontSize: SIZES.body6, lineHeight: 20 },
+    body6: { fontFamily: "Roboto-Regular", fontSize: SIZES.body7, lineHeight: 18 },
+
 };
 
 const appTheme = { COLORS, SIZES, FONTS };

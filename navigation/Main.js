@@ -59,7 +59,7 @@ const Main = () => {
                 screenOptions={{
                     headerShown: false
                 }}
-                initialRouteName={isAuthenticated ? "Home" : "OnBoarding"}
+                initialRouteName={isAuthenticated ? "Home" : "SignIn"}
             >
 
                 <Stack.Screen name="SignUp" component={SignUp} />

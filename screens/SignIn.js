@@ -230,6 +230,31 @@ const SignIn = ({ navigation }) => {
         )
     }
 
+    function ForgetPasswordComp() {
+        return (
+            <View style={{ margin: SIZES.padding * 3 , display:'flex', flexDirection:'column' ,alignItems:'center', gap:10 }}>
+                <View>
+                    <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Don't Remember your password? </Text>
+                </View>
+                <TouchableOpacity
+                    style={{
+                        height: 60,
+                        width: 190,
+                        backgroundColor: COLORS.black,
+                        borderRadius: SIZES.radius / 2.5,
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                    onPress={()=> console.log('pressed')}
+                    disabled={!email || !password}
+                    // onPress={() => navigation.navigate("Home")}
+                >
+                    <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Click Here</Text>
+                </TouchableOpacity>
+            </View>
+        )
+    }
+
     function renderAreaCodesModal() {
 
         const renderItem = ({ item }) => {
@@ -303,6 +328,7 @@ const SignIn = ({ navigation }) => {
                     {renderLogo()}
                     {renderForm()}
                     {renderButton()}
+                    {ForgetPasswordComp()}
                 </ScrollView>
             </LinearGradient>
             {renderAreaCodesModal()}

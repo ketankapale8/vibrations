@@ -210,11 +210,12 @@ const Tabs = () => {
                 name="Home"
                 component={Home}
                 options={{
-                    headerTitle : "Dashboard",
-                    headerTitleStyle : {paddingLeft : SIZES.padding * 1 , color :COLORS.white},
-                    headerStyle: {
-                        backgroundColor: COLORS.primary2,
-                      },
+                    headerShown: false,
+                    // headerTitle : "Dashboard",
+                    // headerTitleStyle : {paddingLeft : SIZES.padding * 1 , color :COLORS.white},
+                    // headerStyle: {
+                    //     backgroundColor: COLORS.primary2,
+                    //   },
                     tabBarIcon : ({focused}) => (
                         <View style={{alignItems : 'center', justifyContent:'center', top: 0}}>
                             <Image
