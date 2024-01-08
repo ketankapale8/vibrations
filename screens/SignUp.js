@@ -59,9 +59,9 @@ const SignUp = ({ navigation }) => {
         // myForm.append("occupation", occupation);
         // myForm.append("date", date);
 
-        console.log('pushed for register')
+        navigation.navigate("Verify");
+        // console.log('pressed')
         dispatch(register(name, email , mob , password, occupation ,date));
-        navigation.navigate("Home")
     }
 
 

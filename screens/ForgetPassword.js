@@ -16,11 +16,13 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch , useSelector } from "react-redux";
 import { login } from "../redux/action.js";
 
-import { COLORS, SIZES, FONTS, icons, images } from "../constants"
+import { COLORS, SIZES, FONTS, icons, images } from "../constants";
+import {forgetPassword} from '../redux/action'
 
-const SignIn = ({ navigation }) => {
+const ForgetPassword = ({ navigation }) => {
 
     const [showPassword, setShowPassword] = React.useState(false)
+    const { message, error } = useSelector(state => state.message)
 
     const [areas, setAreas] = React.useState([])
     const [selectedArea, setSelectedArea] = React.useState(null)
@@ -31,38 +33,16 @@ const SignIn = ({ navigation }) => {
 
     console.log(email , password)
 
-    // React.useEffect(() => {
-    //     fetch("https://restcountries.eu/rest/v2/all")
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             let areaData = data.map(item => {
-    //                 return {
-    //                     code: item.alpha2Code,
-    //                     name: item.name,
-    //                     callingCode: `+${item.callingCodes[0]}`,
-    //                     flag: `https://www.countryflags.io/${item.alpha2Code}/flat/64.png`
-    //                 }
-    //             })
 
-    //             setAreas(areaData)
 
-    //             if (areaData.length > 0) {
-    //                 let defaultData = areaData.filter(a => a.code == "US")
-
-    //                 if (defaultData.length > 0) {
-    //                     setSelectedArea(defaultData[0])
-    //                 }
-    //             }
-    //         })
-    // }, [])
-
-    const { error } = useSelector(state => state.auth)
+    // const { error } = useSelector(state => state.auth)
 
     const dispatch = useDispatch();
 
 
-    const loginHandler = () => {
-        dispatch(login(email, password))
+    const forgetHandler = async () => {
+       await dispatch(forgetPassword(email));
+       navigation.navigate("ResetPassword")
     }
 
     useEffect(() => {
@@ -167,44 +147,7 @@ const SignIn = ({ navigation }) => {
                 
 
                 {/* Password */}
-                <View style={{ marginTop: SIZES.padding * 2 }}>
-                    <Text style={{ color: COLORS.lightGreen, ...FONTS.body3 }}>Password</Text>
-                    <TextInput
-                        style={{
-                            marginVertical: SIZES.padding,
-                            borderBottomColor: COLORS.white,
-                            borderBottomWidth: 1,
-                            height: 40,
-                            color: COLORS.white,
-                            ...FONTS.body3
-                        }}
-                        placeholder="Enter Password"
-                        placeholderTextColor={COLORS.white}
-                        selectionColor={COLORS.white}
-                        secureTextEntry={!showPassword}
-                        value={password}
-                        onChangeText={setPassword}
-                    />
-                    <TouchableOpacity
-                        style={{
-                            position: 'absolute',
-                            right: 0,
-                            bottom: 10,
-                            height: 30,
-                            width: 30
-                        }}
-                        onPress={() => setShowPassword(!showPassword)}
-                    >
-                        <Image
-                            source={showPassword ? icons.disable_eye : icons.eye}
-                            style={{
-                                height: 20,
-                                width: 20,
-                                tintColor: COLORS.white
-                            }}
-                        />
-                    </TouchableOpacity>
-                </View>
+                
             </View>
         )
     }
@@ -220,11 +163,11 @@ const SignIn = ({ navigation }) => {
                         alignItems: 'center',
                         justifyContent: 'center'
                     }}
-                    onPress={loginHandler}
-                    disabled={!email || !password}
+                    onPress={forgetHandler}
+                    disabled={!email}
                     // onPress={() => navigation.navigate("Home")}
                 >
-                    <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Continue</Text>
+                    <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Submit</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -245,7 +188,7 @@ const SignIn = ({ navigation }) => {
                         alignItems: 'center',
                         justifyContent: 'center'
                     }}
-                    onPress={()=> navigation.navigate("ForgetPassword")}
+                    onPress={()=> navigation.navigate("Verify")}
                     // disabled={!email || !password}
                     // onPress={() => navigation.navigate("Home")}
                 >
@@ -328,7 +271,7 @@ const SignIn = ({ navigation }) => {
                     {renderLogo()}
                     {renderForm()}
                     {renderButton()}
-                    {ForgetPasswordComp()}
+                    {/* {ForgetPasswordComp()} */}
                 </ScrollView>
             </LinearGradient>
             {renderAreaCodesModal()}
@@ -336,4 +279,4 @@ const SignIn = ({ navigation }) => {
     )
 }
 
-export default SignIn;
+export default ForgetPassword;

@@ -21,9 +21,11 @@ export const authReducer = createReducer(
     registerRequest: (state) => {
       state.loading = true;
     },
+    //change //
     registerSuccess: (state, action) => {
       state.loading = false;
-      state.isAuthenticated = true;
+      // state.isAuthenticated = true;
+      state.isAuthenticated = false;
       state.user = action.payload.user;
       state.message = action.payload.message;
     },
@@ -46,7 +48,6 @@ export const authReducer = createReducer(
       state.isAuthenticated = false;
       state.error = action.payload;
     },
-
     logoutRequest: (state) => {
       state.loading = true;
     },
@@ -64,8 +65,13 @@ export const authReducer = createReducer(
     verificationRequest: (state) => {
       state.loading = true;
     },
+    //change//
     verificationSuccess: (state, action) => {
       state.loading = false;
+      state.isAuthenticated = true;
+      //added below line//
+      state.user = action.payload.user
+
       state.message = action.payload;
     },
     verificationFailure: (state, action) => {

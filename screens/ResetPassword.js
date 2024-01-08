@@ -14,64 +14,41 @@ import {
 } from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch , useSelector } from "react-redux";
-import { login } from "../redux/action.js";
+import { resetPassword  } from "../redux/action.js";
 
-import { COLORS, SIZES, FONTS, icons, images } from "../constants"
+import { COLORS, SIZES, FONTS, icons, images } from "../constants";
+// import {forgetPassword} from '../redux/action';
+import {OtpInput} from 'react-native-otp-entry';
 
-const SignIn = ({ navigation }) => {
+const ResetPassword = ({ navigation }) => {
 
-    const [showPassword, setShowPassword] = React.useState(false)
+    const { message, error } = useSelector(state => state.message)
 
-    const [areas, setAreas] = React.useState([])
-    const [selectedArea, setSelectedArea] = React.useState(null)
-    const [modalVisible, setModalVisible] = React.useState(false)
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    console.log(email , password)
-
-    // React.useEffect(() => {
-    //     fetch("https://restcountries.eu/rest/v2/all")
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             let areaData = data.map(item => {
-    //                 return {
-    //                     code: item.alpha2Code,
-    //                     name: item.name,
-    //                     callingCode: `+${item.callingCodes[0]}`,
-    //                     flag: `https://www.countryflags.io/${item.alpha2Code}/flat/64.png`
-    //                 }
-    //             })
-
-    //             setAreas(areaData)
-
-    //             if (areaData.length > 0) {
-    //                 let defaultData = areaData.filter(a => a.code == "US")
-
-    //                 if (defaultData.length > 0) {
-    //                     setSelectedArea(defaultData[0])
-    //                 }
-    //             }
-    //         })
-    // }, [])
-
-    const { error } = useSelector(state => state.auth)
-
-    const dispatch = useDispatch();
+    const [otp, setOtp] = useState();
+    const [newPassword, setNewPassword] = useState();
+    const dispatch = useDispatch()
 
 
-    const loginHandler = () => {
-        dispatch(login(email, password))
+
+    // const { error } = useSelector(state => state.auth)
+
+
+
+    const changePasswordHandler  = async () => {
+        await dispatch(resetPassword(otp, newPassword));
+        navigation.navigate("SignIn");
     }
 
     useEffect(() => {
+        if (message) {
+            alert(message);
+            dispatch({ type: "clearMessage" })
+        }
         if (error) {
-            alert(error)
+            alert(error);
             dispatch({ type: "clearError" })
         }
-
-    }, [error, dispatch, alert,])
+    }, [error, message, dispatch, alert,])
 
 
 
@@ -142,31 +119,17 @@ const SignIn = ({ navigation }) => {
                 
 
                 {/* Phone Number */}
+
+                <OtpInput
+        numberOfDigits={6}
+        onTextChange={(text) => setOtp(text)}
+        theme={{
+        pinCodeTextStyle : {color:COLORS.primary1}
+        }}
+        />
               
 
-                {/* // Email */}
-                <View style={{ marginTop: SIZES.padding * 2 }}>
-                    <Text style={{ color: COLORS.lightGreen, ...FONTS.body3 }}>Email</Text>
-                    <TextInput
-                        style={{
-                            marginVertical: SIZES.padding,
-                            borderBottomColor: COLORS.white,
-                            borderBottomWidth: 1,
-                            height: 40,
-                            color: COLORS.white,
-                            ...FONTS.body3
-                        }}
-                        placeholder="Enter your Email"
-                        placeholderTextColor={COLORS.white}
-                        selectionColor={COLORS.white}
-                        value={email}
-                        onChangeText={setEmail}
-                    />
-                </View>
-
-                
-
-                {/* Password */}
+                {/* // Password */}
                 <View style={{ marginTop: SIZES.padding * 2 }}>
                     <Text style={{ color: COLORS.lightGreen, ...FONTS.body3 }}>Password</Text>
                     <TextInput
@@ -178,33 +141,18 @@ const SignIn = ({ navigation }) => {
                             color: COLORS.white,
                             ...FONTS.body3
                         }}
-                        placeholder="Enter Password"
+                        placeholder="Enter your Password"
                         placeholderTextColor={COLORS.white}
                         selectionColor={COLORS.white}
-                        secureTextEntry={!showPassword}
-                        value={password}
-                        onChangeText={setPassword}
+                        value={newPassword}
+                        onChangeText={setNewPassword}
                     />
-                    <TouchableOpacity
-                        style={{
-                            position: 'absolute',
-                            right: 0,
-                            bottom: 10,
-                            height: 30,
-                            width: 30
-                        }}
-                        onPress={() => setShowPassword(!showPassword)}
-                    >
-                        <Image
-                            source={showPassword ? icons.disable_eye : icons.eye}
-                            style={{
-                                height: 20,
-                                width: 20,
-                                tintColor: COLORS.white
-                            }}
-                        />
-                    </TouchableOpacity>
                 </View>
+
+                
+
+                {/* Password */}
+                
             </View>
         )
     }
@@ -220,11 +168,11 @@ const SignIn = ({ navigation }) => {
                         alignItems: 'center',
                         justifyContent: 'center'
                     }}
-                    onPress={loginHandler}
-                    disabled={!email || !password}
+                    onPress={changePasswordHandler}
+                    disabled={!newPassword}
                     // onPress={() => navigation.navigate("Home")}
                 >
-                    <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Continue</Text>
+                    <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Reset Password</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -245,7 +193,7 @@ const SignIn = ({ navigation }) => {
                         alignItems: 'center',
                         justifyContent: 'center'
                     }}
-                    onPress={()=> navigation.navigate("ForgetPassword")}
+                    onPress={()=> navigation.navigate("Verify")}
                     // disabled={!email || !password}
                     // onPress={() => navigation.navigate("Home")}
                 >
@@ -328,12 +276,11 @@ const SignIn = ({ navigation }) => {
                     {renderLogo()}
                     {renderForm()}
                     {renderButton()}
-                    {ForgetPasswordComp()}
+                    {/* {ForgetPasswordComp()} */}
                 </ScrollView>
             </LinearGradient>
-            {renderAreaCodesModal()}
         </KeyboardAvoidingView>
     )
 }
 
-export default SignIn;
+export default ResetPassword;

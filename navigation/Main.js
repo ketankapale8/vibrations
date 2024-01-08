@@ -29,6 +29,9 @@ import Tabs from './tabs';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '../redux/action';
 import OnboardingScreen from '../component/OnBoardingScreen';
+import VerifyScreen from '../screens/VerifyScreen';
+import ForgetPassword from '../screens/ForgetPassword';
+import ResetPassword from '../screens/ResetPassword';
 
 
 const Stack = createStackNavigator();
@@ -59,12 +62,14 @@ const Main = () => {
                 screenOptions={{
                     headerShown: false
                 }}
-                initialRouteName={isAuthenticated ? "Home" : "SignIn"}
+                initialRouteName={isAuthenticated ? "Home" : "Verify"}
             >
 
                 <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen name="SignIn" component={SignIn} />
-
+                <Stack.Screen name="Verify" component={VerifyScreen} />
+                <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
+                <Stack.Screen name="ResetPassword" component={ResetPassword} />
                 <Stack.Screen name="OnBoarding" component={OnboardingScreen} />
 
                 {/* Tabs */}
@@ -98,9 +103,6 @@ const Main = () => {
                  <Stack.Screen name="DummyQuiz1" component={DummyQuizScreen1} />
                  <Stack.Screen name="SpandanBook" component={SpandanBook} />
                  <Stack.Screen name="SpandanBookDescription" component={SpandanBookDescription} />
-                 
-                 
-
                 {/* <Stack.Screen name="Scan" component={Scan} /> */}
             </Stack.Navigator>
             {/* <Toast/> */}
